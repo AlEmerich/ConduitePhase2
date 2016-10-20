@@ -15,14 +15,16 @@
 |      5 | En tant que utilisateur, je souhaite pouvoir lister ces User Stories afin de les modifier ou de les supprimer.                                       |      3 |        5 |
 |      6 | En tant que product owner, je souhaite pouvoir modifier la priorité des User Stories.                                                                |      3 |        9 |
 |      7 | En tant que utilisateur, je souhaite pouvoir planifier des sprints avec des User Stories déjà entrées.                                               |      5 |        6 |
-|      8 | En tant que utilisateur, je souhaite pouvoir éditer le planning afin de préciser quelles User Story sont développpés à un moment donné.              |        |       15 |
-|      9 | En tant que utilisateur, je souhaite pouvoir inviter d’autres utilisateur à contribuer aux projets afin que ces derniers aient les mêmes privilèges. |        |        7 |
-|     10 | En tant que utilisateur, je souhaite pouvoir définir un product owner parmi les contributeurs afin qu'il puisse modifier la prio des User Stories.   |        |        8 |
-|     11 | En tant que utilisateur, je souhaite pouvoir créer des tâches associées a une des US déjà créées.                                                    |        |       10 |
-|     12 | En tant que utilisateur, je souhaite pouvoir lister les tâches d'un sprint, afin de les modifier ou de les supprimer.                                |        |       11 |
-|     13 | En tant que utilisateur, je souhaite pouvoir modifier le kanban d'un sprint en fonction de leur état de développement.                               |        |       13 |
-|     14 | En tant que utilisateur, je souhaite pouvoir modifier la matrice de tracabilité afin de savoir à quel commit une US a été traitée.                   |        |       14 |
-|     15 | En tant que utilisateur, je souhaite pouvoir accéder au différents sprints du projet afin d'en voir les évolutions.                                  |        |       12 |
-|     16 | En tant que utilisateur, je souhaite pouvoir accéder facilement aux dépôts du projet.                                                                |        |       17 |
-|     17 | En tant que utilisateur, je souhaite voir la courbe de vélocité du projet.                                                                           |        |       16 |
+|      8 | En tant que utilisateur, je souhaite pouvoir éditer le planning afin de préciser quelles User Story sont développpés à un moment donné.              |      2 |       15 |
+|      9 | En tant que utilisateur, je souhaite pouvoir inviter d’autres utilisateur à contribuer aux projets afin que ces derniers aient les mêmes privilèges. |      1 |        7 |
+|     10 | En tant que utilisateur, je souhaite pouvoir définir un product owner parmi les contributeurs afin qu'il puisse modifier la prio des User Stories.   |      2 |        8 |
+|     11 | En tant que utilisateur, je souhaite pouvoir créer des tâches associées a une des US déjà créées.                                                    |      5 |       10 |
+|     12 | En tant que utilisateur, je souhaite pouvoir lister les tâches d'un sprint, afin de les modifier ou de les supprimer.                                |      3 |       11 |
+|     13 | En tant que utilisateur, je souhaite pouvoir modifier le kanban d'un sprint en fonction de leur état de développement.                               |      5 |       13 |
+|     14 | En tant que utilisateur, je souhaite pouvoir modifier la matrice de tracabilité afin de savoir à quel commit une US a été traitée.                   |      2 |       14 |
+|     15 | En tant que utilisateur, je souhaite pouvoir accéder au différents sprints du projet afin d'en voir les évolutions.                                  |      3 |       12 |
+|     16 | En tant que utilisateur, je souhaite pouvoir accéder facilement utiles aux dépôts du projet (dépôt, README, doc).                                    |      1 |       17 |
+|     17 | En tant que utilisateur, je souhaite voir la courbe de vélocité du projet.                                                                           |      1 |       16 |
+|--------+------------------------------------------------------------------------------------------------------------------------------------------------------+--------+----------|
+|        | Coût total                                                                                                                                           |     50 |          |
 
