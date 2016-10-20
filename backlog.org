@@ -1,0 +1,21 @@
+* Introduction
+  
+  Le backlog est réalisé sur la solution logiciel Waffle.io, qui est un outil de développement de projets fonctionnait en lien avec GitHub.
+
+  Lien: https://github.com/waffleio/waffle.io
+
+* Backlog Waffle.io
+
+| number | description                                                                                                                                                                                                              | effort | priority | cost |
+|--------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+----------+------|
+|      1 | En tant que visiteur, je souhaite pouvoir m'inscrire en tant que utilisateur.                                                                                                                                            |   1    |          |      |
+|      2 | En tant que utilisateur, je souhaite pouvoir créer mes propres projets.                                                                                                                                                  |   5    |          |      |
+|      3 | En tant que utilisateur, je souhaite pouvoir lister mes projets, afin de les modifier ou de les supprimer.                                                                                                               |   3    |          |      |
+|      4 | En tant que utilisateur, je souhaite pouvoir être associé à un projet créé par un autre utilisateur afin d'en devenir un contributeur.                                                                                   |   5    |          |      |
+|      5 | En tant que utilisateur, je souhaite pouvoir me déconnecter.                                                                                                                                                             |   1    |          |      |
+|      6 | Dans un projet en cours, en tant que utilisateur, je souhaite pouvoir voir les avancées en temps réel, afin de toujours être à jour.                                                                                     |   8    |          |      |
+|      7 | Dans un projet en cours, en tant que utilisateur, je souhaite voir les cartes classées sur le site en fonction de ce qu'elles sont (idées, tâches en cours, tâches réalisés,...) afin de pouvoir les éditer.             |   13   |          |      |
+|      8 | Dans un projet en cours, en tant que utilisateur, je souhaite pouvoir créer des nouvelles cartes du type qu'il me semble afin d'avertir mon groupe de projet d'une idée, d'une nouvelle tâche ou la fin de l'une d'elle. |   13   |          |      |
+|      9 | Dans un projet en cours, en tant que utilisateur, je souhaite avoir une analyse du travail réalisé en amont, afin de perfectionner notre technique de travail.                                                           |   21   |          |      |
+|     10 | Dans un projet en cours, en tant que utilisateur, je souhaite que ce logiciel fonctionne de concert avec un logiciel de version afin que le backlog se mette à jour grâce aux commits.                                   |   21   |          |      |
+|        |                                                                                                                                                                                                                          |        |          |      |

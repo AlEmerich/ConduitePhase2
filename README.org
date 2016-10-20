@@ -1,0 +1,39 @@
+* Presentation
+
+  Web site to manage projects using the scrum method
+
+[[http://waffle.io/WillianPaiva/ScrumBackLogSite][https://badge.waffle.io/WillianPaiva/ScrumBackLogSite.png?label=ready&title=Ready]]
+
+
+* Author
+  
+  Guitard Alan
+  Duffour Matthias
+  Bayol Elmer
+
+* DEVELOPPEMENT INSTRUCTIONS 
+
+** RUN LOCAL SERVER
+
+   To test your code, run the following command in the src directory:
+   
+             php -S localhost:8000 -t .
+
+** PHP FILE
+
+   When you create a new php file, you have to include provideapi.php file to import the Bootstrap and Jquery API.
+   To do that, include the following line in the head tag of your file:
+
+             <?php include 'provideapi.php' ?>
+
+** TO READ ABOUT MYSQL
+
+   Problems shown when the server command is ran out of cremi session (in another machine) because of versions
+   conficts php, when we trying to connect to PhpMyAdmin.
+
+   Outside of cremi, trying to connect to database with "new mysqli" triggers an "Name or Service not known" error
+   when "new PDO" works just fine.
+
+   Inside of cremi, it is the other way around. 
+
+   For shared environnement projet, we choose to work in CREMI until the problem is resolved.
