@@ -2,13 +2,13 @@
   
   Le backlog est réalisé sur la solution logiciel Waffle.io, qui est un outil de développement de projets fonctionnait en lien avec GitHub.
 
-  Lien: https://github.com/waffleio/waffle.io
+  Lien: https://github.com/AlEmerich/ConduitePhase2
 
-* Backlog Waffle.io
+* Backlog
 
 | number | description                                                                                                                                          | effort | priority |
 |--------+------------------------------------------------------------------------------------------------------------------------------------------------------+--------+----------|
-|      1 | En tant que visiteur, je souhaite pouvoir m'inscrire en tant que utilisateur.                                                                        |      3 |        1 |
+|      1 | En tant que visiteur, je souhaite pouvoir m'inscrire ou me connecter en tant que utilisateur.                                                        |      3 |        1 |
 |      2 | En tant que utilisateur, je souhaite pouvoir créer mes propres projets.                                                                              |      5 |        2 |
 |      3 | En tant que utilisateur, je souhaite pouvoir lister mes projets, afin de les modifier ou de les supprimer.                                           |      3 |        3 |
 |      4 | En tant que utilisateur, je souhaite pouvoir créer des User Stories dans le backlog.                                                                 |      2 |        4 |
@@ -18,8 +18,8 @@
 |      8 | En tant que utilisateur, je souhaite pouvoir éditer le planning afin de préciser quelles User Story sont développpés à un moment donné.              |      2 |       15 |
 |      9 | En tant que utilisateur, je souhaite pouvoir inviter d’autres utilisateur à contribuer aux projets afin que ces derniers aient les mêmes privilèges. |      1 |        7 |
 |     10 | En tant que utilisateur, je souhaite pouvoir définir un product owner parmi les contributeurs afin qu'il puisse modifier la prio des User Stories.   |      2 |        8 |
-|     11 | En tant que utilisateur, je souhaite pouvoir créer des tâches associées a une des US déjà créées.                                                    |      5 |       10 |
-|     12 | En tant que utilisateur, je souhaite pouvoir lister les tâches d'un sprint, afin de les modifier ou de les supprimer.                                |      3 |       11 |
+|     11 | En tant que utilisateur, je souhaite pouvoir créer des tâches associées a une des US déjà créées afin de les lister.                                 |      5 |       10 |
+|     12 | En tant que utilisateur, je souhaite pouvoir modifier ou supprimer les tâches déjà créées.                                                           |      3 |       11 |
 |     13 | En tant que utilisateur, je souhaite pouvoir modifier le kanban d'un sprint en fonction de leur état de développement.                               |      5 |       13 |
 |     14 | En tant que utilisateur, je souhaite pouvoir modifier la matrice de tracabilité afin de savoir à quel commit une US a été traitée.                   |      2 |       14 |
 |     15 | En tant que utilisateur, je souhaite pouvoir accéder au différents sprints du projet afin d'en voir les évolutions.                                  |      3 |       12 |
@@ -28,3 +28,113 @@
 |--------+------------------------------------------------------------------------------------------------------------------------------------------------------+--------+----------|
 |        | Coût total                                                                                                                                           |     50 |          |
 
+* Planning
+
+** Sprint 1
+
+Création d'un statut utilisateur, des projets et de leur gestion et création de User Stories.
+
+#US 1, 2, 3, 4, 5
+Effort : 16
+
+*** Tâches 
+
+**** All
+
+Création Base de donnée
+Création page d'accueil qui affiche tout les projets
+Ajout de fonction dans CtrlProject.php: listAll()
+
+**** User Story 1
+
+***** SQL 
+      Création table Utilisateur: Nom, mdp, mail
+***** View 
+      Création page incription.php qui invite à entrer login, mail et mdp
+      Création page connexion.php qui invite à entrer son mail et mdp
+***** Ctrl 
+      Ajout des requêtes SQL d'ajout d'utilisateur dans un fichier Php CtrlUser.php:
+- fonction addUser(nom, mail, mdp)
+- fonction isUser(mail, mdp)
+
+**** User Story 2
+
+***** SQL
+      Création table Projet: Nom du projet, membres, product owner, lien du dépôt, (TODO)
+***** View
+      Création page createProject.php qui invite à entrer (TODO)
+***** Ctrl
+      Ajout des requêtes SQL de création de projet dans un fichier Php CtrlProject.php:
+- TODO
+
+**** User Story 3
+
+***** SQL   
+      Création page de listing des projets que l'utilisateur contribue ainsi que ceux qu'il n'y contribue pas.
+***** Ctrl  
+      Ajout de requêtes à CtrlProject.php:
+- fonction listIn(login)
+- fonction listNotIn(login)
+
+**** User Story 4
+
+***** SQL
+      Création table User Stories: description, effort, priorité
+***** View
+      Création page d'ajout de user story AccessUserStory.php
+***** Ctrl
+      Ajout de requête à CtrlBacklog.php:
+- fonction addUserStory(description, effort, priorité)
+ 
+**** User Story 5
+
+***** View
+      Création page d'overview backlog qui liste toutes les user stories avec bouton modifier/supprimer/ajouter 
+***** Ctrl
+      Ajout de requête CtrlBacklog.php:
+- fonction deleteUserStory(id)
+- fonction modifyUserStory(description, effort, priorité)
+
+** Sprint 2
+
+Plannification des sprints et documentation associée, invitation aux autres dev et création du statut de product owner, 
+création et listing des tâches d'un sprint 
+
+#US 7, 9, 10, 6, 11
+Effort : 15
+
+*** Tâches
+
+**** User Story 7
+
+**** User Story 9
+
+**** User Story 10
+
+**** User Story 6
+
+**** User Story 11
+
+** Sprint 3
+
+Edition du planning du projet, modification et suppresion des tâches, Kanban et matrice de tracabilité, overview des sprints 
+et courbe de vélocité
+
+#US 8, 12, 13, 14, 15, 16, 17
+Effort : 19
+
+*** Tâches
+
+**** User Story 8 
+
+**** User Story 12 
+
+**** User Story 13
+
+**** User Story 14
+
+**** User Story 15
+
+**** User Story 16
+
+**** User Story 17
