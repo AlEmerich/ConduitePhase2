@@ -48,61 +48,68 @@ Ajout de fonction dans CtrlProject.php: listAll()
 
 **** User Story 1
 
-***** SQL 
+***** SQL Tâche 1
       Création table Utilisateur: Nom, mdp, mail
-***** View 
+***** View Tâche 2
       Création page incription.php qui invite à entrer login, mail et mdp
       Création page connexion.php qui invite à entrer son mail et mdp
-***** Ctrl 
+***** Ctrl Tâche 3
       Ajout des requêtes SQL d'ajout d'utilisateur dans un fichier Php CtrlUser.php:
 - fonction addUser(nom, mail, mdp)
 - fonction isUser(mail, mdp)
 
 **** User Story 2
 
-***** SQL
-      Création table Projet: Nom du projet, membres, product owner, lien du dépôt, (TODO)
-***** View
-      Création page createProject.php qui invite à entrer (TODO)
-***** Ctrl
+***** SQL Tâche 4
+      Création table Project: Nom du projet, membres, product owner, lien du dépôt
+      Création table Participe faisant le lien avec User
+***** View Tâche 5
+      Création page createProject.php qui invite à entrer Nom du projet, lien du dépôt
+***** Ctrl Tâche 6
       Ajout des requêtes SQL de création de projet dans un fichier Php CtrlProject.php:
-- TODO
+- fonction createProject(Nom,link,user)
 
 **** User Story 3
 
-***** SQL   
+***** View Tâche 7
       Création page de listing des projets que l'utilisateur contribue ainsi que ceux qu'il n'y contribue pas.
-***** Ctrl  
+***** Ctrl Tâche 8
       Ajout de requêtes à CtrlProject.php:
 - fonction listIn(login)
 - fonction listNotIn(login)
 
 **** User Story 4
 
-***** SQL
-      Création table User Stories: description, effort, priorité
-***** View
+***** SQL Tâche 9
+      Création table User Stories: project_id,description, effort, priorité
+***** View Tâche 10
       Création page d'ajout de user story AccessUserStory.php
-***** Ctrl
+***** Ctrl Tâche 11
       Ajout de requête à CtrlBacklog.php:
 - fonction addUserStory(description, effort, priorité)
  
 **** User Story 9
 
-***** View : ajouter un bouton add user avec menu déroulant dans la page d'accueil du projet.
+***** View Tâche 12
+      Créer page d'accueil d'un projet ViewProject.php
+      ajouter un bouton add user avec menu déroulant dans la page d'accueil du projet.
 
-***** Ctrl 
+***** Ctrl Tâche 13
 	Ajout d'une requète à CtrlProject.php:
 - fonction addUser(userName)
 
 **** User Story 10
 
-***** View
-	ajouter bouton avec menu déroulant add product owner sur la paged'accueuil du projet.
+***** View Tâche 14
+	ajouter bouton avec menu déroulant add product owner sur la page d'accueuil du projet.
 
-***** Ctrl
+***** Ctrl Tâche 15
 	Ajout de requète à CtrlProject.php:
 - fonction addProductOwner(userName)
+
+**** Tests
+     Utilisation de Sélenium pour test de vue
+     Tests unitaires pour les controleurs
 
 ** Sprint 2
 
