@@ -1,6 +1,6 @@
 * Introduction
   
-  Le backlog est rÃ©alisÃ© sur la solution logiciel Waffle.io, qui est un outil de dÃ©veloppement de projets fonctionnait en lien avec GitHub.
+  Le backlog est réalisé sur la solution logiciel Waffle.io, qui est un outil de développement de projets fonctionnait en lien avec GitHub.
 
   Lien: https://github.com/AlEmerich/ConduitePhase2
 
@@ -8,102 +8,112 @@
 
 | number | description                                                                                                                                          | effort | priority |
 |--------+------------------------------------------------------------------------------------------------------------------------------------------------------+--------+----------|
-|      1 | En tant que visiteur, je souhaite pouvoir m'inscrire ou me connecter en tant que utilisateur.                                                        |      3 |        1 |
-|      2 | En tant que utilisateur, je souhaite pouvoir crÃ©er mes propres projets.                                                                              |      5 |        2 |
-|      3 | En tant que utilisateur, je souhaite pouvoir lister mes projets, afin de les modifier ou de les supprimer.                                           |      3 |        3 |
-|      4 | En tant que utilisateur, je souhaite pouvoir crÃ©er des User Stories dans le backlog.                                                                 |      2 |        4 |
-|      5 | En tant que utilisateur, je souhaite pouvoir lister ces User Stories afin de les modifier ou de les supprimer.                                       |      3 |        5 |
-|      6 | En tant que product owner, je souhaite pouvoir modifier la prioritÃ© des User Stories.                                                                |      3 |        9 |
-|      7 | En tant que utilisateur, je souhaite pouvoir planifier des sprints avec des User Stories dÃ©jÃ  entrÃ©es.                                               |      5 |        6 |
-|      8 | En tant que utilisateur, je souhaite pouvoir Ã©diter le planning afin de prÃ©ciser quelles User Story sont dÃ©velopppÃ©s Ã  un moment donnÃ©.              |      2 |       15 |
-|      9 | En tant que utilisateur, je souhaite pouvoir inviter dâ€™autres utilisateur Ã  contribuer aux projets afin que ces derniers aient les mÃªmes privilÃ¨ges. |      1 |        7 |
-|     10 | En tant que utilisateur, je souhaite pouvoir dÃ©finir un product owner parmi les contributeurs afin qu'il puisse modifier la prio des User Stories.   |      2 |        8 |
-|     11 | En tant que utilisateur, je souhaite pouvoir crÃ©er des tÃ¢ches associÃ©es a une des US dÃ©jÃ  crÃ©Ã©es afin de les lister.                                 |      5 |       10 |
-|     12 | En tant que utilisateur, je souhaite pouvoir modifier ou supprimer les tÃ¢ches dÃ©jÃ  crÃ©Ã©es.                                                           |      3 |       11 |
-|     13 | En tant que utilisateur, je souhaite pouvoir modifier le kanban d'un sprint en fonction de leur Ã©tat de dÃ©veloppement.                               |      5 |       13 |
-|     14 | En tant que utilisateur, je souhaite pouvoir modifier la matrice de tracabilitÃ© afin de savoir Ã  quel commit une US a Ã©tÃ© traitÃ©e.                   |      2 |       14 |
-|     15 | En tant que utilisateur, je souhaite pouvoir accÃ©der au diffÃ©rents sprints du projet afin d'en voir les Ã©volutions.                                  |      3 |       12 |
-|     16 | En tant que utilisateur, je souhaite pouvoir accÃ©der facilement utiles aux dÃ©pÃ´ts du projet (dÃ©pÃ´t, README, doc).                                    |      1 |       17 |
-|     17 | En tant que utilisateur, je souhaite voir la courbe de vÃ©locitÃ© du projet.                                                                           |      1 |       16 |
+|      1 | En tant que visiteur, je souhaite pouvoir m'inscrire ou me connecter en tant que utilisateur.                                                        |      3 |      1  |
+|      2 | En tant que utilisateur, je souhaite pouvoir créer mes propres projets.                                                                              |      5 |       1 |
+|      3 | En tant que utilisateur, je souhaite pouvoir lister mes projets, afin de les modifier ou de les supprimer.                                           |      3 |       2 |
+|      4 | En tant que utilisateur, je souhaite pouvoir créer des User Stories dans le backlog.                                                                 |      2 |       2 |
+|      5 | En tant que utilisateur, je souhaite pouvoir lister ces User Stories afin de les modifier ou de les supprimer.                                       |      3 |       2 |
+|      6 | En tant que product owner, je souhaite pouvoir modifier la priorité des User Stories.                                                                |      3 |       2 |
+|      7 | En tant que utilisateur, je souhaite pouvoir planifier des sprints avec des User Stories déjà entrées.                                               |      5 |       3 |
+|      8 | En tant que utilisateur, je souhaite pouvoir éditer le planning afin de préciser quelles User Story sont développpés à un moment donné.              |      2 |       3 |
+|      9 | En tant que utilisateur, je souhaite pouvoir inviter d’autres utilisateur à contribuer aux projets afin que ces derniers aient les mêmes privilèges. |      1 |       1 |
+|     10 | En tant que utilisateur, je souhaite pouvoir définir un product owner parmi les contributeurs afin qu'il puisse modifier la prio des User Stories.   |      2 |       1 |
+|     11 | En tant que utilisateur, je souhaite pouvoir créer des tâches associées a une des US déjà créées afin de les lister.                                 |      5 |       3 |
+|     12 | En tant que utilisateur, je souhaite pouvoir modifier ou supprimer les tâches déjà créées.                                                           |      3 |       3 |
+|     13 | En tant que utilisateur, je souhaite pouvoir modifier le kanban d'un sprint en fonction de leur état de développement.                               |      5 |       3 |
+|     14 | En tant que utilisateur, je souhaite pouvoir modifier la matrice de tracabilité afin de savoir à quel commit une US a été traitée.                   |      2 |       3 |
+|     15 | En tant que utilisateur, je souhaite pouvoir accéder au différents sprints du projet afin d'en voir les évolutions.                                  |      3 |       3 |
+|     16 | En tant que utilisateur, je souhaite pouvoir accéder facilement utiles aux dépôts du projet (dépôt, README, doc).                                    |      1 |       2 |
+|     17 | En tant que utilisateur, je souhaite voir la courbe de vélocité du projet.                                                                           |      1 |       3 |
 |--------+------------------------------------------------------------------------------------------------------------------------------------------------------+--------+----------|
-|        | CoÃ»t total                                                                                                                                           |     50 |          |
+|        | Coût total                                                                                                                                           |     50 |          |
 
 * Planning
 
 ** Sprint 1
 
-CrÃ©ation d'un statut utilisateur, des projets et de leur gestion et crÃ©ation de User Stories.
+Création d'un statut utilisateur, des projets et de leur gestion et création de User Stories.
 
 #US 1, 2, 3, 4, 5
+rework: #US 1,2,3,4,9,10
 Effort : 16
 
-*** TÃ¢ches 
+*** Tâches 
 
 **** All
 
-CrÃ©ation Base de donnÃ©e
-CrÃ©ation page d'accueil qui affiche tout les projets
+Création Base de donnée
+Création page d'accueil qui affiche tout les projets
 Ajout de fonction dans CtrlProject.php: listAll()
 
 **** User Story 1
 
 ***** SQL 
-      CrÃ©ation table Utilisateur: Nom, mdp, mail
+      Création table Utilisateur: Nom, mdp, mail
 ***** View 
-      CrÃ©ation page incription.php qui invite Ã  entrer login, mail et mdp
-      CrÃ©ation page connexion.php qui invite Ã  entrer son mail et mdp
+      Création page incription.php qui invite à entrer login, mail et mdp
+      Création page connexion.php qui invite à entrer son mail et mdp
 ***** Ctrl 
-      Ajout des requÃªtes SQL d'ajout d'utilisateur dans un fichier Php CtrlUser.php:
+      Ajout des requêtes SQL d'ajout d'utilisateur dans un fichier Php CtrlUser.php:
 - fonction addUser(nom, mail, mdp)
 - fonction isUser(mail, mdp)
 
 **** User Story 2
 
 ***** SQL
-      CrÃ©ation table Projet: Nom du projet, membres, product owner, lien du dÃ©pÃ´t, (TODO)
+      Création table Projet: Nom du projet, membres, product owner, lien du dépôt, (TODO)
 ***** View
-      CrÃ©ation page createProject.php qui invite Ã  entrer (TODO)
+      Création page createProject.php qui invite à entrer (TODO)
 ***** Ctrl
-      Ajout des requÃªtes SQL de crÃ©ation de projet dans un fichier Php CtrlProject.php:
+      Ajout des requêtes SQL de création de projet dans un fichier Php CtrlProject.php:
 - TODO
 
 **** User Story 3
 
 ***** SQL   
-      CrÃ©ation page de listing des projets que l'utilisateur contribue ainsi que ceux qu'il n'y contribue pas.
+      Création page de listing des projets que l'utilisateur contribue ainsi que ceux qu'il n'y contribue pas.
 ***** Ctrl  
-      Ajout de requÃªtes Ã  CtrlProject.php:
+      Ajout de requêtes à CtrlProject.php:
 - fonction listIn(login)
 - fonction listNotIn(login)
 
 **** User Story 4
 
 ***** SQL
-      CrÃ©ation table User Stories: description, effort, prioritÃ©
+      Création table User Stories: description, effort, priorité
 ***** View
-      CrÃ©ation page d'ajout de user story AccessUserStory.php
+      Création page d'ajout de user story AccessUserStory.php
 ***** Ctrl
-      Ajout de requÃªte Ã  CtrlBacklog.php:
-- fonction addUserStory(description, effort, prioritÃ©)
+      Ajout de requête à CtrlBacklog.php:
+- fonction addUserStory(description, effort, priorité)
  
-**** User Story 5
+**** User Story 9
+
+***** View : ajouter un bouton add user avec menu déroulant dans la page d'accueil du projet.
+
+***** Ctrl 
+	Ajout d'une requète à CtrlProject.php:
+- fonction addUser(userName)
+
+**** User Story 10
 
 ***** View
-      CrÃ©ation page d'overview backlog qui liste toutes les user stories avec bouton modifier/supprimer/ajouter 
+	ajouter bouton avec menu déroulant add product owner sur la paged'accueuil du projet.
+
 ***** Ctrl
-      Ajout de requÃªte CtrlBacklog.php:
-- fonction deleteUserStory(id)
-- fonction modifyUserStory(description, effort, prioritÃ©)
+	Ajout de requète à CtrlProject.php:
+- fonction addProductOwner(userName)
 
 ** Sprint 2
 
-Plannification des sprints et documentation associÃ©e, invitation aux autres dev et crÃ©ation du statut de product owner, 
-crÃ©ation et listing des tÃ¢ches d'un sprint 
+Plannification des sprints et documentation associée, invitation aux autres dev et création du statut de product owner, 
+création et listing des tâches d'un sprint 
 
 #US 7, 9, 10, 6, 11
+rework: #US 5,6,7,8,14,16
 Effort : 15
 
-*** TÃ¢ches
+*** Tâches
 
 **** User Story 7
 
@@ -117,13 +127,14 @@ Effort : 15
 
 ** Sprint 3
 
-Edition du planning du projet, modification et suppresion des tÃ¢ches, Kanban et matrice de tracabilitÃ©, overview des sprints 
-et courbe de vÃ©locitÃ©
+Edition du planning du projet, modification et suppresion des tâches, Kanban et matrice de tracabilité, overview des sprints 
+et courbe de vélocité
 
 #US 8, 12, 13, 14, 15, 16, 17
+rework: #US 11,12,13,15,17
 Effort : 19
 
-*** TÃ¢ches
+*** Tâches
 
 **** User Story 8 
 
