@@ -6,7 +6,7 @@
 |       	 |								              |Tâche 4, dev : Matthias Duffour		    |
 |Tâche 5   	 |          							      |           							    |
 |Tâche 6   	 |        								      |           							    |
-|Tâche 7   	 |            								  |           							    |
+|Tâche 7   	 |Tâche 7, dev : Matthias Duffour			  |           							    |
 |Tâche 8   	 |            								  |           							    |
 |Tâche 9   	 |       								      |           							    |
 |Tâche 10  	 |           								  |           							    |
