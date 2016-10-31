@@ -8,7 +8,7 @@
 |Tâche 6   	 |        								      |           							    |
 |Tâche 7   	 |											  |           							    |
 |Tâche 8   	 |            								  |           							    |
-|Tâche 9   	 |Tâche 9, dev : Matthias Duffour		      |           							    |
+|		   	 |										      |Tâche 9, dev : Matthias Duffour		    |
 |Tâche 10  	 |           								  |           							    |
 |Tâche 11  	 |           								  |           							    |
 
