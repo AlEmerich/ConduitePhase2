@@ -3,7 +3,7 @@
 | 		 	 |										      |Tâche 1, Dev : Alan Guitard     	   	    |									
 |Tâche 2   	 |    								          |           							    |
 |Tâche 3   	 |    										  |											|
-|       	 |Tâche 4, dev : Matthias Duffour             |           							    |
+|       	 |								              |Tâche 4, dev : Matthias Duffour		    |
 |Tâche 5   	 |          							      |           							    |
 |Tâche 6   	 |        								      |           							    |
 |Tâche 7   	 |            								  |           							    |
@@ -11,4 +11,4 @@
 |Tâche 9   	 |       								      |           							    |
 |Tâche 10  	 |           								  |           							    |
 |Tâche 11  	 |           								  |           							    |
-|       	 |   								          |           							    |
+
