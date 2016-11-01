@@ -6,7 +6,7 @@
      <!--
         Importing Jquery API.
       -->
-<?php echo '<script src="'.$GLOBALS['SITE_ROOT'].'/js/jquery.min.js"></script>'; ?>
+<?php echo '<script src="http://localhost:8000/js/jquery.min.js"></script>'; ?>
      
 <!--
    Importing minified bootstrap css.
