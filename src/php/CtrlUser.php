@@ -1,15 +1,15 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT'].'/php/SqlControleur.php');
+
 class CtrlUser extends SqlControleur
 {
     var $conn;
 
     function __construct($servername, $username, $password, $dbname)
     {
-        if(executeQueryFile('../sql/createUser.sql'))
-            {
-                $this->conn = new sqli($servername, $username, $password, $dbname);
-            }
-        else
+        $this->conn = new mysqli($servername, $username, $password, $dbname);
+        
+        if(!$this->executeQueryFile($this->conn,'../sql/createUserTable.sql'))
             {
                 echo 'ERROR executing query when creating User table';
             }
@@ -32,7 +32,7 @@ class CtrlUser extends SqlControleur
         return $res;
     }
 
-    function createUser($login, $mdp, $mdp)
+    function createUser($login, $mdp, $mail)
     {
         $sql = "INSERT INTO User (login, mdp, mail) VALUES ('".$login."', '".$mdp."', '".$mail."');";
         $res = $this->conn->query($sql);
