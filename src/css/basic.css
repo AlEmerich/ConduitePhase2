@@ -2,3 +2,8 @@ body
 {
     background-color: lightgrey;
 }
+
+.error
+{
+    color: red;
+}

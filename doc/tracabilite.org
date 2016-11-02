@@ -1,4 +1,4 @@
-| Date   | Task concerned | message                                         |
-|--------+----------------+-------------------------------------------------|
-| Oct 31 |              1 | Tâche 1 terminée. Ajout dossier doc avec kanban |
-|        |                |                                                 |
+| Date   | Task concerned | message                               |
+|--------+----------------+---------------------------------------|
+| Oct 31 |              1 | Task 1 over. add kanban file.         |
+|        |                |                                       |
