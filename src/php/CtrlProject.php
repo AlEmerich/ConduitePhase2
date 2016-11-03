@@ -1,15 +1,14 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT'].'/php/SqlControleur.php');
+
 class CtrlProject extends SqlControleur
 {
     var $conn;
 
     function __construct($servername, $username, $password, $dbname)
     {
-        if(executeQueryFile('../sql/createProjectTable.sql'))
-            {
-                $this->conn = new sqli($servername, $username, $password, $dbname);
-            }
-        else
+        $this->conn = new mysqli($servername, $password, $dbname);
+            if(!$this->executeQueryFile($this->conn,'../sql/createProjectTable.sql'))
             {
                 echo 'ERROR executing query when creating Project table';
             }
