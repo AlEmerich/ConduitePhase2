@@ -1,4 +1,9 @@
-| Date   | Task concerned | message                               |
-|--------+----------------+---------------------------------------|
-| Oct 31 |              1 | Task 1 over. add kanban file.         |
-|        |                |                                       |
+| Date   | Task concerned | message                        |
+|--------+----------------+--------------------------------|
+| Oct 31 |              1 | Task 1 over. add kanban file.  |
+| Oct 29 |              3 | CtrlUser done.                 |
+| Nov 1  |              6 | CtrlProject done               |
+| Nov 1  |              4 | Table project created          |
+| Nov 2  |              2 | inscription and connexion over |
+| Nov 2  |              5 | createProject.php done         |
+|        |                |                                |
