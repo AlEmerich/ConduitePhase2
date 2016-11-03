@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?>
+
 <!doctype html>
 <html lang="en">
       
@@ -10,9 +15,27 @@
       <meta name="author" content="Groupe4">
       </head>
 
-      
       <body>
-	  <div>
+	  <?php include 'php/nav.php'; ?>
+	  <div class="container-fluid">	      
+	      <div class="row" >
+		  <div class="col-lg-2 col-md-2 col-xs-2"></div>
+		  <div class="well col-lg-8 col-md-8 col-xs-8" id="welcome" >
+		  
+		      <?php
+		      if(isset($_SESSION['login']))
+		      {
+			  echo 'Welcome back, '.$_SESSION['login'];
+		      }
+		      else
+		      {
+			  echo 'Welcome, Visitor';
+		      }
+		      
+		      ?>
+		  </div>
+		  <div class="col-lg-2 col-md-2 col-xs-2"></div>
+	      </div>
 	  </div>
       </body>
 </html>

@@ -7,3 +7,14 @@ body
 {
     color: red;
 }
+
+#welcome
+{
+    border-radius: 2em;
+    font-size: 5em;
+    text-align: center;
+
+    border-radius: 25px;
+    background: #73AD21;
+
+}

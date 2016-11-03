@@ -7,7 +7,7 @@ class CtrlProject extends SqlControleur
 
     function __construct($servername, $username, $password, $dbname)
     {
-        $this->conn = new mysqli($servername, $password, $dbname);
+        $this->conn = new mysqli($servername, $username,$password, $dbname);
             if(!$this->executeQueryFile($this->conn,'../sql/createProjectTable.sql'))
             {
                 echo 'ERROR executing query when creating Project table';
