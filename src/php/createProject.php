@@ -32,10 +32,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $create = false;
     }
     else{
-        $inputProductOwner = test_input($_POST["inputPorductOwner"]);
+        $inputProductOwner = test_input($_POST["inputProductOwner"]);
     }
     if ($create){
-        $controleur->createProject($inputProjectName, $inputLinkRepository, $inputPruductOwner);
+        $controleur->createProject($inputProjectName, $inputLinkRepository, $inputProductOwner);
         $openmodal = true;
     }
 }
@@ -52,7 +52,7 @@ function test_input($data){
 <html lang="en">
 
     <head>
-        <?php include 'provideapi.php'; ?>
+        <?php include '../provideapi.php'; ?>
 
 	      <title>Creation de projet</title>
         <link rel="stylesheet" type="text/css" href="../css/basic.css">
@@ -66,7 +66,7 @@ function test_input($data){
         <?php include 'nav.php'; ?>
 	      <form class="well col-lg-6 colo-lg-offset-4 col-md-7 col-md-offset-3 col-xs-8 col-xs-offset-2"
               method="post"
-              action="<?php echo htmlspecialchars($_SERVER["PHP_self"]);?>">
+              action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
             <legend class="title">Create Project</legend>
             <div class="form-group">
