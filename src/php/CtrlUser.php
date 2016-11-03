@@ -25,6 +25,21 @@ class CtrlUser extends SqlControleur
         return $this->conn->connect_error;
     }
 
+    
+    function getPassword($login)
+    {
+	$sql = "SELECT mdp FROM User WHERE login='".$login."'";
+	$res = $this->conn->query($sql);
+	return $res;
+    }
+
+    function getMail($mdp)
+    {
+	$sql = "SELECT mail FROM User WHERE login='".$login."'";
+	$res = $this->conn->query($sql);
+	return $res;
+    }
+    
     function loginExist($login)
     {
 	$sql = "SELECT * FROM User WHERE login='".$login."'";

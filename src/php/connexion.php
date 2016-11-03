@@ -6,57 +6,51 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlUser.php');
 $controleur = new CtrlUser('dbserver','alaguitard','11235813','alaguitard');
 $user;
 
-$mail = $login = $pwd = "";
-$mailErr = $loginErr = $pwdErr = "";
+$login = $pwd = "";
+$loginErr = $pwdErr = "";
 
-$create = true;
+$connect = true;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
-    if (empty($_POST["fmail"])) {
-        $mailErr = "mail is required";
-	$create = false;
-    }
-    else
-    {
-	$mail = test_input($_POST["fmail"]);
-    }
-
     if (empty($_POST["flogin"])) {
         $loginErr = "login is required";
-	$create = false;
+	$connect = false;
     }
     else
     {
 	$login = test_input($_POST["flogin"]);
+	$user = $controleur->loginExist($login)->fetch_assoc();
+	if(!$user)
+	{
+	    $loginErr = "login is unknown.";
+	    $connect = false;
+	}
+
+	if (empty($_POST["fpwd"])) {
+            $pwdErr = "password is required";
+	    $connect = false;
+	}
+	else
+	{
+	    $pwd = test_input($_POST["fpwd"]);
+	    $desc;
+	    if($desc = $controleur->getPassword($login)->fetch_assoc())
+	    {
+		if($desc['mdp'] != $pwd)
+		{
+		    $pwdErr = "Wrong password";
+		    $connect = false; 
+		}
+	    }
+	}
     }
 
-    if (empty($_POST["fpwd"])) {
-        $pwdErr = "password is required";
-	$create = false;
-    }
-    else
+    if($connect)
     {
-	$pwd = test_input($_POST["fpwd"]);
-    }
-    
-    if($controleur->mailExist($mail)->fetch_assoc())
-    {
-	$mailErr = "Email address is already used.";
-	$create = false;
-    }
-    if($controleur->loginExist($login)->fetch_assoc())
-    {
-	$loginErr = "login is already used.";
-	$create = false;
-    }
-    
-    if($create)
-    {
-	$controleur->createUser($login,$pwd,$mail);
-	$_SESSION['login'] = $login;
-	$_SESSION['mdp'] = $pwd;
-	$_SESSION['mail'] = $mail;
+	$_SESSION['login'] = $user['login'];
+	$_SESSION['mdp'] = $user['mdp'];
+	$_SESSION['mail'] = $user['mail'];
 	header( 'Location: http://localhost:8000/index.php');
     }
 }
@@ -77,7 +71,7 @@ function test_input($data) {
     <head>
 	<?php include '../provideapi.php'; ?>
 	
-	<title>Inscription</title>
+	<title>Connexion</title>
 	<link rel="stylesheet" type="text/css" href="../css/basic.css">
 	<meta name="description" content="Outil scrum">
 	<meta name="author" content="Groupe4">
@@ -91,14 +85,8 @@ function test_input($data) {
 	<form class="well col-lg-6 colo-lg-offset-4 col-md-7 col-md-offset-3
 		     col-xs-8 col-xs-offset-2" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 	    
-	    <legend class="title">Sign In</legend>
+	    <legend class="title">Please put your login and password:</legend>
 
-	    <div class="form-group">
-		<label for="email">Email address : </label>
-		<span class = "error">* <?php global $mailErr; echo $mailErr; ?> </span>
-		<input name="fmail" type="email" class="form-control" value="<?php global $mail; echo $mail; ?>"/>
-	    </div>
-	    
 	    <div class="form-group">
 		<label for="texte">Login : </label>
 		<span class = "error">* <?php global $loginErr; echo $loginErr; ?> </span>
