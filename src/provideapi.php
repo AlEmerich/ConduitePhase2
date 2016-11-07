@@ -7,7 +7,8 @@
         Importing Jquery API.
       -->
 <?php echo '<script src="http://localhost:8000/js/jquery.min.js"></script>'; ?>
-     
+
+<link rel="stylesheet" type="text/css" href="http://localhost:8000/font-awesome/css/font-awesome.min.css">
 <!--
    Importing minified bootstrap css.
 -->

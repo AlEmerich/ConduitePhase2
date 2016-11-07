@@ -79,30 +79,41 @@ function test_input($data) {
     
     
     <body>
-	
-	<?php include 'nav.php'; ?>
-	
-	<form class="well col-lg-6 colo-lg-offset-4 col-md-7 col-md-offset-3
-		     col-xs-8 col-xs-offset-2" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+	<div id="wrapper" >
+	    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" >
+		
+		<?php include 'topmenu.php'; ?>
+	    </nav>
 	    
-	    <legend class="title">Please put your login and password:</legend>
+	    <div id="page-wrapper">
+		<div class="container-fluid" >
+		    <div class="row" >
+			<form class="well col-lg-10 
+				     col-md-10 
+				     col-xs-10" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+			    
+			    <legend class="title">Please put your login and password:</legend>
 
-	    <div class="form-group">
-		<label for="texte">Login : </label>
-		<span class = "error">* <?php global $loginErr; echo $loginErr; ?> </span>
-		<input name="flogin" type="text" class="form-control" value="<?php global $login; echo $login; ?>"/>
-            </div>
-            
-            <div class="form-group">
-		<label for="pwd"> Password :</label>
-		<span class = "error">* <?php global $pwdErr; echo $pwdErr; ?> </span>
-		<input name="fpwd" type="password" class="form-control" value="<?php global $pwd; echo $pwd; ?>"/>
+			    <div class="form-group">
+				<label for="texte">Login : </label>
+				<span class = "error">* <?php global $loginErr; echo $loginErr; ?> </span>
+				<input name="flogin" type="text" class="form-control" value="<?php global $login; echo $login; ?>"/>
+			    </div>
+			    
+			    <div class="form-group">
+				<label for="pwd"> Password :</label>
+				<span class = "error">* <?php global $pwdErr; echo $pwdErr; ?> </span>
+				<input name="fpwd" type="password" class="form-control" value="<?php global $pwd; echo $pwd; ?>"/>
+			    </div>
+			    <div class="alert alert-block alert-danger" style="display:none">
+				<h4>Error !</h4>
+				Some fields are non-consistent.
+			    </div>
+			    <input name="action" type="submit"  />
+			</form>
+		    </div>
+		</div>
 	    </div>
-	    <div class="alert alert-block alert-danger" style="display:none">
-                <h4>Error !</h4>
-                Some fields are non-consistent.
-            </div>
-	    <input name="action" type="submit"  />
-	</form>
+	</div>
     </body>
 </html>
