@@ -32,12 +32,12 @@
 
 ** Sprint 1
 
-Création d'un statut utilisateur, des projets et de leur gestion et création de User Stories.
-
-#US 1, 2, 3, 4, 5
-rework: #US 1,2,3,4,9,10
-resultat final: #US 1,2
-Effort : 16
+   Création d'un statut utilisateur, des projets et de leur gestion et création de User Stories.
+   
+   #US 1, 2, 3, 4, 5
+   rework: #US 1,2,3,4,9,10
+   resultat final: #US 1,2
+   Effort : 16
 
 *** Tâches 
 
@@ -112,6 +112,12 @@ Ajout de fonction dans CtrlProject.php: listAll()
      Utilisation de Sélenium pour test de vue
      Tests unitaires pour les controleurs
 
+
+** Résultat du sprint 1
+   
+   #US 3, 4, 9, 10 non terminé.
+
+
 ** Sprint 2
 
 Plannification des sprints et documentation associée, invitation aux autres dev et création du statut de product owner, 
@@ -126,23 +132,90 @@ Effort : 15->21
 
 **** All
      tache 10: écriture des tests de complétion des user stories
-**** USER Story 3, 4, 9, 10
-     cf sprint 1(TODO : mettre à jour les numeros de taches)
+
+**** User Story 3 (Rattrapage)
+
+***** View Tâche 1
+      Implémentation de la page d'accueil log in et log out:
+      - Création page de listing des projets que l'utilisateur contribue ainsi que ceux qu'il n'y contribue pas.
+- item de liste cliquable afin d'être redirigé vers homeProject.php
+
+***** Ctrl Tâche 2
+      Ajout de requêtes à CtrlProject.php:
+- fonction listIn(login)
+- fonction listNotIn(login)
+
+**** User Story 4 (Rattrapage)
+
+***** SQL Tâche 3
+      Création table User Stories: project_id,description, effort, priorité
+***** View Tâche 4
+      Création page d'ajout de user story AccessUserStory.php
+***** Ctrl Tâche 5
+      Ajout de requête à CtrlBacklog.php:
+- fonction addUserStory(description, effort, priorité)
+
+**** User Story 9 (Rattrapage)
+
+***** View Tâche 6
+      Créer page d'accueil d'un projet ViewProject.php
+      ajouter un bouton add user avec menu déroulant dans la page d'accueil du projet.
+
+***** Ctrl Tâche 7
+	Ajout d'une requète à CtrlProject.php:
+- fonction addUser(userName)
+
+**** User Story 10 (Rattrapage)
+
+***** View Tâche 8
+	ajouter bouton avec menu déroulant add product owner sur la page d'accueuil du projet.
+
+***** Ctrl Tâche 9
+	Ajout de requète à CtrlProject.php:
+- fonction addProductOwner(userName)
+
 **** User Story 7
-     tàche 1: créer la page backlog.php(mettre à jour le wrapper)
-     tache 2: créer la table Sprint (ref: madelDatabase.png)
-     tache 3: controller
-     tache 4: créer des sprints
+
+***** SQL tâche 11
+     Création de la table sprint (cf. ModèleDatabase.png, racine du dépôt)
+
+***** View tâche 10
+     Implémenter l'interface sprint comme sur la maquette, en tableau.
+     - Ajout, suppression, modification des sprints.
+
+***** Ctrl tâche 11
+     Controleur de la table sprint:
+     - createSprint(...)
+     - updateSprint(...)
+
 **** User Story 9
-     tache 4: ajouter bouton inviter dev à l'overview du projet
-     tache 5: creer table participe recensant tous les participants au projet
+
+***** SQL tâche 13 
+      creer table participe recensant tous les participants au projet
+
+***** View tâche 12
+      Implémentation homeProject.php
+      ajouter bouton inviter dev à l'overview du projet
+
 **** User Story 10
-     tache 6: ajouter bouton "choix product owner" à l'overview du projet
+
+***** View tâche 13
+      ajouter bouton "choix product owner" à l'overview du projet
+
 **** User Story 6
-     tache 7: ajouter bouton "changer prio" visible uniquement par le product owner
+
+***** View tâche 14
+      ajouter bouton "changer prio" visible uniquement par le product owner
+
 **** User Story 11
-     tache 8: dans la page backlog créer un bouton "tache/planning" pour chaque sprint
-     tache 9: créer une page sprint permettant d'ajouter des taches (numéro, description, dépendances)
+
+***** View tâche 15
+      Dans la page backlog créer un bouton "tache/planning" pour chaque sprint.
+
+***** View tâche 16
+      créer une page sprint permettant d'ajouter des taches (numéro, description, dépendances)
+      (cf. Maquette)
+
 ** Sprint 3
 
 Edition du planning du projet, modification et suppresion des tâches, Kanban et matrice de tracabilité, overview des sprints 
