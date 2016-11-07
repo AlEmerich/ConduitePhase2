@@ -1,15 +1,21 @@
 <?php
 session_start();
+
+if(!isset($_SESSION['login']))
+{
+    header("Location: http://www.google.com");
+}
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlProject.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlUser.php');
 
 $controleur = new CtrlProject('dbserver','alaguitard','11235813','alaguitard');
+$ctrlUser = new CtrlUser('dbserver','alaguitard','11235813','alaguitard');
 $user;
 
 $inputProjectName = $inputLinkRepository = $inputProductOwner = "";
 $projectNameErr = $linkRepositoryErr = $productOwnerErr = "";
 
 $create = true;
-$openmodal = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     if (empty($_POST["inputProjectName"])){
@@ -26,17 +32,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     else{
         $inputLinkRepository = test_input($_POST["inputLinkRepository"]);
-    }
+    }/*
     if (empty($_POST["inputProductOwner"])){
         $productOwnerErr = "Product Owner is required";
         $create = false;
     }
     else{
         $inputProductOwner = test_input($_POST["inputProductOwner"]);
-    }
-    if ($create){
-        $controleur->createProject($inputProjectName, $inputLinkRepository, $inputProductOwner);
-        $openmodal = true;
+    }*/
+    if ($create){/*
+        if($ctrlUser->loginExist($inputProductOwner)->fetch_assoc()){
+            $controleur->createProject($inputProjectName, $inputLinkRepository, $inputProductOwner);
+        }
+        else{
+            $productOwnerErr = "Product Owner does not exist";
+                    }*/
+        $controleur->createProject($inputProjectName, $inputLinkRepository, $_SESSION['login']);
     }
 }
 
@@ -88,11 +99,12 @@ function test_input($data){
 			<input name="inputLinkRepository" type="text" class="form-control" value="<?php global $inputLinkRepository; echo $inputLinkRepository; ?>" />
 		    </div>
 
+        <!-- 
 		    <div class="form-group">
 			<label for="inputProductOwner" >Nom du product owner</label>
 			<span class="error">* <?php global $productOwnerErr; echo $productOwnerErr; ?></span>
 			<input name="inputProductOwner" type="text" class="form-control" value="<?php global $inputProductOwner; echo $inputProductOwner; ?>" />
-		    </div>
+		    </div>-->
 		    <input name="action" type="submit"/>
 		</form>
 	    </div>
