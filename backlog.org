@@ -36,6 +36,7 @@ Création d'un statut utilisateur, des projets et de leur gestion et création de 
 
 #US 1, 2, 3, 4, 5
 rework: #US 1,2,3,4,9,10
+resultat final: #US 1,2
 Effort : 16
 
 *** Tâches 
@@ -118,28 +119,38 @@ création et listing des tâches d'un sprint
 
 #US 7, 9, 10, 6, 11
 rework: #US 5,6,7,8,14,16
-Effort : 15
+après sprint 1: #US 3, 4, 9, 10, 5, 6, 7, 8
+Effort : 15->21
 
 *** Tâches
 
+**** All
+     tache 10: écriture des tests de complétion des user stories
+**** USER Story 3, 4, 9, 10
+     cf sprint 1(TODO : mettre à jour les numeros de taches)
 **** User Story 7
-
+     tàche 1: créer la page backlog.php(mettre à jour le wrapper)
+     tache 2: créer la table Sprint (ref: madelDatabase.png)
+     tache 3: controller
+     tache 4: créer des sprints
 **** User Story 9
-
+     tache 4: ajouter bouton inviter dev à l'overview du projet
+     tache 5: creer table participe recensant tous les participants au projet
 **** User Story 10
-
+     tache 6: ajouter bouton "choix product owner" à l'overview du projet
 **** User Story 6
-
+     tache 7: ajouter bouton "changer prio" visible uniquement par le product owner
 **** User Story 11
-
+     tache 8: dans la page backlog créer un bouton "tache/planning" pour chaque sprint
+     tache 9: créer une page sprint permettant d'ajouter des taches (numéro, description, dépendances)
 ** Sprint 3
 
 Edition du planning du projet, modification et suppresion des tâches, Kanban et matrice de tracabilité, overview des sprints 
 et courbe de vélocité
 
 #US 8, 12, 13, 14, 15, 16, 17
-rework: #US 11,12,13,15,17
-Effort : 19
+rework: #US 11,12,13,15,17,16,14
+Effort : 22
 
 *** Tâches
 
