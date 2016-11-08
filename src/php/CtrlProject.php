@@ -8,10 +8,7 @@ class CtrlProject extends SqlControleur
     function __construct($servername, $username, $password, $dbname)
     {
         $this->conn = new mysqli($servername, $username,$password, $dbname);
-            if(!$this->executeQueryFile($this->conn,'../sql/createProjectTable.sql'))
-            {
-                echo 'ERROR executing query when creating Project table';
-            }
+        echo $this->executeQueryFile($this->conn,$_SERVER['DOCUMENT_ROOT'].'/sql/createProjectTable.sql');
     }
 
     function __destruct()
@@ -33,7 +30,7 @@ class CtrlProject extends SqlControleur
 
     function createProject($name, $link, $owner)
     {
-        $sql = "INSERT INTO Project (project_name, link_repository, product_owner) VALUES ('".$name."', '".$link."', '".$owner."');";
+        $sql = "INSERT INTO Project (project_name, link_repository, product_owner) VALUES ('".$name."', '".$link."', ".$owner.");";
         $res = $this->conn->query($sql);
         return $res;
     }
@@ -45,20 +42,18 @@ class CtrlProject extends SqlControleur
         return $res;
     }
 
-    function listIn($user)
-    {
-	
-    }
-
-    function listNotIn($user)
-    {
-    }
-
     function listAll($howmany)
     {
 	$sql = "SELECT * FROM Project LIMIT 0 ,".$howmany;
 	$res = $this->conn->query($sql);
 	return $res;
+    }
+
+    function getId($name)
+    {
+	$sql = "SELECT project_id FROM Project WHERE project_name='".$name."'";
+        $res = $this->conn->query($sql);
+        return $res;
     }
 
     function deleteProject($id)

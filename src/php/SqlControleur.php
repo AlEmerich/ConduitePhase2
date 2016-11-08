@@ -4,17 +4,19 @@ class SqlControleur
 
     function executeQueryFile($conn,$filesql) {
         $query = file_get_contents($filesql);
-        $array = explode(";\n", $query);
-        $b = true;
-        for ($i=0; $i < count($array) ; $i++) {
-            $str = $array[$i];
-            if ($str != '') {
-                $str .= ';';
-                $b &= $conn->query($str);  
-            }  
-        }
+	$message = "";
         
-        return $b;
+	/* Vérification de la connexion */
+	if ($conn->connect_errno) {
+	    $message = 'Échec de la connexion : '.$conn->connect_error.'\n';
+	    exit();
+	}
+	/* "Create table" */
+	if ($conn->query($query) === TRUE) {
+	    $message = 'Table créée avec succès.\n';
+	}
+	
+        return $message;
     }
 }
 ?>

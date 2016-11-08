@@ -1,5 +1,9 @@
-<?php
+<?php 
 session_start();
+
+require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlParticipates.php');
+
+$controleur = new CtrlParticipates('dbserver','alaguitard','11235813','alaguitard');
 
 ?>
 
@@ -22,28 +26,17 @@ session_start();
 	    </nav>
 	    
 	    <div id="page-wrapper" >
-		<div class="container-fluid">	      
-		    <div class="row" >
-			
-			<div class="well col-lg-10
-				    col-md-10
-				    col-xs-10" id="welcome" >
-			    
-			    <?php
-			    if(isset($_SESSION['login']))
-			    {
-				echo 'Welcome back, '.$_SESSION['login'];
-			    }
-			    else
-			    {
-				echo 'Welcome, Visitor';
-			    }
-			    
-			    ?>
-			</div>
-			
-		    </div>
-		</div>
+		<?php
+		if(isset($_SESSION['login']))
+		{
+		    include 'php/acceuilLogIn.php';
+		}
+		else
+		{
+		    include 'php/acceuilLogOut.php';
+		}
+		
+		?>
 	    </div>
 	</div>
     </body>

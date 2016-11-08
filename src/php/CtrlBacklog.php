@@ -9,10 +9,7 @@ class CtrlBacklog extends SqlControleur{
     {
         $this->connBacklog = new mysqli($servername, $username, $password, $dbname);
         
-        if(!$this->executeQueryFile($this->connBacklog,'../sql/createUserStory.sql'))
-            {
-                echo 'ERROR executing query when creating UserStory table';
-            }
+        echo $this->executeQueryFile($this->connBacklog,$_SERVER['DOCUMENT_ROOT'].'/sql/createUserStory.sql');
     }
 
     function __destruct()

@@ -9,10 +9,7 @@ class CtrlUser extends SqlControleur
     {
         $this->conn = new mysqli($servername, $username, $password, $dbname);
         
-        if(!$this->executeQueryFile($this->conn,'../sql/createUserTable.sql'))
-            {
-                echo 'ERROR executing query when creating User table';
-            }
+        echo $this->executeQueryFile($this->conn,$_SERVER['DOCUMENT_ROOT'].'/sql/createUserTable.sql');
     }
 
     function __destruct()

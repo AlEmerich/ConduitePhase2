@@ -3,7 +3,7 @@ session_start();
 
 if(!isset($_SESSION['login']))
 {
-    header("Location: http://www.google.com");
+    header("Location: http://localhost:8000/index.php");
 }
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlBacklog.php');
 
@@ -133,6 +133,6 @@ function test_input($data){
 		    
 		</form>
 	    </div>
-	</div>   
+	    
     </body>
 </html>

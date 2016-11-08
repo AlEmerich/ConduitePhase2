@@ -3,14 +3,16 @@ session_start();
 
 if(!isset($_SESSION['login']))
 {
-    header("Location: http://www.google.com");
+    header("Location: http://localhost:8000/index.php");
 }
+require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlParticipates.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlProject.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlUser.php');
 
+
 $controleur = new CtrlProject('dbserver','alaguitard','11235813','alaguitard');
 $ctrlUser = new CtrlUser('dbserver','alaguitard','11235813','alaguitard');
-$user;
+$ctrlParticipates = new CtrlParticipates('dbserver', 'alaguitard', '11235813', 'alaguitard');
 
 $inputProjectName = $inputLinkRepository = $inputProductOwner = "";
 $projectNameErr = $linkRepositoryErr = $productOwnerErr = "";
@@ -32,22 +34,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     else{
         $inputLinkRepository = test_input($_POST["inputLinkRepository"]);
-    }/*
-    if (empty($_POST["inputProductOwner"])){
-        $productOwnerErr = "Product Owner is required";
-        $create = false;
     }
-    else{
-        $inputProductOwner = test_input($_POST["inputProductOwner"]);
-    }*/
-    if ($create){/*
-        if($ctrlUser->loginExist($inputProductOwner)->fetch_assoc()){
-            $controleur->createProject($inputProjectName, $inputLinkRepository, $inputProductOwner);
-        }
-        else{
-            $productOwnerErr = "Product Owner does not exist";
-                    }*/
-        $controleur->createProject($inputProjectName, $inputLinkRepository, $_SESSION['login']);
+    if ($create){
+	$resUser = $ctrlUser->getId($_SESSION['login'])->fetch_assoc();
+        $controleur->createProject($inputProjectName, $inputLinkRepository, $resUser['id']);
+	$resProject = $controleur->getId($inputProjectName)->fetch_assoc();
+	$ctrlParticipates->addToProject($resUser['id'],$resProject['project_id']);
+	header('Location: http://localhost:8000/index.php');
     }
 }
 
@@ -90,21 +83,17 @@ function test_input($data){
 		    <div class="form-group">
 			<label for="inputProjectName">Nom du projet</label>
 			<span class ="error">* <?php global $projectNameErr; echo $projectNameErr; ?></span>
-			<input name="inputProjectName" type="text" class="form-control" value="<?php global $inputProjectName; echo $inputProjectName; ?>" />
+			<input name="inputProjectName" type="text" class="form-control"
+			       value="<?php global $inputProjectName; echo $inputProjectName; ?>" />
 		    </div>
 
 		    <div class="form-group">
 			<label for="inputLinkRepository" >Lien vers le dépôt</label>
 			<span class = "error">* <?php global $linkRepositoryErr; echo $projectNameErr; ?></span>
-			<input name="inputLinkRepository" type="text" class="form-control" value="<?php global $inputLinkRepository; echo $inputLinkRepository; ?>" />
+			<input name="inputLinkRepository" type="url" class="form-control"
+			       value="<?php global $inputLinkRepository; echo $inputLinkRepository; ?>" />
 		    </div>
 
-        <!-- 
-		    <div class="form-group">
-			<label for="inputProductOwner" >Nom du product owner</label>
-			<span class="error">* <?php global $productOwnerErr; echo $productOwnerErr; ?></span>
-			<input name="inputProductOwner" type="text" class="form-control" value="<?php global $inputProductOwner; echo $inputProductOwner; ?>" />
-		    </div>-->
 		    <input name="action" type="submit"/>
 		</form>
 	    </div>

@@ -27,7 +27,7 @@ if(isset($_SESSION['login']))
 		if(isset($_SESSION['login']))
 		{
 		    echo '<li>
-			<a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+			<a href="http://localhost:8000/index.php"><i class="fa fa-fw fa-user"></i> Profile</a>
                     </li>
                     <li><a href="http://localhost:8000/php/createProject.php">
                        <i class="fa fa-fw fa-plus-square" aria-hidden="true"></i> New project</a></li>
@@ -35,7 +35,7 @@ if(isset($_SESSION['login']))
                     <li>
 			
 			<a href="http://localhost:8000/php/deco.php"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
-            <a href="http://localhost:8000/php/deleteUser.php"><i class="fa fa-fw fa-power-off"></i> Delete User</a>
+            <a href="http://localhost:8000/php/deleteUser.php"><i class="fa fa-fw fa-sign-out"></i> Delete User</a>
                     </li>';
 		}
 		else
