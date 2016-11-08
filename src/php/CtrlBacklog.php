@@ -26,15 +26,15 @@ class CtrlBacklog extends SqlControleur{
     }
 
     function updateUserStory($us_id, $project_id, $description, $effort, $priority){
-        $sql =  "UPDATE UserStory SET project_id ='".$project_id."', description ='".$description."', effort ='".$effort."', priority ='".$priority"' WHERE us_id =".$us_id;
+        $sql =  "UPDATE UserStory SET project_id ='".$project_id."', description ='".$description."', effort ='".$effort."', priority ='".$priority."' WHERE us_id =".$us_id;
         $res = $this->connBacklog->query($sql);
         return res;
     }
 
     function createUserStory($project_id, $description, $effort, $priority){
-        $sql =  "INSERT INTO UserStory (project_id, description, effort, priority) VALUES ('".$project_id."','".$description."','".$effort."','".$priority"');";
+        $sql =  "INSERT INTO UserStory (project_id, description, effort, priority) VALUES ('".$project_id."','".$description."','".$effort."','".$priority."');";
         $res = $this->connBacklog->query($sql);
-        return res;
+        return $res;
     }
 
     function getUserStory($us_id){
@@ -48,5 +48,6 @@ class CtrlBacklog extends SqlControleur{
         $res = $this->connBacklog->query($sql);
         return $res;
     }
+}
 
 ?>
