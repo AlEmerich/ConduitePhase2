@@ -81,7 +81,16 @@
 	<td>name=action</td>
 	<td></td>
 </tr>
-
+<tr>
+	<td>click</td>
+	<td>link=userTest</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Log Out</td>
+	<td></td>
+</tr>
 </tbody></table>
 </body>
 </html>
