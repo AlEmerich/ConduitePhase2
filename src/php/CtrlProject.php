@@ -45,6 +45,22 @@ class CtrlProject extends SqlControleur
         return $res;
     }
 
+    function listIn($user)
+    {
+	
+    }
+
+    function listNotIn($user)
+    {
+    }
+
+    function listAll($howmany)
+    {
+	$sql = "SELECT * FROM Project LIMIT 0 ,".$howmany;
+	$res = $this->conn->query($sql);
+	return $res;
+    }
+
     function deleteProject($id)
     {
         $sql = "DELETE FROM Project WHERE id=".$id;

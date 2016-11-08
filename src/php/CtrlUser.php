@@ -75,9 +75,16 @@ class CtrlUser extends SqlControleur
         return $res;
     }
 
+    function getID($login)
+    {
+        $sql = "SELECT id FROM User WHERE login='".$login."'";
+        $res = $this->conn->query($sql);
+        return $res;
+    }
+
     function deleteUser($id)
     {
-        $sql = "DELETE FROM ".$table." WHERE id=".$id;
+        $sql = "DELETE FROM User WHERE id=".$id;
         $res = $this->conn->query($sql);
         return $res;
     }

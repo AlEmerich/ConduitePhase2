@@ -21,7 +21,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 CREATE TABLE IF NOT EXISTS `UserStory` (
   `us_id` int(10) unsigned NOT NULL auto_increment,
-  `project_id` int(10) unsigned NOT NULL,
+  `project_id` int(10) REFERENCES Project(project_id),
   `description` text NOT NULL,
   `effort` int(10) NOT NULL,
   `piority` int(10) NOT NULL,
