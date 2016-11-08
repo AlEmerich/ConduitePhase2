@@ -24,8 +24,8 @@ CREATE TABLE IF NOT EXISTS `User` (
   `login` varchar(50) NOT NULL,
   `mdp` varchar(100) NOT NULL,
   `mail` varchar(50) NOT NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  PRIMARY KEY(id)
+) ENGINE=INNODB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Contenu de la table `User`

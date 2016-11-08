@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Mar 08 Novembre 2016 à 11:12
+-- Généré le : Mar 08 Novembre 2016 à 13:53
 -- Version du serveur: 5.0.75
 -- Version de PHP: 5.2.6-3ubuntu4.6
 
@@ -20,10 +20,10 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 
 CREATE TABLE IF NOT EXISTS `Participates` (
-  `user_id` int(11) NOT NULL,
-  `project_id` int(11) NOT NULL,
-  KEY `user_id` (`user_id`),
-  KEY `project_id` (`project_id`)
+  `project_id` int(10) unsigned NOT NULL,
+  `dev_id` int(10) unsigned NOT NULL,
+  KEY `project_id` (`project_id`),
+  KEY `dev_id` (`dev_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -39,5 +39,5 @@ CREATE TABLE IF NOT EXISTS `Participates` (
 -- Contraintes pour la table `Participates`
 --
 ALTER TABLE `Participates`
-  ADD CONSTRAINT `Participates_ibfk_4` FOREIGN KEY (`project_id`) REFERENCES `Participates` (`project_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `Participates_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `Participates` (`user_id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `Participates_ibfk_4` FOREIGN KEY (`dev_id`) REFERENCES `User` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `Participates_ibfk_3` FOREIGN KEY (`project_id`) REFERENCES `Project` (`project_id`) ON DELETE CASCADE ON UPDATE CASCADE;
