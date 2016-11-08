@@ -108,6 +108,25 @@ function test_input($data){
 		      method="post"
 		      action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
+        <table class= "table-bordered">
+            <caption>List of UserStories related to this project</caption>
+            <thead>
+                <tr>
+                    <th>US number</th>
+                    <th>Description</th>
+                    <th>Effort</th>
+                    <th>Priority</th>
+                    <th>Related Sprint</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- quand on aura la table finalisée, il faudra itérer sur la liste des userstories et mettre chaque donnée à sa place -->
+                <?
+
+                ?>
+            </tbody>
+        </table>
+
 		    <legend class="title">Create UserStory</legend>
 		    <div class="form-group">
 			<label for="inputDescription">Description de la UserStory</label>
