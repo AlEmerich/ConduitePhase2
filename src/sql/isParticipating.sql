@@ -20,9 +20,11 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 
 CREATE TABLE IF NOT EXISTS `Participates` (
-  `project_id` int(10) REFERENCES Project(project_id),
-  `dev_id`	int(10) REFERENCES User(id)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `project_id` int(10) unsigned NOT NULL,
+  `dev_id` int(10) unsigned NOT NULL,
+  FOREIGN KEY (project_id) REFERENCES Project(project_id),
+  FOREIGN KEY (dev_id) REFERENCES User(id)
+) ENGINE=INNODB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Contenu de la table `Participates`

@@ -23,11 +23,11 @@ CREATE TABLE IF NOT EXISTS `Project` (
   `project_id` int(10) unsigned NOT NULL auto_increment,
   `project_name` varchar(100) NOT NULL,
   `link_repository` TEXT NOT NULL,
-  `product_owner` varchar(50) NOT NULL,
-  PRIMARY KEY  (`project_id`)
-  FOREIGN KEY (product_owner)
-          REFERENCES (User)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `product_owner` int(10) unsigned NOT NULL,
+  PRIMARY KEY(project_id),
+  FOREIGN KEY(product_owner)
+          REFERENCES User(id)
+) ENGINE=INNODB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Contenu de la table `Project`

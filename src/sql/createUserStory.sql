@@ -24,9 +24,9 @@ CREATE TABLE IF NOT EXISTS `UserStory` (
   `project_id` int(10) REFERENCES Project(project_id),
   `description` text NOT NULL,
   `effort` int(10) NOT NULL,
-  `piority` int(10) NOT NULL,
+  `priority` int(10) NOT NULL,
   PRIMARY KEY  (`us_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=INNODB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Contenu de la table `UserStory`
