@@ -6,10 +6,11 @@
 | Tâche 2  |                            |                                 |
 | Tâche 3  |                            |                                 |
 | Tâche 4  |                            |                                 |
-| Tâche 5  |                            |                                 |
+|          | Tache 5, Dev : Elmer Bayol |                                 |
 | Tâche 6  |                            |                                 |
 | Tâche 7  |                            |                                 |
 | Tâche 8  |                            |                                 |
 | Tâche 9  |                            |                                 |
 | Tâche 10 |                            |                                 |
+
 
