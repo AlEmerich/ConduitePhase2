@@ -23,6 +23,29 @@ $controleur = new CtrlParticipates('dbserver','alaguitard','11235813','alaguitar
 	<div id="wrapper" >
 	    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" >
 		<?php include 'php/topmenu.php'; ?>
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+		    <ul class="nav nabar-nav side-nav" >
+			<div class="container-fluid">
+			    <div class="row">
+				<div class="fa fa-fw col-lg-12">
+				    <img class="img-circle " src="http://webneel.com/wallpaper/sites/default/files/images/01-2014/15-flower-wallpaper.preview.jpg" alt="" width="150" height="150">
+				</div>
+			    </div>
+
+			    <div class="row">
+				<div class="fa fa-fw col-lg-12 light-grey">
+				    <h1><?php echo $_SESSION['login']; ?></h1>
+				</div>
+			    </div>
+
+			    <div class="row" >
+				<div class="col-lg-12 light-grey" >
+				    <p><b>Email address: </b></br><?php echo $_SESSION['mail']; ?></p>
+				</div>
+			    </div>
+			</div>
+		    </ul>
+		</div>
 	    </nav>
 	    
 	    <div id="page-wrapper" >

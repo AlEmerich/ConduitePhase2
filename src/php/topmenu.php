@@ -35,7 +35,7 @@ if(isset($_SESSION['login']))
                     <li>
 			
 			<a href="http://localhost:8000/php/deco.php"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
-            <a href="http://localhost:8000/php/deleteUser.php"><i class="fa fa-fw fa-sign-out"></i> Delete User</a>
+            <a href="http://localhost:8000/php/deleteUser.php"><i class="fa fa-fw fa-sign-out"></i> Sign out</a>
                     </li>';
 		}
 		else

@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 	$resUser = $ctrlUser->getId($_SESSION['login'])->fetch_assoc();
         $controleur->createProject($inputProjectName, $inputLinkRepository, $resUser['id']);
 	$resProject = $controleur->getId($inputProjectName)->fetch_assoc();
-	$ctrlParticipates->addToProject($resUser['id'],$resProject['project_id']);
+	$ctrlParticipates->addToProject($resProject['project_id'],$resUser['id']);
 	header('Location: http://localhost:8000/index.php');
     }
 }

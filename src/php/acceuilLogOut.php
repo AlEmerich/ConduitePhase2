@@ -6,16 +6,16 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlUser.php');
 <div class="container-fluid">	      
     <div class="row" >
 	
-	<div class="well col-lg-10
-		    col-md-10
-		    col-xs-10" id="welcome" >
+	<div class="well col-lg-12
+		    col-md-12
+		    col-xs-12" id="welcome" >
 	    Welcome, Visitor
 	    
 	</div>
 
-	<div class="panel-group col-lg-10
-		    col-md-10
-		    col-xs-10">
+	<div class="panel-group col-lg-12
+		    col-md-12
+		    col-xs-12">
 	    <?php
 	    $ctrlProject = new CtrlProject('dbserver', 'alaguitard', '11235813', 'alaguitard');
 	    $ctrlUser = new CtrlUser('dbserver', 'alaguitard', '11235813', 'alaguitard');

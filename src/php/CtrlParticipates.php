@@ -17,23 +17,25 @@ class CtrlParticipates extends SqlControleur
 	$this->conn->close();
     }
 
-    function addToProject($user_id,$project_id)
+    function addToProject($project_id,$user_id)
     {
-	$sql = "INSERT INTO Participates (user_id,project_id) VALUES ('".$user_id."', '".$project_id."')";
+	$sql = "INSERT INTO Participates (project_id,dev_id) VALUES ('".$project_id."', '".$user_id."')";
 	$res = $this->conn->query($sql);
 	return $res;
     }
 
     function listIn($user_id)
     {
-	$sql = "SELECT project_id FROM Participates WHERE login='".$user_id."'
-               NATURAL JOIN Project;";
+	$sql = "SELECT * FROM ((SELECT * FROM Participates NATURAL JOIN Project) AS t ) WHERE dev_id=".$user_id;
 	$res = $this->conn->query($sql);
 	return $res;
     }
 
     function listNotIn($user_id)
     {
+	$sql = "SELECT * FROM ((SELECT * FROM Participates NATURAL JOIN Project) AS t ) WHERE dev_id <>".$user_id;
+	$res = $this->conn->query($sql);
+	return $res;
     }
 
     function listAll()
