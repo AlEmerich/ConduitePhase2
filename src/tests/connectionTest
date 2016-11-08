@@ -23,28 +23,13 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Sign In</td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>name=fmail</td>
-	<td>adresseTest@hotmail.fr</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>name=action</td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>name=fmail</td>
+	<td>link=Log In</td>
 	<td></td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>name=flogin</td>
-	<td>loginTest</td>
+	<td>userTest</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -68,13 +53,13 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>name=fmail</td>
-	<td>adresseTest@hotmail.fr</td>
+	<td>name=flogin</td>
+	<td>userTest</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>name=flogin</td>
-	<td>userTest</td>
+	<td>name=fpwd</td>
+	<td>passwordTest</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
