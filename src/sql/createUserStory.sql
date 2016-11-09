@@ -21,11 +21,12 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 CREATE TABLE IF NOT EXISTS `UserStory` (
   `us_id` int(10) unsigned NOT NULL auto_increment,
-  `project_id` int(10) REFERENCES Project(project_id),
+  `project_id` int(10) unsigned NOT NULL,
   `description` text NOT NULL,
   `effort` int(10) NOT NULL,
   `priority` int(10) NOT NULL,
-  PRIMARY KEY  (`us_id`)
+  PRIMARY KEY  (`us_id`),
+	FOREIGN KEY (project_id) REFERENCES Project(project_id)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
