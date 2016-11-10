@@ -252,3 +252,23 @@ img
 {
     color: lightgrey;
 }
+
+.blackicon
+{
+    color: black;
+}
+
+.panel-primary > .panel-heading
+{
+    padding-top: 0;
+    margin: 0;
+}
+
+#buttonToToggleIn,
+#buttonToToggleNotIn,
+#buttonToToggleAll
+    {
+	position: relative;
+	transform: translateY(50%);
+    }
+					     

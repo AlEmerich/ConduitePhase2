@@ -20,14 +20,24 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlUser.php');
 	    $ctrlProject = new CtrlProject('dbserver', 'alaguitard', '11235813', 'alaguitard');
 	    $ctrlUser = new CtrlUser('dbserver', 'alaguitard', '11235813', 'alaguitard');
 	    echo '<div class="panel panel-primary">';
-	    echo '<div class="panel-heading"> <h3>Existing project</h3> </div>';
+	    echo '<div class="panel-heading">
+                      <div class="row">
+                          <div class="col-lg-4 col-md-4 col-xs-4">
+                               <h3>Existing project</h3>
+                          </div>
+                      <div class="col-lg-offset-6 col-lg-2 col_md-offset-6 col-md-2 col-xs-offset-6col-xs-2">
+                          <button type="button" class="btn btn-secondary pull-right" id="buttonToToggleIn">
+                              <i class="fa fa-fw fa-toggle-up blackicon" id="toggleiconall"></i>
+                          </button>
+                      </div>
+                  </div></div>';
 	    if($projects = $ctrlProject->listAll(10))
 	    {
 		$line;
 		while($line = $projects->fetch_assoc())
 		{
 		    
-		    echo '<div class="panel panel-default">';
+		    echo '<div class="panel panel-default" id="toToggleAll">';
 		    echo '<div class="panel-heading">';
 		    echo '<a href="http://localhost:8000/php/homeProject.php?project_id='.$line['project_id'].'">';
 		    

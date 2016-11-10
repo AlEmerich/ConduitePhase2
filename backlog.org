@@ -156,7 +156,7 @@ Effort : 15->21
 - fonction addUserStory(description, effort, priorité)
 
 **** User Story 9 (Rattrapage)
-
+     
 ***** View Tâche 6
       Créer page d'accueil d'un projet ViewProject.php
       ajouter un bouton add user avec menu déroulant dans la page d'accueil du projet.
@@ -176,14 +176,14 @@ Effort : 15->21
 
 **** User Story 7
 
-***** SQL tâche 11
+***** SQL tâche 10
      Création de la table sprint (cf. ModèleDatabase.png, racine du dépôt)
 
-***** View tâche 10
+***** View tâche 11
      Implémenter l'interface sprint comme sur la maquette, en tableau.
      - Ajout, suppression, modification des sprints.
 
-***** Ctrl tâche 11
+***** Ctrl tâche 12
      Controleur de la table sprint:
      - createSprint(...)
      - updateSprint(...)
@@ -193,26 +193,26 @@ Effort : 15->21
 ***** SQL tâche 13 
       creer table participe recensant tous les participants au projet
 
-***** View tâche 12
+***** View tâche 14
       Implémentation homeProject.php
       ajouter bouton inviter dev à l'overview du projet
 
 **** User Story 10
 
-***** View tâche 13
+***** View tâche 15
       ajouter bouton "choix product owner" à l'overview du projet
 
 **** User Story 6
 
-***** View tâche 14
+***** View tâche 16
       ajouter bouton "changer prio" visible uniquement par le product owner
 
 **** User Story 11
 
-***** View tâche 15
+***** View tâche 17
       Dans la page backlog créer un bouton "tache/planning" pour chaque sprint.
 
-***** View tâche 16
+***** View tâche 18
       créer une page sprint permettant d'ajouter des taches (numéro, description, dépendances)
       (cf. Maquette)
 
