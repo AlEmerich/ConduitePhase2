@@ -62,5 +62,12 @@ class CtrlProject extends SqlControleur
         $res = $this->conn->query($sql);
         return $res;
     }
+
+    function addProductOwner($id, $productowner_id)
+    {
+        $sql="UPDATE Project SET product_owner ='".$produtowner_id."' WHERE project_id IS '".$id."'";
+        $res = $this->conn->query($sql);
+        return $res;
+    }
 }
 ?>
