@@ -12,7 +12,7 @@
 | Tâche 8  |                                 |                                  |
 |          |                                 | Tâche 9, Dev: Duffour Matthias   |
 | 	   |                                 | Tâche 10, Dev: Duffour Matthias  |
-| Tâche 11 | 				     | 				        |
+| 	   | Tâche 11, Dev: Duffour Matthias | 				        |
 | 	   |                                 | Tâche 12, Dev: Duffour Matthias  |
 |          |                                 | Tâche 13, Dev: Duffour Matthias  |
 | Tâche 14 |                                 |                                  |

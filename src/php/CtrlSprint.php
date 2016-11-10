@@ -1,7 +1,7 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/SqlControleur.php');
 
-class CtrlParticipates extends SqlControleur
+class CtrlSprint extends SqlControleur
 {
     var $conn;
 
@@ -19,7 +19,7 @@ class CtrlParticipates extends SqlControleur
 
     function createSprint($project_id,$state,$date_start,$date_stop)
     {
-	$sql = "INSERT INTO Sprint (project_id,state,date_start,date_stop) VALUES ('".$project_id."', '".$state."', '".$date_start."', '".$date_stop."')";
+	$sql = "INSERT INTO Sprint (project_id, state, date_start, date_stop) VALUES (".$project_id.", '".$state."', ".$date_start.", ".$date_stop.");";
 	$res = $this->conn->query($sql);
 	return $res;
     }
