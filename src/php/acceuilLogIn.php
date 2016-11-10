@@ -31,7 +31,8 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlUser.php');
                           </button>
                       </div>
                   </div></div>';
-	    
+
+	    echo '<div id="toToggleIn">';
 	    $res = $ctrlU->getID($_SESSION['login'])->fetch_assoc();
 	    if($projects = $ctrlP->listIn($res['id']))
 	    {
@@ -39,7 +40,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlUser.php');
 		while($line = $projects->fetch_assoc())
 		{
 		    
-		    echo '<div class="panel panel-default" id="toToggleIn">';
+		    echo '<div class="panel panel-default">';
 		    echo '<div class="panel-heading">';
 		    echo '<a href="http://localhost:8000/php/homeProject.php?project_id='.$line['project_id'].'">';	    
 		    echo '<h4>'.$line['project_name'].'</h4></a></div>';
@@ -50,7 +51,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlUser.php');
 		    echo '</div></div>';
 		}
 	    }
-	    echo '</div>';
+	    echo '</div></div>';
 	    
 	    echo '<div class="panel panel-primary">';
 	    echo '<div class="panel-heading">
@@ -64,13 +65,14 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlUser.php');
                           </button>
                       </div>
                   </div></div>';
+	    echo '<div id="toToggleNotIn">';
 	    if($projects = $ctrlP->listNotIn($res['id']))
 	    {
 		$line;
 		while($line = $projects->fetch_assoc())
 		{
 		    
-		    echo '<div class="panel panel-default" id="toToggleNotIn">';
+		    echo '<div class="panel panel-default">';
 		    echo '<div class="panel-heading">';
 		    echo '<a href="http://localhost:8000/php/homeProject.php?project_id='.$line['project_id'].'">';
 		    
@@ -82,7 +84,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlUser.php');
 		    echo '</div></div>';
 		}
 	    }
-	    echo '</div>';
+	    echo '</div></div>';
 	    
 	    ?>
 	    
