@@ -7,7 +7,7 @@ if(!isset($_SESSION['login']))
 }
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlBacklog.php');
 
-$ctrlBacklog = new CtrlBacklog('dbserver','alaguitard','11235813','alaguitard');
+$ctrlBacklog = new CtrlBacklog();
 $project_id = "";
 
 if (isset($_GET["project_id"]))

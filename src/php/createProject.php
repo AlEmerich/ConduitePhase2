@@ -10,9 +10,9 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlProject.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlUser.php');
 
 
-$controleur = new CtrlProject('dbserver','alaguitard','11235813','alaguitard');
-$ctrlUser = new CtrlUser('dbserver','alaguitard','11235813','alaguitard');
-$ctrlParticipates = new CtrlParticipates('dbserver', 'alaguitard', '11235813', 'alaguitard');
+$controleur = new CtrlProject();
+$ctrlUser = new CtrlUser();
+$ctrlParticipates = new CtrlParticipates();
 
 $inputProjectName = $inputLinkRepository = $inputProductOwner = "";
 $projectNameErr = $linkRepositoryErr = $productOwnerErr = "";
@@ -36,10 +36,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $inputLinkRepository = test_input($_POST["inputLinkRepository"]);
     }
     if ($create){
-	$resUser = $ctrlUser->getId($_SESSION['login'])->fetch_assoc();
-        $controleur->createProject($inputProjectName, $inputLinkRepository, $resUser['id']);
+	$login = test_input($_SESSION['login']);
+	$resUser = $ctrlUser->getID($login)->fetch_assoc();
+        $controleur->createProject($inputProjectName, $inputLinkRepository, $resUser['dev_id']);
 	$resProject = $controleur->getId($inputProjectName)->fetch_assoc();
-	$ctrlParticipates->addToProject($resProject['project_id'],$resUser['id']);
+	$ctrlParticipates->addToProject($resProject['project_id'],$resUser['dev_id']);
 	header('Location: http://localhost:8000/index.php');
     }
 }

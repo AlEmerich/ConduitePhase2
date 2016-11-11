@@ -20,13 +20,10 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 
 CREATE TABLE IF NOT EXISTS `User` (
-  `id` int(10) unsigned NOT NULL auto_increment,
+  `dev_id` int(10) unsigned NOT NULL auto_increment,
   `login` varchar(50) NOT NULL,
   `mdp` varchar(100) NOT NULL,
   `mail` varchar(50) NOT NULL,
-  PRIMARY KEY(id)
+  PRIMARY KEY(dev_id)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Contenu de la table `User`
---

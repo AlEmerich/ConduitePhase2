@@ -1,9 +1,10 @@
-<?php 
+<?php
+
 session_start();
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlParticipates.php');
 
-$controleur = new CtrlParticipates('dbserver','alaguitard','11235813','alaguitard');
+$controleur = new CtrlParticipates();
 
 ?>
 
@@ -35,7 +36,7 @@ $controleur = new CtrlParticipates('dbserver','alaguitard','11235813','alaguitar
 
 			    <div class="row">
 				<div class="fa fa-fw col-lg-12 light-grey">
-				    <h1><?php echo $_SESSION['login']; ?></h1>
+    <h1><?php if(isset($_SESSION['login'])){ echo $_SESSION['login'];} ?></h1>
 				</div>
 			    </div>
 

@@ -17,8 +17,8 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlUser.php');
 		    col-md-12
 		    col-xs-12">
 	    <?php
-	    $ctrlProject = new CtrlProject('dbserver', 'alaguitard', '11235813', 'alaguitard');
-	    $ctrlUser = new CtrlUser('dbserver', 'alaguitard', '11235813', 'alaguitard');
+	    $ctrlProject = new CtrlProject();
+	    $ctrlUser = new CtrlUser();
 	    echo '<div class="panel panel-primary">';
 	    echo '<div class="panel-heading">
                       <div class="row">

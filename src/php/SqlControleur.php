@@ -12,11 +12,27 @@ class SqlControleur
 	    exit();
 	}
 	/* "Create table" */
-	if ($conn->query($query) === TRUE) {
-	    $message = 'Table créée avec succès.\n';
+	$res = $conn->multi_query($query) ;
+	if ($res === false) {
+	    $message ="Table non créé: ".$conn->error;
 	}
-	
-        return $message;
+	else
+	{
+	    do {
+		/* Stockage du premier résultat */
+		if ($result = $conn->store_result()) {
+		    while ($row = $result->fetch_row()) {
+		    
+		    }
+		    $result->free();
+		}
+		/* Affichage d'une séparation */
+		if ($conn->more_results()) {
+		    
+		}
+	    } while ($conn->next_result());
+	}
+	return $message;
     }
 }
 ?>

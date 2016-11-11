@@ -1,12 +1,14 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/SqlControleur.php');
+include 'config.php';
 
 class CtrlProject extends SqlControleur
 {
     var $conn;
 
-    function __construct($servername, $username, $password, $dbname)
+    function __construct()
     {
+	global $servername,$username,$password,$dbname;
         $this->conn = new mysqli($servername, $username,$password, $dbname);
         echo $this->executeQueryFile($this->conn,$_SERVER['DOCUMENT_ROOT'].'/sql/createProjectTable.sql');
     }

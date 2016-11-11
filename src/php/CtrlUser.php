@@ -1,14 +1,15 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/SqlControleur.php');
+include 'config.php';
 
 class CtrlUser extends SqlControleur
 {
     var $conn;
 
-    function __construct($servername, $username, $password, $dbname)
+    function __construct()
     {
+	global $servername,$username,$password,$dbname;
         $this->conn = new mysqli($servername, $username, $password, $dbname);
-        
         echo $this->executeQueryFile($this->conn,$_SERVER['DOCUMENT_ROOT'].'/sql/createUserTable.sql');
     }
 
@@ -41,6 +42,7 @@ class CtrlUser extends SqlControleur
     {
 	$sql = "SELECT * FROM User WHERE login='".$login."'";
 	$result = $this->conn->query($sql);
+	echo $this->conn->error;
 	return $result;  
     }
 

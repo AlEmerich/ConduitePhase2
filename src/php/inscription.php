@@ -3,7 +3,7 @@ session_start();
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlUser.php');
 
-$controleur = new CtrlUser('dbserver','alaguitard','11235813','alaguitard');
+$controleur = new CtrlUser();
 $user;
 
 $mail = $login = $pwd = "";

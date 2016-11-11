@@ -10,9 +10,9 @@ if(!isset($_SESSION['login']) || !isset($_GET['project_id']))
 }
 
 $project_id = htmlspecialchars($_GET['project_id']);
-$ctrlProject = new CtrlProject("dbserver","alaguitard","11235813","alaguitard");
-$ctrlParticipates = new CtrlParticipates('dbserver','alaguitard','11235813','alaguitard');
-$ctrlUser = new CtrlUser('dbserver','alaguitard','11235813','alaguitard');
+$ctrlProject = new CtrlProject();
+$ctrlParticipates = new CtrlParticipates();
+$ctrlUser = new CtrlUser();
 
 $current = $ctrlProject->getProject(htmlspecialchars($project_id))->fetch_assoc();
 ?>

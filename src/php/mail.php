@@ -10,9 +10,9 @@ if(!empty($_POST) && !empty($_SESSION))
     {
 	if($value == 'YES')
 	{
-	    $ctrlU = new CtrlUser('dbserver','alaguitard','11235813','alaguitard');
-	    $ctrlProject = new CtrlProject('dbserver','alaguitard','11235813','alaguitard');
-	    $ctrlParticipates = new CtrlParticipates('dbserver','alaguitard','11235813','alaguitard');
+	    $ctrlU = new CtrlUser();
+	    $ctrlProject = new CtrlProject();
+	    $ctrlParticipates = new CtrlParticipates();
 	    
 	    $mail = $ctrlU->getMail($value); // Déclaration de l'adresse de destination.
 	    //$mail = "guitard-alan@laposte.net";
