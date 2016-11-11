@@ -38,9 +38,16 @@ class CtrlParticipates extends SqlControleur
 	return $res;
     }
 
-    function listAll()
+    function getUserWhichContributes($project_id)
     {
-	$sql = "SELECT project_id FROM Participates NATURAL JOIN Project;";
+	$sql = "SELECT * FROM ((SELECT * FROM Participates NATURAL JOIN User) AS t) WHERE project_id=".$project_id;
+	$res = $this->conn->query($sql);
+	return $res;
+    }
+
+    function getUserWhichNotContributes($project_id)
+    {
+	$sql = "SELECT login FROM User WHERE dev_id NOT IN (SELECT dev_id FROM Participates WHERE project_id =".$project_id.")";
 	$res = $this->conn->query($sql);
 	return $res;
     }

@@ -30,13 +30,13 @@ class CtrlUser extends SqlControleur
 	return $res;
     }
 
-    function getMail($mdp)
+    function getMail($login)
     {
 	$sql = "SELECT mail FROM User WHERE login='".$login."'";
 	$res = $this->conn->query($sql);
 	return $res;
     }
-    
+
     function loginExist($login)
     {
 	$sql = "SELECT * FROM User WHERE login='".$login."'";
@@ -53,7 +53,7 @@ class CtrlUser extends SqlControleur
 
     function updateUser($id, $login, $mdp, $mail)
     {
-        $sql = "UPDATE User SET login='".$login."', mdp='".$mdp."', mail='".$mail."' WHERE id=".$id;
+        $sql = "UPDATE User SET login='".$login."', mdp='".$mdp."', mail='".$mail."' WHERE dev_id=".$id;
         $res=$this->conn->query($sql);
         return $res;
     }
@@ -67,21 +67,21 @@ class CtrlUser extends SqlControleur
 
     function getUser($id)
     {
-        $sql = "SELECT * FROM User WHERE id=".$id;
+        $sql = "SELECT * FROM User WHERE dev_id=".$id;
         $res = $this->conn->query($sql);
         return $res;
     }
 
     function getID($login)
     {
-        $sql = "SELECT id FROM User WHERE login='".$login."'";
+        $sql = "SELECT dev_id FROM User WHERE login='".$login."'";
         $res = $this->conn->query($sql);
         return $res;
     }
 
     function deleteUser($id)
     {
-        $sql = "DELETE FROM User WHERE id=".$id;
+        $sql = "DELETE FROM User WHERE dev_id=".$id;
         $res = $this->conn->query($sql);
         return $res;
     }

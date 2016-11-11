@@ -37,7 +37,7 @@ class CtrlProject extends SqlControleur
 
     function getProject($id)
     {
-        $sql = "SELECT * FROM Project WHERE id=".$id;
+        $sql = "SELECT * FROM Project WHERE project_id=".$id;
         $res = $this->conn->query($sql);
         return $res;
     }

@@ -31,7 +31,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlUser.php');
                           </button>
                       </div>
                   </div></div>';
-	    echo '<div id="toToggleAll">';
+	    echo '<div class="panel-body" id="toToggleAll">';
 	    if($projects = $ctrlProject->listAll(10))
 	    {
 		$line;

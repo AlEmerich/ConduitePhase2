@@ -6,27 +6,27 @@
 
 * Backlog
 
-| number | description                                                                                                                                          | effort | priority |
-|--------+------------------------------------------------------------------------------------------------------------------------------------------------------+--------+----------|
-|      1 | En tant que visiteur, je souhaite pouvoir m'inscrire ou me connecter en tant que utilisateur.                                                        |      3 |      1  |
-|      2 | En tant que utilisateur, je souhaite pouvoir créer mes propres projets.                                                                              |      5 |       1 |
-|      3 | En tant que utilisateur, je souhaite pouvoir lister mes projets, afin de les modifier ou de les supprimer.                                           |      3 |       2 |
-|      4 | En tant que utilisateur, je souhaite pouvoir créer des User Stories dans le backlog.                                                                 |      2 |       2 |
-|      5 | En tant que utilisateur, je souhaite pouvoir lister ces User Stories afin de les modifier ou de les supprimer.                                       |      3 |       2 |
-|      6 | En tant que product owner, je souhaite pouvoir modifier la priorité des User Stories.                                                                |      3 |       2 |
-|      7 | En tant que utilisateur, je souhaite pouvoir planifier des sprints avec des User Stories déjà entrées.                                               |      5 |       3 |
-|      8 | En tant que utilisateur, je souhaite pouvoir éditer le planning afin de préciser quelles User Story sont développpés à un moment donné.              |      2 |       3 |
-|      9 | En tant que utilisateur, je souhaite pouvoir inviter d’autres utilisateur à contribuer aux projets afin que ces derniers aient les mêmes privilèges. |      1 |       1 |
-|     10 | En tant que utilisateur, je souhaite pouvoir définir un product owner parmi les contributeurs afin qu'il puisse modifier la prio des User Stories.   |      2 |       1 |
-|     11 | En tant que utilisateur, je souhaite pouvoir créer des tâches associées a une des US déjà créées afin de les lister.                                 |      5 |       3 |
-|     12 | En tant que utilisateur, je souhaite pouvoir modifier ou supprimer les tâches déjà créées.                                                           |      3 |       3 |
-|     13 | En tant que utilisateur, je souhaite pouvoir modifier le kanban d'un sprint en fonction de leur état de développement.                               |      5 |       3 |
-|     14 | En tant que utilisateur, je souhaite pouvoir modifier la matrice de tracabilité afin de savoir à quel commit une US a été traitée.                   |      2 |       3 |
-|     15 | En tant que utilisateur, je souhaite pouvoir accéder au différents sprints du projet afin d'en voir les évolutions.                                  |      3 |       3 |
-|     16 | En tant que utilisateur, je souhaite pouvoir accéder facilement utiles aux dépôts du projet (dépôt, README, doc).                                    |      1 |       2 |
-|     17 | En tant que utilisateur, je souhaite voir la courbe de vélocité du projet.                                                                           |      1 |       3 |
-|--------+------------------------------------------------------------------------------------------------------------------------------------------------------+--------+----------|
-|        | Coût total                                                                                                                                           |     50 |          |
+| number | description                                                                                                                                             | effort | priority |
+|--------+---------------------------------------------------------------------------------------------------------------------------------------------------------+--------+----------|
+|      1 | En tant que visiteur, je souhaite pouvoir m'inscrire ou me connecter en tant que utilisateur.                                                           |      3 |        1 |
+|      2 | En tant que utilisateur, je souhaite pouvoir créer mes propres projets.                                                                                 |      5 |        1 |
+|      3 | En tant que utilisateur, je souhaite pouvoir lister mes projets, afin de les modifier ou de les supprimer.                                              |      3 |        2 |
+|      4 | En tant que utilisateur, je souhaite pouvoir créer des User Stories dans le backlog.                                                                    |      2 |        2 |
+|      5 | En tant que utilisateur, je souhaite pouvoir lister ces User Stories afin de les modifier ou de les supprimer.                                          |      3 |        2 |
+|      6 | En tant que product owner, je souhaite pouvoir modifier la priorité des User Stories.                                                                   |      3 |        2 |
+|      7 | En tant que utilisateur, je souhaite pouvoir planifier des sprints avec des User Stories déjà entrées.                                                  |      5 |        3 |
+|      8 | En tant que utilisateur, je souhaite pouvoir éditer le planning afin de préciser quelles User Story sont développpés à un moment donné.                 |      2 |        3 |
+|      9 | En tant que utilisateur, je souhaite pouvoir inviter d’autres utilisateur à contribuer aux projets afin que ces derniers aient les mêmes privilèges. |      1 |        1 |
+|     10 | En tant que utilisateur, je souhaite pouvoir définir un product owner parmi les contributeurs afin qu'il puisse modifier la prio des User Stories.      |      2 |        1 |
+|     11 | En tant que utilisateur, je souhaite pouvoir créer des tâches associées a une des US déjà créées afin de les lister.                                    |      5 |        3 |
+|     12 | En tant que utilisateur, je souhaite pouvoir modifier ou supprimer les tâches déjà créées.                                                              |      3 |        3 |
+|     13 | En tant que utilisateur, je souhaite pouvoir modifier le kanban d'un sprint en fonction de leur état de développement.                                  |      5 |        3 |
+|     14 | En tant que utilisateur, je souhaite pouvoir modifier la matrice de tracabilité afin de savoir à quel commit une US a été traitée.                      |      2 |        3 |
+|     15 | En tant que utilisateur, je souhaite pouvoir accéder au différents sprints du projet afin d'en voir les évolutions.                                     |      3 |        3 |
+|     16 | En tant que utilisateur, je souhaite pouvoir accéder facilement utiles aux dépôts du projet (dépôt, README, doc).                                       |      1 |        2 |
+|     17 | En tant que utilisateur, je souhaite voir la courbe de vélocité du projet.                                                                              |      1 |        3 |
+|--------+---------------------------------------------------------------------------------------------------------------------------------------------------------+--------+----------|
+|        | Coût total                                                                                                                                              |     50 |          |
 
 * Planning
 
@@ -157,65 +157,59 @@ Effort : 15->21
 
 **** User Story 9 (Rattrapage)
      
-***** View Tâche 6
+***** SQL tâche 6
+      creer table participe recensant tous les participants au projet
+
+***** View Tâche 7
       Créer page d'accueil d'un projet ViewProject.php
       ajouter un bouton add user avec menu déroulant dans la page d'accueil du projet.
 
-***** Ctrl Tâche 7
+***** Ctrl Tâche 8
 	Ajout d'une requète à CtrlProject.php:
 - fonction addUser(userName)
 
 **** User Story 10 (Rattrapage)
 
-***** View Tâche 8
+***** View Tâche 9
 	ajouter bouton avec menu déroulant add product owner sur la page d'accueuil du projet.
 
-***** Ctrl Tâche 9
+***** Ctrl Tâche 10
 	Ajout de requète à CtrlProject.php:
 - fonction addProductOwner(userName)
 
 **** User Story 7
 
-***** SQL tâche 10
+***** SQL tâche 11
      Création de la table sprint (cf. ModèleDatabase.png, racine du dépôt)
 
-***** View tâche 11
+***** View tâche 12
      Implémenter l'interface sprint comme sur la maquette, en tableau.
      - Ajout, suppression, modification des sprints.
 
-***** Ctrl tâche 12
+***** Ctrl tâche 13
      Controleur de la table sprint:
      - createSprint(...)
      - updateSprint(...)
 
-**** User Story 9
-
-***** SQL tâche 13 
-      creer table participe recensant tous les participants au projet
+**** User Story 5
 
 ***** View tâche 14
-      Implémentation homeProject.php
-      ajouter bouton inviter dev à l'overview du projet
+     implémentation backlog.php afin de lister les user stories du projet
 
-**** User Story 10
-
-***** View tâche 15
-      ajouter bouton "choix product owner" à l'overview du projet
+***** Ctrl tâche 15
+     Implémenter fonction listUserStories in CtrlBacklog.php
 
 **** User Story 6
 
 ***** View tâche 16
       ajouter bouton "changer prio" visible uniquement par le product owner
 
-**** User Story 11
+**** User Story 8
 
 ***** View tâche 17
       Dans la page backlog créer un bouton "tache/planning" pour chaque sprint.
-
-***** View tâche 18
-      créer une page sprint permettant d'ajouter des taches (numéro, description, dépendances)
-      (cf. Maquette)
-
+      Créer la page planning.php (cf. maquette)
+      
 ** Sprint 3
 
 Edition du planning du projet, modification et suppresion des tâches, Kanban et matrice de tracabilité, overview des sprints 

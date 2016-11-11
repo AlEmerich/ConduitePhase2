@@ -271,4 +271,10 @@ img
 	position: relative;
 	transform: translateY(50%);
     }
+
+#deleteContributor
+{
+    margin-top: 5px;
+}
+
 					     

@@ -32,9 +32,9 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlUser.php');
                       </div>
                   </div></div>';
 
-	    echo '<div id="toToggleIn">';
+	    echo '<div class="panel-body" id="toToggleIn">';
 	    $res = $ctrlU->getID($_SESSION['login'])->fetch_assoc();
-	    if($projects = $ctrlP->listIn($res['id']))
+	    if($projects = $ctrlP->listIn($res['dev_id']))
 	    {
 		$line;
 		while($line = $projects->fetch_assoc())
@@ -65,8 +65,8 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlUser.php');
                           </button>
                       </div>
                   </div></div>';
-	    echo '<div id="toToggleNotIn">';
-	    if($projects = $ctrlP->listNotIn($res['id']))
+	    echo '<div class="panel-body" id="toToggleNotIn">';
+	    if($projects = $ctrlP->listNotIn($res['dev_id']))
 	    {
 		$line;
 		while($line = $projects->fetch_assoc())
