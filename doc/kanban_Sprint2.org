@@ -5,8 +5,8 @@
 |          |                                 | Tâche 1, Dev: Guitard Alan      |
 |          |                                 | Tâche 2, Dev: Guitard Alan      |
 |          |                                 | Tâche 3, Dev: Duffour Matthias  |
-|          | Tâche 4, Dev: Elmer Bayol       |                                 |
-|          | Tache 5, Dev : Elmer Bayol      |                                 |
+|          |                                 | Tâche 4, Dev: Elmer Bayol       |
+|          |                                 | Tâche 5, Dev: Elmer Bayol       |
 |          |                                 | Tâche 6, Dev: Duffour Matthias  |
 |          |                                 | Tâche 7, Dev: Guitard Alan      |
 |          |                                 | Tâche 8, Dev: Guitard Alan      |
