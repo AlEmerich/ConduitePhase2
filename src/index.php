@@ -4,6 +4,7 @@ session_start();
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlParticipates.php');
 
+/* Used in accueilLogIn and accueilLogOut as a global variable. */
 $controleur = new CtrlParticipates();
 
 ?>
@@ -12,6 +13,7 @@ $controleur = new CtrlParticipates();
 <html lang="en">
     
     <head>
+	<!-- Include BootStrap and JQuery -->
 	<?php include 'provideapi.php'; ?>
 
 	<title>Conduite de projet - Outil Scrum</title>
@@ -24,7 +26,10 @@ $controleur = new CtrlParticipates();
     <body>
 	<div id="wrapper" >
 	    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" >
+		
 		<?php include 'php/topmenu.php'; ?>
+
+		<!-- Right side menu with profile and mail if logged in -->
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 		    <ul class="nav nabar-nav side-nav" >
 			<div class="container-fluid">
@@ -34,12 +39,14 @@ $controleur = new CtrlParticipates();
 				</div>
 			    </div>
 
+			    <!-- Display login -->
 			    <div class="row">
 				<div class="fa fa-fw col-lg-12 light-grey">
     <h1><?php if(isset($_SESSION['login'])){ echo $_SESSION['login'];} ?></h1>
 				</div>
 			    </div>
 
+			    <!-- Display Email if logged in -->
 			    <div class="row" >
 				<div class="col-lg-12 light-grey" >
 				    <?php
@@ -59,7 +66,8 @@ $controleur = new CtrlParticipates();
 		    </ul>
 		</div>
 	    </nav>
-	    
+
+	    <!-- Display the right page if logged in -->
 	    <div id="page-wrapper" >
 		<?php
 		if(isset($_SESSION['login']))

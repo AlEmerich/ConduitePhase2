@@ -9,6 +9,7 @@ $user;
 $mail = $login = $pwd = "";
 $mailErr = $loginErr = $pwdErr = "";
 
+/* Used to create the new user when POST */
 $create = true;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST")

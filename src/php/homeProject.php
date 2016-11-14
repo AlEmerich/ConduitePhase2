@@ -4,7 +4,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlProject.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlParticipates.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlUser.php');
 
-if(!isset($_SESSION['login']) || !isset($_GET['project_id']))
+if(!isset($_GET['project_id']))
 {
     header("Location: http://localhost:8000/index.php");
 }
@@ -13,6 +13,18 @@ $project_id = htmlspecialchars($_GET['project_id']);
 $ctrlProject = new CtrlProject();
 $ctrlParticipates = new CtrlParticipates();
 $ctrlUser = new CtrlUser();
+
+$logged = false;
+if(isset($_SESSION['login']))
+{
+    $users = $ctrlParticipates->getUserWhichContributes($_GET['project_id']);
+    $line;
+    while($line = $users->fetch_assoc())
+    {
+	if($line['login'] == $_SESSION['login'])
+	    $logged = true;
+    }
+}
 
 $current = $ctrlProject->getProject(htmlspecialchars($project_id))->fetch_assoc();
 ?>
@@ -104,10 +116,12 @@ $current = $ctrlProject->getProject(htmlspecialchars($project_id))->fetch_assoc(
 				    </tbody>
 				</table>
 			    </div>
-
-			    <a role="button" href="#" class="btn btn-primary col-lg-ofsset-1 col-lg-2 col-md-offset-1 col-md-2 col-xs-offset-1 col-xs-2" id="inviteContributor" data-toggle="modal" data-target="#modalInvite" >Invite contributor</a>
-			    
-			    <a role="button" href="#" class="btn btn-primary col-lg-ofsset-1 col-lg-2 col-md-offset-1 col-md-2 col-xs-offset-1 col-xs-2" id="deleteContributor" data-toggle="modal" data-target="#modalRemove" >Remove contributor</a>
+			    <?php global $logged; if ($logged) : ?>
+				<a role="button" href="#" class="btn btn-primary col-lg-ofsset-1 col-lg-2 col-md-offset-1 col-md-2 col-xs-offset-1 col-xs-2" id="inviteContributor" data-toggle="modal" data-target="#modalInvite" >Invite contributor</a>
+				
+				<a role="button" href="#" class="btn btn-primary col-lg-ofsset-1 col-lg-2 col-md-offset-1 col-md-2 col-xs-offset-1 col-xs-2" id="deleteContributor" data-toggle="modal" data-target="#modalRemove" >Remove contributor</a>
+				
+			    <?php endif ?>
 			</div>
 		    </div>
 		</div>

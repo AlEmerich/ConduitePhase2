@@ -1,17 +1,29 @@
 <?php
 session_start();
 
-if(!isset($_SESSION['login']))
-{
-    header("Location: http://localhost:8000/index.php");
-}
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlBacklog.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlParticipates.php');
 
 $ctrlBacklog = new CtrlBacklog();
+$ctrlParticipates = new CtrlParticipates();
 $project_id = "";
 
 if (isset($_GET["project_id"]))
     $project_id = htmlspecialchars($_GET["project_id"]);
+else
+    header("Location: http://localhost:8000/index.php");
+
+$logged = false;
+if(isset($_SESSION['login']))
+{
+    $users = $ctrlParticipates->getUserWhichContributes($_GET['project_id']);
+    $line;
+    while($line = $users->fetch_assoc())
+    {
+	if($line['login'] == $_SESSION['login'])
+	    $logged = true;
+    }
+}
 
 $inputDescription = $inputEffort = $inputPriority = "";
 $descriptionErr = $effortErr = $priorityErr = "";
@@ -85,87 +97,106 @@ function test_input($data){
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 		    <ul class="nav navbar-nav side-nav">
 			<li>
-          <a href=
-             <?php global $project_id;
-             echo '"http://localhost:8000/php/homeProject.php?project_id='.$project_id.'"';?>
-          ><i class="fa fa-fw fa-desktop"></i> Home Project</a>
+			    <a href=
+			       <?php global $project_id;
+			       echo '"http://localhost:8000/php/homeProject.php?project_id='.$project_id.'"';?>
+			    ><i class="fa fa-fw fa-desktop"></i> Home Project</a>
 			</li>
 			<li class="active">
 			    <a href=
-             <?php global $project_id;
-             echo '"http://localhost:8000/php/backlog.php?project_id='.$project_id.'"';?>
-          ><i class="fa fa-fw fa-table"></i> Backlog</a>
+			       <?php global $project_id;
+			       echo '"http://localhost:8000/php/backlog.php?project_id='.$project_id.'"';?>
+			    ><i class="fa fa-fw fa-table"></i> Backlog</a>
 			</li>
 			<li>
 			    <a href=
-             <?php global $project_id;
-             echo '"http://localhost:8000/php/sprint.php?project_id='.$project_id.'"';?>
-          ><i class="fa fa-fw fa-dashboard"></i> Sprints</a>
+			       <?php global $project_id;
+			       echo '"http://localhost:8000/php/sprint.php?project_id='.$project_id.'"';?>
+			    ><i class="fa fa-fw fa-dashboard"></i> Sprints</a>
 			</li>
 			<li>
 			    <a href=
-             <?php global $project_id;
-             echo '"http://localhost:8000/php/curve.php?project_id='.$project_id.'"';?>><i class="fa fa-fw fa-bar-chart-o"></i> Velocity Curve</a>
+			       <?php global $project_id;
+			       echo '"http://localhost:8000/php/curve.php?project_id='.$project_id.'"';?>><i class="fa fa-fw fa-bar-chart-o"></i> Velocity Curve</a>
 			</li>
 		    </ul>
 		</div>
 		<!-- /.navbar-collapse -->
 	    </nav>
 	    <div id="page-wrapper" >
-		<form class="well 
-			     col-lg-10 
-			     col-md-10 
-			     col-xs-10"
-		      method="post"
-		      action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-
-        <table class= "table-bordered">
-            <caption>List of UserStories related to this project</caption>
-            <thead>
-                <tr>
-                    <th>US number</th>
-                    <th>Description</th>
-                    <th>Effort</th>
-                    <th>Priority</th>
-                </tr>
-            </thead>
-            <tbody>
-    <?php
-global $project_id;
-$userStoryList = $ctrlBacklog->getUserStoryFromProject($project_id);
-$line;
-while ($line = $userStoryList->fetch_assoc()){
-    echo '<tr><td>'.$line['us_id'].'</td><td>'.$line['description'].'</td><td>'.$line['effort'].'</td><td>'.$line['priority'].'</td></tr>';
-}
-                ?>
-            </tbody>
-        </table>
-
-		    <legend class="title">Create UserStory</legend>
-		    <div class="form-group">
-			<label for="inputDescription">Description de la UserStory</label>
-			<span class ="error">* <?php global $descriptionErr; echo $descriptionErr; ?></span>
-			<input name="inputDescription" type="text" class="form-control" value="<?php global $inputDescription; echo $inputDescription; ?>" />
+		<div class="panel panel-primary"> 
+		    <div class="panel-heading">
+			<div class="row" >
+			    <h2 class="text-center">
+				Backlog
+			    </h2>
+			</div>
 		    </div>
 
-		    <div class="form-group">
-			<label for="inputEffort" >Effort</label>
-			<span class = "error">* <?php global $effortErr; echo $effortErr; ?></span>
-			<input name="inputEffort" type="text" class="form-control" value="<?php global $inputEffort; echo $inputEffort; ?>" />
-		    </div>
+		    <div class="panel-body" >
+			<div class="row" >
+			    <div class="col-lg-12 col-md-12 col-xs-12 table-responsive">
+				<table class= "table">
+				    <caption>List of UserStories related to this project</caption>
+				    <thead>
+					<tr>
+					    <th>US number</th>
+					    <th>Description</th>
+					    <th>Effort</th>
+					    <th>Priority</th>
+					</tr>
+				    </thead>
+				    <tbody>
+					<?php
+					global $project_id;
+					$userStoryList = $ctrlBacklog->getUserStoryFromProject($project_id);
+					$line;
+					while ($line = $userStoryList->fetch_assoc()){
+					    echo '<tr><td>'.$line['us_id'].'</td><td>'.$line['description'].'</td><td>'.$line['effort'].'</td><td>'.$line['priority'].'</td></tr>';
+					}
+					?>
+				    </tbody>
+				</table>
+			    </div>
+			</div>
+		    </div>	    
+		</div>
 
-		    <div class="form-group">
-			<label for="inputEffort" >Priority</label>
-			<span class = "error">* <?php global $priorityErr; echo $priorityErr; ?></span>
-			<input name="inputPriority" type="text" class="form-control" value="<?php global $inputPriority; echo $inputPriority; ?>" />
-		    </div>
+		<div class="row">
+		    <?php global $logged; if ($logged): ?>
+			<form class="well 
+				     col-lg-offset-1 col-lg-10 
+				     col-md-offset-1 col-md-10 
+				     col-xs-offset-1 col-xs-10"
+			      method="post"
+			      action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+			    <legend class="title">Create UserStory</legend>
+			    <div class="form-group">
+				<label for="inputDescription">Description de la UserStory</label>
+				<span class ="error">* <?php global $descriptionErr; echo $descriptionErr; ?></span>
+				<input name="inputDescription" type="text" class="form-control" value="<?php global $inputDescription; echo $inputDescription; ?>" />
+			    </div>
 
-		    <input name="project_id" type="text"  style="display:none" value="<?php global $project_id; echo $project_id; ?>">
-		    <input name="action" type="submit"/>
-		    
-		    
-		</form>
+			    <div class="form-group">
+				<label for="inputEffort" >Effort</label>
+				<span class = "error">* <?php global $effortErr; echo $effortErr; ?></span>
+				<input name="inputEffort" type="text" class="form-control" value="<?php global $inputEffort; echo $inputEffort; ?>" />
+			    </div>
+
+			    <div class="form-group">
+				<label for="inputEffort" >Priority</label>
+				<span class = "error">* <?php global $priorityErr; echo $priorityErr; ?></span>
+				<input name="inputPriority" type="text" class="form-control" value="<?php global $inputPriority; echo $inputPriority; ?>" />
+			    </div>
+
+			    <input name="project_id" type="text"  style="display:none" value="<?php global $project_id; echo $project_id; ?>">
+			    <input name="action" type="submit"/>
+			    
+			    
+			</form>
+		    <?php endif ?>
+		</div>
 	    </div>
-	    
+	</div>
     </body>
 </html>
