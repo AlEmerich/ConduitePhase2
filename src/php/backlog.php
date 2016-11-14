@@ -11,7 +11,7 @@ $ctrlBacklog = new CtrlBacklog();
 $project_id = "";
 
 if (isset($_GET["project_id"]))
-    $project_id = $_GET["project_id"];
+    $project_id = htmlspecialchars($_GET["project_id"]);
 
 $inputDescription = $inputEffort = $inputPriority = "";
 $descriptionErr = $effortErr = $priorityErr = "";
@@ -85,16 +85,27 @@ function test_input($data){
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 		    <ul class="nav navbar-nav side-nav">
 			<li>
-			    <a href="http://localhost:8000/php/homeProject.php"><i class="fa fa-fw fa-desktop"></i> Home Project</a>
+          <a href=
+             <?php global $project_id;
+             echo '"http://localhost:8000/php/homeProject.php?project_id='.$project_id.'"';?>
+          ><i class="fa fa-fw fa-desktop"></i> Home Project</a>
 			</li>
 			<li class="active">
-			    <a href="http://localhost:8000/php/backlog.php"><i class="fa fa-fw fa-table"></i> Backlog</a>
+			    <a href=
+             <?php global $project_id;
+             echo '"http://localhost:8000/php/backlog.php?project_id='.$project_id.'"';?>
+          ><i class="fa fa-fw fa-table"></i> Backlog</a>
 			</li>
 			<li>
-			    <a href="http://localhost:8000/php/sprint.php"><i class="fa fa-fw fa-dashboard"></i> Sprints</a>
+			    <a href=
+             <?php global $project_id;
+             echo '"http://localhost:8000/php/sprint.php?project_id='.$project_id.'"';?>
+          ><i class="fa fa-fw fa-dashboard"></i> Sprints</a>
 			</li>
 			<li>
-			    <a href="http://localhost:8000/php/curve.php"><i class="fa fa-fw fa-bar-chart-o"></i> Velocity Curve</a>
+			    <a href=
+             <?php global $project_id;
+             echo '"http://localhost:8000/php/curve.php?project_id='.$project_id.'"';?>><i class="fa fa-fw fa-bar-chart-o"></i> Velocity Curve</a>
 			</li>
 		    </ul>
 		</div>
@@ -116,13 +127,16 @@ function test_input($data){
                     <th>Description</th>
                     <th>Effort</th>
                     <th>Priority</th>
-                    <th>Related Sprint</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- quand on aura la table finalisée, il faudra itérer sur la liste des userstories et mettre chaque donnée à sa place -->
-                <?
-
+    <?php
+global $project_id;
+$userStoryList = $ctrlBacklog->getUserStoryFromProject($project_id);
+$line;
+while ($line = $userStoryList->fetch_assoc()){
+    echo '<tr><td>'.$line['us_id'].'</td><td>'.$line['description'].'</td><td>'.$line['effort'].'</td><td>'.$line['priority'].'</td></tr>';
+}
                 ?>
             </tbody>
         </table>

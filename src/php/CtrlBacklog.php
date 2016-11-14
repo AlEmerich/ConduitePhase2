@@ -47,6 +47,12 @@ class CtrlBacklog extends SqlControleur{
         $res = $this->connBacklog->query($sql);
         return $res;
     }
+
+    function getUserStoryFromProject ($project_id){
+        $sql = "SELECT * FROM UserStory WHERE project_id =".$project_id;
+        $res = $this->connBacklog->query($sql);
+        return $res;
+    }
 }
 
 ?>
