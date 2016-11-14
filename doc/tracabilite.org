@@ -1,9 +1,19 @@
-| Date   | Task concerned | message                        |
-|--------+----------------+--------------------------------|
-| Oct 31 |              1 | Task 1 over. add kanban file.  |
-| Oct 29 |              3 | CtrlUser done.                 |
-| Nov 1  |              6 | CtrlProject done               |
-| Nov 1  |              4 | Table project created          |
-| Nov 2  |              2 | inscription and connexion over |
-| Nov 2  |              5 | createProject.php done         |
-|        |                |                                |
+| US # | Commit #                                 |
+|------+------------------------------------------|
+|    1 |                                          |
+|    2 |                                          |
+|    3 |                                          |
+|    4 | 1566538b4a7855c07911e1e966a94215e3532c16 |
+|    5 |                                          |
+|    6 |                                          |
+|    7 |                                          |
+|    8 |                                          |
+|    9 |                                          |
+|   10 |                                          |
+|   11 |                                          |
+|   12 |                                          |
+|   13 |                                          |
+|   14 |                                          |
+|   15 |                                          |
+|   16 |                                          |
+|   17 |                                          |
