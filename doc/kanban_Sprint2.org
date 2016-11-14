@@ -15,8 +15,8 @@
 |          |                                 | Tâche 11, Dev: Duffour Matthias |
 |          | Tâche 12, Dev: Duffour Matthias |                                 |
 |          |                                 | Tâche 13, Dev: Duffour Matthias |
-| Tâche 14 |                                 |                                 |
-| Tâche 15 |                                 |                                 |
+| Tâche 14 |                                 | Tâche 14, Dev: Elmer Bayol      |
+| Tâche 15 |                                 | Tâche 15, Dec: Elmer Bayol      |
 | Tâche 16 |                                 |                                 |
 | Tâche 17 |                                 |                                 |
 
