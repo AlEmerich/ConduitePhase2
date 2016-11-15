@@ -1,5 +1,27 @@
 <?php
 session_start();
+
+require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlParticipates.php');
+
+$ctrlParticipates = new CtrlParticipates();
+$project_id = "";
+
+if (isset($_GET["project_id"]))
+    $project_id = htmlspecialchars($_GET["project_id"]);
+else
+    header("Location: http://localhost:8000/index.php");
+
+$logged = false;
+if(isset($_SESSION['login']))
+{
+    $users = $ctrlParticipates->getUserWhichContributes($_GET['project_id']);
+    $line;
+    while($line = $users->fetch_assoc())
+    {
+	if($line['login'] == $_SESSION['login'])
+	    $logged = true;
+    }
+}
 ?>
 
 <!doctype html>
@@ -22,16 +44,27 @@ session_start();
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 		    <ul class="nav navbar-nav side-nav">
 			<li>
-			    <a href="http://localhost:8000/php/homeProject.php"><i class="fa fa-fw fa-desktop"></i> Home Project</a>
+			    <a href=
+			       <?php global $project_id;
+			       echo '"http://localhost:8000/php/homeProject.php?project_id='.$project_id.'"';?>
+			    ><i class="fa fa-fw fa-desktop"></i> Home Project</a>
 			</li>
 			<li>
-			    <a href="http://localhost:8000/php/backlog.php"><i class="fa fa-fw fa-table"></i> Backlog</a>
+			    <a href=
+			       <?php global $project_id;
+			       echo '"http://localhost:8000/php/backlog.php?project_id='.$project_id.'"';?>
+			    ><i class="fa fa-fw fa-table"></i> Backlog</a>
 			</li>
 			<li>
-			    <a href="http://localhost:8000/php/sprint.php"><i class="fa fa-fw fa-dashboard"></i> Sprints</a>
+			    <a href=
+			       <?php global $project_id;
+			       echo '"http://localhost:8000/php/sprint.php?project_id='.$project_id.'"';?>
+			    ><i class="fa fa-fw fa-dashboard"></i> Sprints</a>
 			</li>
 			<li class="active">
-			    <a href="http://localhost:8000/php/curve.php"><i class="fa fa-fw fa-bar-chart-o"></i> Velocity Curve</a>
+			    <a href=
+			       <?php global $project_id;
+			       echo '"http://localhost:8000/php/curve.php?project_id='.$project_id.'"';?>><i class="fa fa-fw fa-bar-chart-o"></i> Velocity Curve</a>
 			</li>
 		    </ul>
 		</div>
