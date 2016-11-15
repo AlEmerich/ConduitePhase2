@@ -16,7 +16,7 @@
 |      6 | En tant que product owner, je souhaite pouvoir modifier la priorité des User Stories.                                                                   |      3 |        2 |
 |      7 | En tant que utilisateur, je souhaite pouvoir planifier des sprints avec des User Stories déjà entrées.                                                  |      5 |        3 |
 |      8 | En tant que utilisateur, je souhaite pouvoir éditer le planning afin de préciser quelles User Story sont développpés à un moment donné.                 |      2 |        3 |
-|      9 | En tant que utilisateur, je souhaite pouvoir inviter d’autres utilisateur à contribuer aux projets afin que ces derniers aient les mêmes privilèges. |      1 |        1 |
+|      9 | En tant que utilisateur, je souhaite pouvoir inviter d’autres utilisateur à contribuer aux projets afin que ces derniers aient les mêmes privilèges.   |      1 |        1 |
 |     10 | En tant que utilisateur, je souhaite pouvoir définir un product owner parmi les contributeurs afin qu'il puisse modifier la prio des User Stories.      |      2 |        1 |
 |     11 | En tant que utilisateur, je souhaite pouvoir créer des tâches associées a une des US déjà créées afin de les lister.                                    |      5 |        3 |
 |     12 | En tant que utilisateur, je souhaite pouvoir modifier ou supprimer les tâches déjà créées.                                                              |      3 |        3 |
@@ -131,7 +131,7 @@ Effort : 15->21
 *** Tâches
 
 **** All
-     tache 10: écriture des tests de complétion des user stories
+     tache 18: écriture des tests de complétion des user stories
 
 **** User Story 3 (Rattrapage)
 
