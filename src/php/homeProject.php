@@ -68,9 +68,22 @@ $current = $ctrlProject->getProject(htmlspecialchars($project_id))->fetch_assoc(
 
 	    
 	    <div id="page-wrapper" >
-		<?php if(isset($_GET['dialog']) && ($_GET['dialog'] == 'remove' || $_GET['dialog'] == 'invite' ))
+		<?php if(isset($_GET['dialog']) && ($_GET['dialog'] == 'remove' || $_GET['dialog'] == 'invite' || $_GET['dialog'] == 'changepo' ))
 		{
-		    $message = ($_GET['dialog'] == 'remove' ? "Succesfully removed !" : "Succesfully added !");
+		    $message;
+		    if($_GET['dialog'] == 'remove')
+		    {
+			$message = "Succesfully removed !";
+		    }
+		    else if($_GET['dialog'] == 'invite')
+		    {
+			$message = "Succesfully added !";
+		    }
+		    else if($_GET['dialog'] == 'changepo')
+		    {
+			$message = "Product owner changed";
+		    }
+		    
 		    echo '<div class="alert alert-success fade in">
                              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                              <strong>Success!</strong> '.$message.'
@@ -116,99 +129,67 @@ $current = $ctrlProject->getProject(htmlspecialchars($project_id))->fetch_assoc(
 				    </tbody>
 				</table>
 			    </div>
+			    
+			    <div class="row col-lg-ofsset-1 col-lg-3 col-md-offset-1 col-md-3 col-xs-offset-1 col-xs-3" >
+				<div class="panel panel-default">
+				    <div class="panel-heading">Product Owner
+					<?php global $logged; if($logged) :  ?>
+					    <a class="btn btn-default pull-right"
+					       style="padding-top:1px;padding-bottom:1px;padding-left:3px;padding-right:3px"
+					       href="#" role="button" id="changePO" data-toggle="modal" data-target="#modalPO">
+						<i class="fa fa-pencil-square-o" aria-hidden="true">
+						</i>
+					    </a>
+					<?php endif ?>
+				    </div>
+				    <div class="panel-body" >
+					<p> Login:
+					    <span class="label label-default">
+						<?php
+						global $ctrlProject;
+						global $project_id;
+						$res = $ctrlProject->getProductOwner($project_id);
+						$line;
+						if($line = $res->fetch_assoc())
+						    echo $line['login'];
+						?></span>
+					</p>
+					<p>
+					    Mail:
+					    <span class="label label-default">
+						<?php
+						global $ctrlProject;
+						global $project_id;
+						$res = $ctrlProject->getProductOwner($project_id);
+						$line;
+						if($line = $res->fetch_assoc())
+						    echo $line['mail'];
+						?></span>
+					</p>
+				    </div>
+				</div>
+			    </div>
+
 			    <?php global $logged; if ($logged) : ?>
-				<a role="button" href="#" class="btn btn-primary col-lg-ofsset-1 col-lg-2 col-md-offset-1 col-md-2 col-xs-offset-1 col-xs-2" id="inviteContributor" data-toggle="modal" data-target="#modalInvite" >Invite contributor</a>
 				
-				<a role="button" href="#" class="btn btn-primary col-lg-ofsset-1 col-lg-2 col-md-offset-1 col-md-2 col-xs-offset-1 col-xs-2" id="deleteContributor" data-toggle="modal" data-target="#modalRemove" >Remove contributor</a>
+				<a role="button" href="#"
+				   class="btn btn-primary col-lg-ofsset-1 col-lg-2 col-md-offset-1 col-md-3 col-xs-offset-1 col-xs-3"
+				   id="inviteContributor" data-toggle="modal" data-target="#modalInvite" >Invite contributor</a>
 				
+				<a role="button" href="#" 
+				   class="btn btn-primary col-lg-ofsset-1 col-lg-2 col-md-offset-1 col-md-3 col-xs-offset-1 col-xs-3" 
+				   id="deleteContributor" data-toggle="modal" data-target="#modalRemove" >Remove contributor</a>
 			    <?php endif ?>
 			</div>
 		    </div>
+
+		    <?php include 'modalInvite.php' ?>
+
+		    <?php include 'modalDeleting.php' ?>
+
+		    <?php include 'modalProductOwner.php' ?>
 		</div>
 	    </div>
 	</div>
-
-	<!-- MODAL INVITING CONTRIBUTORS -->
-	<div class="modal fade" id="modalInvite" tabindex="-1" role="dialog" aria-labelledby="modalInviteLabel">
-	    <div class="modal-dialog" role="document">
-		<div class="modal-content">
-		    <div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			<h4 class="modal-title" id="myModalLabel">Choose the new contributor</h4>
-		    </div>
-		    <form action="http://localhost:8000/php/mail.php?project_id=<?php global $project_id; echo $project_id; ?>" class="list-group" method="post">
-			<div class="modal-body">
-			    <div class="list-group" >
-				<?php
-				global $ctrlUser;
-				global $ctrlParticipates;
-				global $project_id;
-				$usersNotIn = $ctrlParticipates->getUserWhichNotContributes($project_id);
-				$line;
-				
-				while($line = $usersNotIn->fetch_assoc())
-				{
-				    echo '<div class="list-group-item">';
-				    echo '<label for="'.$line['login'].'">'.$line['login'].'</label>';
-				    echo '<input class="pull-right" type="checkbox" name="'.$line['login'].'" value="YES"/>';
-				    echo '</div>';
-				}
-				
-				?>
-				
-			    </div>
-			</div>
-			<div class="modal-footer">
-			    <a role="button" class="btn btn-default" data-dismiss="modal">Close</a>
-			    <input type="submit" name="mailSubmit" role="button" class="btn btn-primary" value="Send invitations"></input>
-			</div>
-		    </form>
-		</div>
-	    </div>
-	</div>
-
-
-	<!-- MODAL DELETING CONTRIBUTORS -->
-	<div class="modal fade" id="modalRemove" tabindex="-1" role="dialog" aria-labelledby="modalRemoveLabel">
-	    <div class="modal-dialog" role="document">
-		<div class="modal-content">
-		    <div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			<h4 class="modal-title" id="myModalLabel">Choose the contributor to remove</h4>
-		    </div>
-		    <form action="http://localhost:8000/php/mail.php?project_id=<?php global $project_id; echo $project_id; ?>" class="list-group" method="post">
-			<div class="modal-body">
-			    <div class="list-group" >
-				<?php
-				global $ctrlUser;
-				global $ctrlParticipates;
-				global $project_id;
-				$usersIn = $ctrlParticipates->getUserWhichContributes($project_id);
-				$line;
-				
-				while($line = $usersIn->fetch_assoc())
-				{
-				    if($line['login'] != $_SESSION['login'])
-				    {
-					echo '<div class="list-group-item">';
-					echo '<label for="'.$line['login'].'">'.$line['login'].'</label>';
-					echo '<input class="pull-right" type="checkbox" name="'.$line['login'].'" value="YES"/>';
-					echo '</div>';
-				    }
-				}
-				
-				?>
-				
-			    </div>
-			</div>
-			<div class="modal-footer">
-			    <a role="button" class="btn btn-default" data-dismiss="modal">Close</a>
-			    <input type="submit" name="mailSubmit" role="button" class="btn btn-primary" value="Remove them"></input>
-			</div>
-		    </form>
-		</div>
-	    </div>
-	</div>
-	
     </body>
 </html>

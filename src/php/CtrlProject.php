@@ -58,6 +58,13 @@ class CtrlProject extends SqlControleur
         return $res;
     }
 
+    function getProductOwner($project_id)
+    {
+	$sql = "SELECT login, mail FROM ((SELECT * FROM Project WHERE project_id=".$project_id.") AS t) INNER JOIN User On product_owner=dev_id";
+	$res = $this->conn->query($sql);
+	return $res;
+    }
+
     function deleteProject($id)
     {
         $sql = "DELETE FROM Project WHERE id=".$id;
@@ -67,7 +74,7 @@ class CtrlProject extends SqlControleur
 
     function addProductOwner($id, $productowner_id)
     {
-        $sql="UPDATE Project SET product_owner ='".$produtowner_id."' WHERE project_id IS '".$id."'";
+        $sql="UPDATE Project SET product_owner ='".$productowner_id."' WHERE project_id='".$id."'";
         $res = $this->conn->query($sql);
         return $res;
     }
