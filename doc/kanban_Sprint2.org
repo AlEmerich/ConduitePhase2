@@ -10,14 +10,14 @@
 |          |                                 | Tâche 6, Dev: Duffour Matthias  |
 |          |                                 | Tâche 7, Dev: Guitard Alan      |
 |          |                                 | Tâche 8, Dev: Guitard Alan      |
-|          | Tâche 9, Dev: Guitard Alan      | Tâche 9, Dev: Guitard Alan      |
+|          |                                 | Tâche 9, Dev: Guitard Alan      |
 |          |                                 | Tâche 10, Dev: Duffour Matthias |
 |          |                                 | Tâche 11, Dev: Duffour Matthias |
-|          | 				     | Tâche 12, Dev: Duffour Matthias |
+|          |                                 | Tâche 12, Dev: Duffour Matthias |
 |          |                                 | Tâche 13, Dev: Duffour Matthias |
-| 	   |                                 | Tâche 14, Dev: Elmer Bayol      |
-|  	   |                                 | Tâche 15, Dec: Elmer Bayol      |
-| Tâche 16 |                                 |                                 |
+|          |                                 | Tâche 14, Dev: Elmer Bayol      |
+|          |                                 | Tâche 15, Dev: Elmer Bayol      |
+|          |                                 | Tâche 16, Dev: Guitard Alan     |
 | Tâche 17 |                                 |                                 |
 |          | Tâche 18, Dev: Duffour Matthias |                                 |
 
