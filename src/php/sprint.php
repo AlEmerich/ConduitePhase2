@@ -147,6 +147,7 @@ function test_input($data){
 					    <th>State</th>
 					    <th>Starting date</th>
 					    <th>Stopping date</th>
+              <th>Sprint overview</th>
 					</tr>
 				    </thead>
 				    <tbody>
@@ -158,7 +159,12 @@ function test_input($data){
 					if($list != FALSE)
 					{
 					    while ($line = $list->fetch_assoc()){
-						echo '<tr><td>'.$line['sprint_id'].'</td><td>'.$line['state'].'</td><td>'.$line['date_start'].'</td><td>'.$line['date_stop'].'</td></tr>';
+						      echo '<tr><td>'.$line['sprint_id'].'</td><td>'.$line['state'].'</td><td>'.$line['date_start'].'</td><td>'.$line['date_stop'].'</td>';
+                  global $logged;
+                  if($logged){
+                      echo '<td><a role="button" href="http://localhost:8000/php/sprintSingle.php?sprint_id='.$line['sprint_id'].'&project_id='.$project_id.'" class="btn btn-primary col-lg-ofsset-1 col-lg-2 col-md-offset-1 col-md-3 col-xs-offset-1 col-xs-4" id="gotoSprint">Add Tasks</a></td>';
+                  }
+                  echo '</tr>';
 					    }
 					}
 					?>
