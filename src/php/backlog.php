@@ -3,27 +3,44 @@ session_start();
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlBacklog.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlParticipates.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlProject.php');
+
+
 
 $ctrlBacklog = new CtrlBacklog();
 $ctrlParticipates = new CtrlParticipates();
-$project_id = "";
+$ctrlProject = new CtrlProject();
+$project_id = 0;
+$header = htmlspecialchars($_SERVER["PHP_SELF"]);
 
-if (isset($_GET["project_id"]))
+
+if (isset($_GET["project_id"])){
     $project_id = htmlspecialchars($_GET["project_id"]);
+    $header = $header."?project_id=".$project_id;
+}
 else
-    header("Location: http://localhost:8000/index.php");
+  header("Location: http://localhost:8000/index.php");
 
 $logged = false;
+$owner = false;
 if(isset($_SESSION['login']))
 {
-    $users = $ctrlParticipates->getUserWhichContributes($_GET['project_id']);
+    $users = $ctrlParticipates->getUserWhichContributes($_GET["project_id"]);
     $line;
-    while($line = $users->fetch_assoc())
+     while($line = $users->fetch_assoc())
     {
-	if($line['login'] == $_SESSION['login'])
-	    $logged = true;
-    }
+        if($line['login'] == $_SESSION['login'])
+            $logged = true;
+            }
+    $users2 = $ctrlProject->getIDProductOwner($_GET["project_id"]);
+    $line2;
+    while ($line2 = $users2->fetch_assoc())
+        {
+            if ($line2['login'] == $_SESSION['login'])
+                $owner = true;
+                }
 }
+        
 
 $inputDescription = $inputEffort = $inputPriority = "";
 $descriptionErr = $effortErr = $priorityErr = "";
@@ -144,6 +161,9 @@ function test_input($data){
 					    <th>Description</th>
 					    <th>Effort</th>
 					    <th>Priority</th>
+<?php global $owner; if($owner) :
+    echo '<th>Owner modifications</th>';
+endif ?>
 					</tr>
 				    </thead>
 				    <tbody>
@@ -152,13 +172,24 @@ function test_input($data){
 					$userStoryList = $ctrlBacklog->getUserStoryFromProject($project_id);
 					$line;
 					while ($line = $userStoryList->fetch_assoc()){
-					    echo '<tr><td>'.$line['us_id'].'</td><td>'.$line['description'].'</td><td>'.$line['effort'].'</td><td>'.$line['priority'].'</td></tr>';
+					    echo '<tr><td>'.$line['us_id'].'</td><td>'.$line['description'].'</td><td>'.$line['effort'].'</td><td>'.$line['priority'].'</td>';
+                        global $owner;
+                        global $logged;
+                        if ($owner && $logged ) : ?> 
+                        <td><a role="button" href="#" 
+                        class="btn btn-primary col-lg-ofsset-1 col-lg-2 col-md-offset-1 col-md-3 col-xs-offset-1 col-xs-3" 
+                            id="changePriority" data-toggle="modal" data-target="#modalPriority" >Change Priority</a></td></tr>
+               <?php endif;
+                    echo '</tr>';
 					}
 					?>
 				    </tbody>
 				</table>
 			    </div>
 			</div>
+
+            <?php include 'modalPriority.php' ?>
+
 		    </div>	    
 		</div>
 
@@ -169,7 +200,7 @@ function test_input($data){
 				     col-md-offset-1 col-md-10 
 				     col-xs-offset-1 col-xs-10"
 			      method="post"
-			      action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+			      action="<?php global $header;?>">
 			    <legend class="title">Create UserStory</legend>
 			    <div class="form-group">
 				<label for="inputDescription">Description de la UserStory</label>

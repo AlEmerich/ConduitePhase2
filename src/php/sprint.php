@@ -6,10 +6,13 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlParticipates.php');
 
 $ctrlSprint = new CtrlSprint();
 $ctrlParticipates = new CtrlParticipates();
-$project_id = "";
+$project_id = 0;
+$header = htmlspecialchars($_SERVER["PHP_SELF"]);
 
-if (isset($_GET["project_id"]))
+if (isset($_GET["project_id"])){
     $project_id = htmlspecialchars($_GET["project_id"]);
+    $header = $header."?project_id=".$project_id;
+}
 else
     header("Location: http://localhost:8000/index.php");
 
@@ -152,7 +155,7 @@ function test_input($data){
 					global $project_id;
 					$list = $ctrlSprint->sprintList($project_id);
 					$line;
-					if($line != FALSE)
+					if($list != FALSE)
 					{
 					    while ($line = $list->fetch_assoc()){
 						echo '<tr><td>'.$line['sprint_id'].'</td><td>'.$line['state'].'</td><td>'.$line['date_start'].'</td><td>'.$line['date_stop'].'</td></tr>';
@@ -173,7 +176,7 @@ function test_input($data){
 				     col-md-offset-1 col-md-10 
 				     col-xs-offset-1 col-xs-10"
 			      method="post"
-			      action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+			      action="<?php global $header;?>">
 			    <legend class="title">Create sprint</legend>
 			    <div class="form-group">
 				<label for="inputState">État du sprint</label>

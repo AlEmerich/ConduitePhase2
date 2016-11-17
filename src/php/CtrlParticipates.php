@@ -40,6 +40,7 @@ class CtrlParticipates extends SqlControleur
 	return $res;
     }
 
+    
     function getUserWhichContributes($project_id)
     {
 	$sql = "SELECT * FROM ((SELECT * FROM Participates NATURAL JOIN User) AS t) WHERE project_id=".$project_id;
