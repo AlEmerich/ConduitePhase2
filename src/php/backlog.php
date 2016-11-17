@@ -25,7 +25,7 @@ $logged = false;
 $owner = false;
 if(isset($_SESSION['login']))
 {
-    $users = $ctrlParticipates->getUserWhichContributes($_GET["project_id"]);
+    $users = $ctrlParticipates->getUserWhichContributes($project_id);
     $line;
      while($line = $users->fetch_assoc())
     {
