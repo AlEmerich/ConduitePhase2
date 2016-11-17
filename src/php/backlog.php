@@ -5,42 +5,33 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlBacklog.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlParticipates.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlProject.php');
 
-
-
 $ctrlBacklog = new CtrlBacklog();
 $ctrlParticipates = new CtrlParticipates();
 $ctrlProject = new CtrlProject();
-$project_id = 0;
-$header = htmlspecialchars($_SERVER["PHP_SELF"]);
+$project_id = "";
 
-
-if (isset($_GET["project_id"])){
+if (isset($_GET["project_id"]))
     $project_id = htmlspecialchars($_GET["project_id"]);
-    $header = $header."?project_id=".$project_id;
-}
 else
-  header("Location: http://localhost:8000/index.php");
+    header("Location: http://localhost:8000/index.php");
 
 $logged = false;
-$owner = false;
+$product_owner = false;
 if(isset($_SESSION['login']))
 {
-    $users = $ctrlParticipates->getUserWhichContributes($project_id);
+    $users = $ctrlParticipates->getUserWhichContributes($_GET['project_id']);
     $line;
-     while($line = $users->fetch_assoc())
+    while($line = $users->fetch_assoc())
     {
-        if($line['login'] == $_SESSION['login'])
-            $logged = true;
-            }
-    $users2 = $ctrlProject->getIDProductOwner($_GET["project_id"]);
-    $line2;
-    while ($line2 = $users2->fetch_assoc())
-        {
-            if ($line2['login'] == $_SESSION['login'])
-                $owner = true;
-                }
+	if($line['login'] == $_SESSION['login'])
+	    $logged = true;
+    }
+
+    $po = $ctrlProject->getProductOwner($project_id);
+    if($line = $po->fetch_assoc())
+	if($line['login'] == $_SESSION['login'])
+	    $product_owner = true; 
 }
-        
 
 $inputDescription = $inputEffort = $inputPriority = "";
 $descriptionErr = $effortErr = $priorityErr = "";
@@ -63,12 +54,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $inputEffort = test_input($_POST["inputEffort"]);
     }
 
-    if (empty($_POST["inputPriority"])){
-        $priorityErr = "Priority value is required";
-        $create = false;
+    if($product_owner)
+    {
+	if (empty($_POST["inputPriority"])){
+            $priorityErr = "Priority value is required";
+            $create = false;
+	}
+	else{
+            $inputPriority = test_input($_POST["inputPriority"]);
+	}
     }
-    else{
-        $inputPriority = test_input($_POST["inputPriority"]);
+    else
+    {
+	$inputPriority = 1;
     }
 
     if (empty($_POST["project_id"])){
@@ -96,11 +94,12 @@ function test_input($data){
     <head>
 	<?php include '../provideapi.php'; ?>
 	
-	<title>Inscription</title>
+	<title>Backlog</title>
 	<link rel="stylesheet" type="text/css" href="../css/basic.css">
 	<link href="../css/plugins/morris.css" rel="stylesheet">
 	<meta name="description" content="Outil scrum">
 	<meta name="author" content="Groupe4">
+	<script type="text/javascript" src="http://localhost:8000/js/backlog.js"></script>
     </head>
     
     
@@ -152,47 +151,68 @@ function test_input($data){
 
 		    <div class="panel-body" >
 			<div class="row" >
-			    <div class="col-lg-12 col-md-12 col-xs-12 table-responsive">
-				<table class= "table">
-				    <caption>List of UserStories related to this project</caption>
-				    <thead>
-					<tr>
-					    <th>US number</th>
-					    <th>Description</th>
-					    <th>Effort</th>
-					    <th>Priority</th>
-<?php global $owner; if($owner) :
-    echo '<th>Owner modifications</th>';
-endif ?>
-					</tr>
-				    </thead>
-				    <tbody>
-					<?php
-					global $project_id;
-					$userStoryList = $ctrlBacklog->getUserStoryFromProject($project_id);
-					$line;
-					while ($line = $userStoryList->fetch_assoc()){
-					    echo '<tr><td>'.$line['us_id'].'</td><td>'.$line['description'].'</td><td>'.$line['effort'].'</td><td>'.$line['priority'].'</td>';
-                        global $owner;
-                        global $logged;
-                        if ($owner && $logged ) : ?> 
-                        <td><a role="button" href="#" 
-                        class="btn btn-primary col-lg-ofsset-1 col-lg-2 col-md-offset-1 col-md-3 col-xs-offset-1 col-xs-3" 
-                            id="changePriority" data-toggle="modal" data-target="#modalPriority" >Change Priority</a></td></tr>
-               <?php endif;
-                    echo '</tr>';
-					}
-					?>
-				    </tbody>
-				</table>
-			    </div>
+			    <form action="http://localhost:8000/php/changeprio.php?project_id=<?php global $project_id; echo $project_id; ?>" method="post" >
+				<div class="col-lg-12 col-md-12 col-xs-12 table-responsive">
+				    <table class= "table">
+					<caption>List of UserStories related to this project</caption>
+					<thead>
+					    <tr>
+						<th>US number</th>
+						<th>Description</th>
+						<th>Effort</th>
+						<th>Priority</th>
+					    </tr>
+					</thead>
+					<tbody>
+					    
+					    <?php
+					    global $product_owner;
+					    global $project_id;
+					    
+					    $userStoryList = $ctrlBacklog->getUserStoryFromProject($project_id);
+					    $line;
+					    while ($line = $userStoryList->fetch_assoc()){
+						echo '<tr><td>'.$line['us_id'].'</td><td>'.$line['description'].'</td><td>'.$line['effort'].'</td>';
+						$num = 1;
+						if($product_owner)
+						{
+						    $max = $ctrlBacklog->getNumberOfUS($project_id);
+						    echo '<td><select name="'.$line['us_id'].'" class="usprio form-control">';
+						    while($num <= $max)
+						    {	
+							echo '<option value='.$num;
+							if($num == $line['priority'])
+							    echo ' selected';
+							echo'>'.($num++).'</option>';	
+						    }
+						    echo '</select></td>';
+						}
+						else
+						{
+						    echo '<td>'.$line['priority'].'</td>';
+						}
+					    }
+					    ?>
+					    </tr>
+					</tbody>
+				    </table>
+				</div>
+				<div class="row" >
+				    
+				    <?php global $product_owner; if ($product_owner) : ?>		
+					<input type="submit" name="priosubmit" role="button"
+					       id="prioButton"
+					       disabled="disabled"
+					       class="btn btn-primary col-lg-ofsset-9 col-lg-2 col-md-offset-9 col-md-2 col-xs-offset-9 col-xs-2"
+					       value="Confirm Priority">
+				    <?php endif ?>
+				    
+				</div>
+			    </form>
 			</div>
-
-            <?php include 'modalPriority.php' ?>
-
-		    </div>	    
+		    </div>
 		</div>
-
+		
 		<div class="row">
 		    <?php global $logged; if ($logged): ?>
 			<form class="well 
@@ -200,7 +220,7 @@ endif ?>
 				     col-md-offset-1 col-md-10 
 				     col-xs-offset-1 col-xs-10"
 			      method="post"
-			      action="<?php global $header;?>">
+			      action="<?php global $project_id; echo htmlspecialchars($_SERVER["PHP_SELF"]).'?project_id='.$project_id;?>">
 			    <legend class="title">Create UserStory</legend>
 			    <div class="form-group">
 				<label for="inputDescription">Description de la UserStory</label>
@@ -214,11 +234,13 @@ endif ?>
 				<input name="inputEffort" type="text" class="form-control" value="<?php global $inputEffort; echo $inputEffort; ?>" />
 			    </div>
 
+			    <?php global $product_owner; if($product_owner) : ?>
 			    <div class="form-group">
 				<label for="inputEffort" >Priority</label>
 				<span class = "error">* <?php global $priorityErr; echo $priorityErr; ?></span>
 				<input name="inputPriority" type="text" class="form-control" value="<?php global $inputPriority; echo $inputPriority; ?>" />
 			    </div>
+			    <?php endif ?>
 
 			    <input name="project_id" type="text"  style="display:none" value="<?php global $project_id; echo $project_id; ?>">
 			    <input name="action" type="submit"/>

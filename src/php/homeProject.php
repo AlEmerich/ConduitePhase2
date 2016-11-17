@@ -14,7 +14,11 @@ $ctrlProject = new CtrlProject();
 $ctrlParticipates = new CtrlParticipates();
 $ctrlUser = new CtrlUser();
 
+/**
+ * Get user identity
+ **/
 $logged = false;
+$product_owner = false;
 if(isset($_SESSION['login']))
 {
     $users = $ctrlParticipates->getUserWhichContributes($_GET['project_id']);
@@ -24,6 +28,11 @@ if(isset($_SESSION['login']))
 	if($line['login'] == $_SESSION['login'])
 	    $logged = true;
     }
+
+    $po = $ctrlProject->getProductOwner($project_id);
+    if($line = $po->fetch_assoc())
+	if($line['login'] == $_SESSION['login'])
+	    $product_owner = true;
 }
 
 $current = $ctrlProject->getProject(htmlspecialchars($project_id))->fetch_assoc();
@@ -100,7 +109,7 @@ $current = $ctrlProject->getProject(htmlspecialchars($project_id))->fetch_assoc(
 			</div>
 		    </div>
 		    
-		    <div class="panel-body">
+		    <div class="panel-body container-fluid">
 			<div class="row" >
 			    <div class="col-lg-12 col-md-12 col-xs-12 text-center">
 				<b>Link to Github repository:</b> <?php echo '<a href="'.$current['link_repository'].'">'.$current['link_repository'].'</a>'; ?>
@@ -130,10 +139,10 @@ $current = $ctrlProject->getProject(htmlspecialchars($project_id))->fetch_assoc(
 				</table>
 			    </div>
 			    
-			    <div class="row col-lg-ofsset-1 col-lg-3 col-md-offset-1 col-md-3 col-xs-offset-1 col-xs-3" >
+			    <div class="col-lg-ofsset-1 col-lg-3 col-md-offset-1 col-md-3 col-xs-offset-1 col-xs-3" >
 				<div class="panel panel-default">
 				    <div class="panel-heading">Product Owner
-					<?php global $logged; if($logged) :  ?>
+					<?php global $product_owner; if($product_owner) :  ?>
 					    <a class="btn btn-default pull-right"
 					       style="padding-top:1px;padding-bottom:1px;padding-left:3px;padding-right:3px"
 					       href="#" role="button" id="changePO" data-toggle="modal" data-target="#modalPO">
@@ -168,16 +177,17 @@ $current = $ctrlProject->getProject(htmlspecialchars($project_id))->fetch_assoc(
 					</p>
 				    </div>
 				</div>
-			    </div>
-
-			    <?php global $logged; if ($logged) : ?>
-				
+			    </div>  
+			</div>
+			<div class="row">
+			  
+			    <?php global $logged; if ($logged) : ?>		
 				<a role="button" href="#"
-				   class="btn btn-primary col-lg-ofsset-1 col-lg-2 col-md-offset-1 col-md-3 col-xs-offset-1 col-xs-3"
+				   class="btn btn-primary col-lg-ofsset-1 col-lg-2 col-md-offset-1 col-md-2 col-xs-offset-1 col-xs-2"
 				   id="inviteContributor" data-toggle="modal" data-target="#modalInvite" >Invite contributor</a>
 				
 				<a role="button" href="#" 
-				   class="btn btn-primary col-lg-ofsset-1 col-lg-2 col-md-offset-1 col-md-3 col-xs-offset-1 col-xs-3" 
+				   class="btn btn-primary col-lg-ofsset-1 col-lg-2 col-md-offset-1 col-md-2 col-xs-offset-1 col-xs-2" 
 				   id="deleteContributor" data-toggle="modal" data-target="#modalRemove" >Remove contributor</a>
 			    <?php endif ?>
 			</div>
