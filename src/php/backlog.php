@@ -10,13 +10,17 @@ $project_id = "";
 
 if (isset($_GET["project_id"]))
     $project_id = htmlspecialchars($_GET["project_id"]);
-else
-    header("Location: http://localhost:8000/index.php");
+/*else
+  header("Location: http://localhost:8000/index.php");*/
 
 $logged = false;
 if(isset($_SESSION['login']))
 {
-    $users = $ctrlParticipates->getUserWhichContributes($_GET['project_id']);
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $users = $ctrlParticipates->getUserWhichContributes(test_input($_POST["project_id"]));
+    }else{
+        $users = $ctrlParticipates->getUserWhichContributes($_GET['project_id']);
+    }
     $line;
     while($line = $users->fetch_assoc())
     {
