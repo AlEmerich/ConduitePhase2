@@ -216,21 +216,79 @@ Edition du planning du projet, modification et suppresion des tâches, Kanban et 
 et courbe de vélocité
 
 #US 8, 12, 13, 14, 15, 16, 17
-rework: #US 11,12,13,15,17,16,14
+rework: #US 8, 11,12,13,15,17,16,14
 Effort : 22
 
 *** Tâches
 
 **** User Story 8 
 
-**** User Story 12 
+***** SQL Tâche 1 
+	Créer une table "Tasks" dans notre base de données
+
+***** CTrl Tâche 2
+	Créer "CtrlTasks.php" qui fera le lien entre la View et le SQL
+
+**** User Story 11
+
+***** Ctrl tâche 3
+	Créer une requête permettant de liste les tâche d'une US
+
+***** View tâche 4
+	Modifier la page pour afficher cette liste
+
+**** User Story 12
+
+***** Ctrl tâche 5
+	Modifier le contrôleur pour modifier et supprimer une tâche
+
+***** View tâche 6
+	Ajouter des boutons pour la modification/suppression
 
 **** User Story 13
 
+***** View tâche 7
+	Créer une page kanban.php (tâbleau, boutons permettant de colonnes)
+
+***** SQL tâche 8
+	Créer une table "Kanban" permettatn de savoir qui s'occupe d'une tâche et l'état de la tâche
+
+***** Ctrl tâche 9
+	Créer un contrôleur permettan d'ajouter et mettre à jour des tâches
+
 **** User Story 14
+
+***** View tâche 10 
+	Permettre de voir la matrice de traçabilité dans la page Kanban
+
+***** SQL tâche 11
+	Modifier table UserStory pour avoir un numéro de commit à ajouter quand US terminée
+
+***** Ctrl tâche 12
+	Modifier CtrlUserStory pour ajouter un numéro de commit
 
 **** User Story 15
 
+***** View tâche 13
+	Ajouter une page homeSprint.php
+
 **** User Story 16
 
+***** View tâche 14
+	Modifier homeProject pour avoir accès aux infos manquantes
+
 **** User Story 17
+
+***** Ctrl tâche 15
+	Ajouter un contrôleur permettant de récupérer les données utiles pour la courbe de vélocité
+
+***** View tâche 16
+	Faire en sorte quela courbe se trace en fonction de ces données
+
+***** SQL tâche 17
+	Modifier la table relationSprintUS pour ajouter un booléen quipermettra de savoir si une US a bien été terminée dans le sprint correspondant
+
+**** All
+
+***** Tests tâche 18
+	Ajouter des tests pour toutes ces fonctionnalités
