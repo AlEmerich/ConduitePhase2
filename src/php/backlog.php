@@ -38,6 +38,7 @@ $descriptionErr = $effortErr = $priorityErr = "";
 
 $create = true;
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    
     if (empty($_POST["inputDescription"])){
         $descriptionErr = "UserStory description is required";
         $create = false;
@@ -54,29 +55,79 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $inputEffort = test_input($_POST["inputEffort"]);
     }
 
-    if($product_owner)
+    if(!empty($_POST["createUS"]))
     {
-	if (empty($_POST["inputPriority"])){
-            $priorityErr = "Priority value is required";
-            $create = false;
+	if($product_owner)
+	{
+	    if (empty($_POST["inputPriority"])){
+		$priorityErr = "Priority value is required";
+		$create = false;
+	    }
+	    else{
+		$inputPriority = test_input($_POST["inputPriority"]);
+	    }
+	}
+	else
+	{
+	    $inputPriority = 1;
+	}
+	
+	if (empty($_POST["project_id"])){
+            $create=false;
 	}
 	else{
-            $inputPriority = test_input($_POST["inputPriority"]);
+            $project_id = test_input($_POST["project_id"]);
+	}
+	if($create){
+	    $num_in_pro = $ctrlBacklog->getNumberOfUS($project_id);
+            $ctrlBacklog->createUserStory($num_in_pro+1,$project_id,
+					  $inputDescription, $inputEffort,
+					  $inputPriority);
 	}
     }
-    else
+    elseif(!empty($_POST['modify']))
     {
-	$inputPriority = 1;
+	$modify = true;
+	if(!empty($_POST['inputDescription']))
+	{
+	    $inputDescription = test_input($_POST['inputDescription']);
+	}
+	else
+	{
+	    $modify = false;
+	}
+	if(!empty($_POST['inputEffort']))
+	{
+	    $inputEffort = test_input($_POST['inputEffort']);
+	}
+	else
+	{
+	    $modify = false;
+	}
+	$nb_id;
+	if(!empty($_POST['nbid']))
+	{
+	    $nb_id = test_input($_POST['nbid']);
+	}
+	else
+	{
+	    $modify = false;
+	}
+	if($modify)
+	{
+	    $us_id = $ctrlBacklog->getUserStoryWithNumberInProject($nb_id,$project_id)->fetch_assoc()['us_id'];
+	    $ctrlBacklog->updateUserStoryEffortDesc($us_id,$inputDescription,$inputEffort);
+	}
     }
-
-    if (empty($_POST["project_id"])){
-        $create=false;
-    }
-    else{
-        $project_id = test_input($_POST["project_id"]);
-    }
-    if($create){
-        $ctrlBacklog->createUserStory($project_id, $inputDescription, $inputEffort, $inputPriority);
+    elseif(!empty($_POST['remove']))
+    {
+	$nb_id;
+	if(!empty($_POST['nbid']))
+	{
+	    $nb_id = test_input($_POST['nbid']);
+	}
+	$us_id = $ctrlBacklog->getUserStoryWithNumberInProject($nb_id,$project_id)->fetch_assoc()['us_id'];
+	$ctrlBacklog->deleteUserStory($us_id);
     }
 }
 
@@ -157,6 +208,9 @@ function test_input($data){
 					<caption>List of UserStories related to this project</caption>
 					<thead>
 					    <tr>
+						<?php global $logged; if($logged) : ?>
+						    <th></th>
+						<?php endif ?>
 						<th>US number</th>
 						<th>Description</th>
 						<th>Effort</th>
@@ -164,15 +218,27 @@ function test_input($data){
 					    </tr>
 					</thead>
 					<tbody>
-					    
 					    <?php
 					    global $product_owner;
 					    global $project_id;
+					    global $logged;
 					    
 					    $userStoryList = $ctrlBacklog->getUserStoryFromProject($project_id);
 					    $line;
 					    while ($line = $userStoryList->fetch_assoc()){
-						echo '<tr><td>'.$line['us_id'].'</td><td>'.$line['description'].'</td><td>'.$line['effort'].'</td>';
+						echo '<tr>';
+						if($logged)
+						{
+						    echo '<td><a class="btn btn-default"
+					                 style="padding-top:1px;padding-bottom:1px;padding-left:3px;padding-right:3px"
+					                 href="#" role="button" id="changeUS"
+                                                         data-toggle="modal" data-target="#modalUS'.$line['number_in_project'].'">
+						          <i class="fa fa-pencil-square-o" aria-hidden="true">
+						          </i>
+					              </a></td>';
+						}
+						echo '<td>'.$line['number_in_project'].'</td>';
+						echo '<td>'.$line['description'].'</td><td>'.$line['effort'].'</td>';
 						$num = 1;
 						if($product_owner)
 						{
@@ -191,9 +257,9 @@ function test_input($data){
 						{
 						    echo '<td>'.$line['priority'].'</td>';
 						}
+						echo '</tr>';
 					    }
 					    ?>
-					    </tr>
 					</tbody>
 				    </table>
 				</div>
@@ -203,7 +269,8 @@ function test_input($data){
 					<input type="submit" name="priosubmit" role="button"
 					       id="prioButton"
 					       disabled="disabled"
-					       class="btn btn-primary col-lg-ofsset-9 col-lg-2 col-md-offset-9 col-md-2 col-xs-offset-9 col-xs-2"
+					       class="btn btn-primary col-lg-ofsset-9 col-lg-2 
+						      col-md-offset-9 col-md-2 col-xs-offset-9 col-xs-2"
 					       value="Confirm Priority">
 				    <?php endif ?>
 				    
@@ -220,35 +287,47 @@ function test_input($data){
 				     col-md-offset-1 col-md-10 
 				     col-xs-offset-1 col-xs-10"
 			      method="post"
-			      action="<?php global $project_id; echo htmlspecialchars($_SERVER["PHP_SELF"]).'?project_id='.$project_id;?>">
+			      action="<?php global $project_id; 
+				      echo htmlspecialchars($_SERVER["PHP_SELF"]).'?project_id='.$project_id;?>">
 			    <legend class="title">Create UserStory</legend>
 			    <div class="form-group">
-				<label for="inputDescription">Description de la UserStory</label>
+				<label for="inputDescription">UserStory description</label>
 				<span class ="error">* <?php global $descriptionErr; echo $descriptionErr; ?></span>
-				<input name="inputDescription" type="text" class="form-control" value="<?php global $inputDescription; echo $inputDescription; ?>" />
+				<input name="inputDescription" type="text"
+				       class="form-control" value="<?php global $inputDescription; echo $inputDescription; ?>" />
 			    </div>
 
 			    <div class="form-group">
-				<label for="inputEffort" >Effort</label>
-				<span class = "error">* <?php global $effortErr; echo $effortErr; ?></span>
-				<input name="inputEffort" type="text" class="form-control" value="<?php global $inputEffort; echo $inputEffort; ?>" />
+				<label for="inputEffort">Select Effort:</label>
+				<select name="inputEffort" class="form-control" >
+				    <?php
+				    $antelast = $last = 1;
+				    echo '<option>1</option>';
+				    while($fibo < 100)
+				    {
+					$fibo = $antelast + $last;
+					echo '<option>'.$fibo.'</option>';
+					$antelast = $last;
+					$last = $fibo;
+				    }
+				    ?>
+				</select>
 			    </div>
-
+			    
 			    <?php global $product_owner; if($product_owner) : ?>
-			    <div class="form-group">
-				<label for="inputEffort" >Priority</label>
-				<span class = "error">* <?php global $priorityErr; echo $priorityErr; ?></span>
-				<input name="inputPriority" type="text" class="form-control" value="<?php global $inputPriority; echo $inputPriority; ?>" />
-			    </div>
+				<div class="form-group">
+				    <label for="inputEffort" >Priority</label>
+				    <span class = "error">* <?php global $priorityErr; echo $priorityErr; ?></span>
+				    <input name="inputPriority" type="text" class="form-control" value="<?php global $inputPriority; echo $inputPriority; ?>" />
+				</div>
 			    <?php endif ?>
 
-			    <input name="project_id" type="text"  style="display:none" value="<?php global $project_id; echo $project_id; ?>">
-			    <input name="action" type="submit"/>
-			    
-			    
+			    <input name="project_id" type="text"  style="display:none" value="<?php global $project_id; echo $project_id; ?>"/>
+			    <input name="createUS" type="submit" value="Create"/>
 			</form>
 		    <?php endif ?>
 		</div>
+		<?php include 'modalChangeUs.php' ?>
 	    </div>
 	</div>
     </body>

@@ -44,7 +44,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlUser.php');
 		    
 		    echo '<h4>'.$line['project_name'].'</h4></a></div>';
 		    echo '<div class="panel-body"><p> '.$line['description'].'</br>';
-		    echo '<b>Url du dépôt:</b> '.$line['link_repository'].'</br>';
+		    echo '<b>Link repository:</b> '.$line['link_repository'].'</br>';
 		    $po = $ctrlUser->getUser($line['product_owner'])->fetch_assoc();
 		    echo '<b>Product owner:</b> '.$po['login'].'</p>';
 		    echo '</div></div>';

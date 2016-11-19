@@ -6,10 +6,11 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlParticipates.php');
 $ctrlParticipates = new CtrlParticipates();
 
 $project_id = 0;
+$sprint_id = 0;
 
-if (isset($_GET["project_id"])){
-    $project_id = htmlspecialchars($_GET["project_id"]);
-    $header = $header."?project_id=".$project_id;
+if (isset($_GET["project_id"]) && isset($_GET['sprint_id'])){
+    $project_id = htmlspecialchars($_GET['project_id']);
+    $sprint_id = htmlspecialchars($_GET['sprint_id']);
 }
 else
     header("Location: http://localhost:8000/index.php");
@@ -40,7 +41,7 @@ function test_input($data){
     <head>
 	<?php include '../provideapi.php'; ?>
 	
-	<title>Task management</title>
+	<title>Home sprint <?php global $sprint_id; echo $sprint_id; ?></title>
 	<link rel="stylesheet" type="text/css" href="../css/basic.css">
 	<link href="../css/plugins/morris.css" rel="stylesheet">
 	<meta name="description" content="Outil scrum">
@@ -89,11 +90,12 @@ function test_input($data){
 		    <div class="panel-heading">
 			<div class="row" >
 			    <h2 class="text-center">
-				Tasks
+				Home sprint <?php global $sprint_id; echo $sprint_id; ?>
 			    </h2>
 			</div>
-        </div>
-    </div>
-      </div>
+		    </div>
+		</div>
+	    </div>
+	</div>
     </body>
 </html>

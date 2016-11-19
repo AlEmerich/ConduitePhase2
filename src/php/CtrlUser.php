@@ -81,6 +81,27 @@ class CtrlUser extends SqlControleur
         return $res;
     }
 
+    function changeLogin($login,$new_login)
+    {
+	$sql = "UPDATE User SET login='".$new_login."' WHERE login='".$login."'";
+	$res = $this->conn->query($sql);
+	return $res;
+    }
+
+    function changeMail($login,$new_mail)
+    {
+	$sql = "UPDATE User SET mail='".$new_mail."' WHERE login='".$login."'";
+	$res = $this->conn->query($sql);
+	return $res;
+    }
+
+    function changePicture($login,$new_picture)
+    {
+	$sql = "UPDATE User SET picture='".$new_picture."' WHERE login='".$login."'";
+	$res = $this->conn->query($sql);
+	return $res;
+    }
+    
     function deleteUser($id)
     {
         $sql = "DELETE FROM User WHERE dev_id=".$id;
