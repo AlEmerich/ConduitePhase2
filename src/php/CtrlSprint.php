@@ -26,10 +26,19 @@ class CtrlSprint extends SqlControleur
 	return $res;
     }
 
-    function deleteSprint($sprint_id)
+    function deleteSprint($project_id,$sprint_id)
     {
+	$nbtoremove = $this->getSprintNumberWithID($sprint_id)->fetch_assoc()['number_sprint'];
 	$sql = "DELETE FROM Sprint WHERE sprint_id=".$sprint_id;
 	$res = $this->conn->query($sql);
+
+	// Rework number of sprint.
+	$tmp = $nbtoremove;
+	$max = $this->getNumberOfSprint($project_id);
+	while($tmp++ <= $max)
+	{
+	    $this->updateSprintNumber($tmp-1,$tmp,$project_id);
+	}
 	return $res;
     }
 
@@ -39,6 +48,13 @@ class CtrlSprint extends SqlControleur
     function getSprintFromProject($project_id)
     {
 	$sql = "SELECT * FROM Sprint WHERE project_id=".$project_id;
+	$res = $this->conn->query($sql);
+	return $res;
+    }
+
+    function getSprintNumberWithID($sprint_id)
+    {
+	$sql = "SELECT number_sprint FROM Sprint WHERE sprint_id=".$sprint_id;
 	$res = $this->conn->query($sql);
 	return $res;
     }
@@ -61,6 +77,13 @@ class CtrlSprint extends SqlControleur
     function getSprintWithNumberInProject($nb_id,$project_id)
     {
 	$sql = "SELECT * FROM Sprint WHERE number_sprint=".$nb_id." AND project_id=".$project_id;
+	$res = $this->conn->query($sql);
+	return $res;
+    }
+
+    function updateSprintNumber($new_number_sprint,$num,$project_id)
+    {
+	$sql = "UPDATE Sprint SET number_sprint=".$new_number_sprint." WHERE number_sprint=".$num." AND project_id=".$project_id;
 	$res = $this->conn->query($sql);
 	return $res;
     }

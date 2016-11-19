@@ -48,10 +48,26 @@ class CtrlBacklog extends SqlControleur{
         return $res;
     }
 
-    function deleteUserStory($us_id){
+    function deleteUserStory($project_id,$us_id){
+	$nbtoremove = $this->getUSNumberWithID($us_id)->fetch_assoc()['number_in_project'];
         $sql = "DELETE FROM UserStory WHERE us_id=".$us_id;
         $res = $this->connBacklog->query($sql);
+
+	// Rework number of US
+	$tmp = $nbtoremove;
+	$max = $this->getNumberOfUS($project_id);
+	while($tmp++ <= $max)
+	{
+	    $this->updateUSNumber($tmp-1,$tmp,$project_id);
+	}
         return $res;
+    }
+
+    function getUSNumberWithID($us_id)
+    {
+	$sql = "SELECT number_in_project From UserStory WHERE us_id=".$us_id;
+	$res = $this->connBacklog->query($sql);
+	return $res;
     }
 
     function getUserStoryFromProject ($project_id){
@@ -79,6 +95,13 @@ class CtrlBacklog extends SqlControleur{
     function getUserStoryWithNumberInProject($num_in_project,$project_id)
     {
 	$sql = "SELECT * FROM UserStory WHERE project_id=".$project_id." AND number_in_project=".$num_in_project;
+	$res = $this->connBacklog->query($sql);
+	return $res;
+    }
+
+    function updateUSNumber($new,$nb,$project_id)
+    {
+	$sql = "UPDATE UserStory SET number_in_project=".$new." WHERE number_in_project=".$nb." AND project_id=".$project_id;
 	$res = $this->connBacklog->query($sql);
 	return $res;
     }

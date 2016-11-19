@@ -108,7 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 	    $nb_id = test_input($_POST['nbid']);
 	}
 	$sprint_id = $ctrlSprint->getSprintWithNumberInProject($nb_id,$project_id)->fetch_assoc()['sprint_id'];
-	$ctrlSprint->deleteSprint($sprint_id);
+	$ctrlSprint->deleteSprint($project_id,$sprint_id);
     }
 }
 

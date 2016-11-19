@@ -127,7 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 	    $nb_id = test_input($_POST['nbid']);
 	}
 	$us_id = $ctrlBacklog->getUserStoryWithNumberInProject($nb_id,$project_id)->fetch_assoc()['us_id'];
-	$ctrlBacklog->deleteUserStory($us_id);
+	$ctrlBacklog->deleteUserStory($project_id,$us_id);
     }
 }
 
