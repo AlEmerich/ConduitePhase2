@@ -76,7 +76,7 @@ body {
     border: 1px solid rgba(0,0,0,.15);
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    background-color: #fff;
+    background-color: #222;
     -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
     box-shadow: 0 6px 12px rgba(0,0,0,.175);
 }
@@ -228,6 +228,15 @@ ul.alert-dropdown {
 
 /* Custom */
 
+ul.top-nav > a
+{
+    color: black;
+}
+
+nav.navbar.navbar-inverse.navbar-fixed-top
+{
+    background-color: #222;
+}
 
 .error
 {
@@ -236,11 +245,8 @@ ul.alert-dropdown {
 
 #welcome
 {
-    border-radius: 2em;
     font-size: 5em;
     text-align: center;
-
-    border-radius: 25px;
 }
 
 img

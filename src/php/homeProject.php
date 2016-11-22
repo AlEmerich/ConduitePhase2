@@ -103,15 +103,34 @@ $current = $ctrlProject->getProject(htmlspecialchars($project_id))->fetch_assoc(
 		<div class="panel panel-primary ">
 		    <div class="panel-heading">
 			<div class="row" >
-			    <h2 class="text-center">
+			    <h2 class="text-center col-lg-10 col-md-10 col-sm-10 col-xs-10 ">
 				<?php global $current; echo $current['project_name']; ?>
 			    </h2>
+			    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 pull-right">
+				<form class="form-horizontal" role="form" method="post" action="changeProject.php">
+				    <?php
+				    if(isset($_SESSION['login']))
+				    {
+					echo '<div class="form-group">
+		                                  <div class="pull-right">
+                           			  <input id="goToProjectChange" name="submit"
+                                                  type="submit" value="Modify informations"
+                                                  class="btn btn-primary"></div></div>';
+				    }
+				    ?>
+				</form>
+			    </div>
 			</div>
 		    </div>
-		    
+
 		    <div class="panel-body container-fluid">
+			<div class="row">
+			    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+				<b>Description: </b> <?php echo $current['description']; ?>
+			    </div>
+			</div>
 			<div class="row" >
-			    <div class="col-lg-12 col-md-12 col-xs-12 text-center">
+			    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
 				<b>Link to Github repository:</b> <?php echo '<a href="'.$current['link_repository'].'">'.$current['link_repository'].'</a>'; ?>
 			    </div>
 			</div>
@@ -139,7 +158,7 @@ $current = $ctrlProject->getProject(htmlspecialchars($project_id))->fetch_assoc(
 				</table>
 			    </div>
 			    
-			    <div class="col-lg-ofsset-1 col-lg-3 col-md-offset-1 col-md-3 col-xs-offset-1 col-xs-3" >
+			    <div class="col-lg-ofsset-1 col-lg-3 col-md-offset-1 col-md-3 col-sm-ofsset-1 col-lsm-3 col-xs-offset-1 col-xs-3" >
 				<div class="panel panel-default">
 				    <div class="panel-heading">Product Owner
 					<?php global $product_owner; if($product_owner) :  ?>
@@ -183,11 +202,19 @@ $current = $ctrlProject->getProject(htmlspecialchars($project_id))->fetch_assoc(
 			  
 			    <?php global $logged; if ($logged) : ?>		
 				<a role="button" href="#"
-				   class="btn btn-primary col-lg-ofsset-1 col-lg-2 col-md-offset-1 col-md-2 col-xs-offset-1 col-xs-2"
+				   class="btn btn-primary 
+					  col-lg-2 col-lg-offset-1
+					  col-sm-3 col-sm-offset-1
+					  col-md-2 col-md-offset-1
+					  col-xs-3 col-xs-offset-1"
 				   id="inviteContributor" data-toggle="modal" data-target="#modalInvite" >Invite contributor</a>
 				
 				<a role="button" href="#" 
-				   class="btn btn-primary col-lg-ofsset-1 col-lg-2 col-md-offset-1 col-md-2 col-xs-offset-1 col-xs-2" 
+				   class="btn btn-primary 
+					  col-lg-2 col-lg-offset-1
+					  col-md-2 col-sm-offset-1
+					  col-sm-3 col-md-offset-1
+					  col-xs-3 col-xs-offset-1" 
 				   id="deleteContributor" data-toggle="modal" data-target="#modalRemove" >Remove contributor</a>
 			    <?php endif ?>
 			</div>

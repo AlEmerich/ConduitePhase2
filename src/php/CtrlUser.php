@@ -53,9 +53,9 @@ class CtrlUser extends SqlControleur
 	return $result;  
     }
 
-    function updateUser($id, $login, $mdp, $mail)
+    function updateUser($id, $login, $mdp, $mail,$url)
     {
-        $sql = "UPDATE User SET login='".$login."', mdp='".$mdp."', mail='".$mail."' WHERE dev_id=".$id;
+        $sql = "UPDATE User SET login='".$login."', mdp='".$mdp."', mail='".$mail."', picture='".$url."' WHERE dev_id=".$id;
         $res=$this->conn->query($sql);
         return $res;
     }
@@ -81,6 +81,13 @@ class CtrlUser extends SqlControleur
         return $res;
     }
 
+    function getPicture($login)
+    {
+	$sql = "SELECT picture FROM User WHERE login='".$login."'";
+	$res = $this->conn->query($sql);
+	return $res;
+    }
+    
     function changeLogin($login,$new_login)
     {
 	$sql = "UPDATE User SET login='".$new_login."' WHERE login='".$login."'";

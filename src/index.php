@@ -56,9 +56,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 			<div class="container-fluid">
 			    <div class="row">
 				<div class="fa fa-fw col-lg-12">
-				    <?php if(isset($_SESSION['login'])){ echo '<a
-					    href="#" role="button" id="changePicture"
-                                            data-toggle="modal" data-target="#modalPicture">';} ?>
 				    <img class="img-circle "
 					 src="
 					      <?php
@@ -83,13 +80,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 				<div class="fa fa-fw col-lg-12 light-grey">
 				    <h1><?php if(isset($_SESSION['login']))
 					{
-					    echo '<a class="pull-right btn btn-default"
-					    style="padding-top:1px;padding-bottom:1px;padding-left:3px;padding-right:3px"
-					    href="#" role="button" id="changeLogin"
-                                            data-toggle="modal" data-target="#modalLogin">
-					    <i class="fa fa-pencil-square-o" aria-hidden="true">
-					    </i>
-					    </a>';
 					    echo $_SESSION['login'];
 					} ?></h1>
 				</div>
@@ -101,14 +91,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 				    <?php
 				    if(isset($_SESSION['login']))
 				    {
-					echo '<p><a class="pull-right btn btn-default"
-					    style="padding-top:1px;padding-bottom:1px;padding-left:3px;padding-right:3px"
-					    href="#" role="button" id="changeMail"
-                                            data-toggle="modal" data-target="#modalMail">
-					    <i class="fa fa-pencil-square-o" aria-hidden="true">
-					    </i>
-					    </a>';
-					echo '<b>Email address: </b></br>'.$_SESSION['mail'].'</p>';
+					echo '<p><b>Email address: </b></br>'.$_SESSION['mail'].'</p>';
 				    }
 				    else
 				    {
@@ -116,6 +99,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 				    }
 				    ?>
 				    
+				</div>
+			    </div>
+
+			    <div class="row" >
+				<div class="col-lg-12 col-md-12 col-xs-12">
+				    <form class="form-horizontal" role="form" method="post" action="php/changeUser.php">
+					<?php
+					if(isset($_SESSION['login']))
+					{
+					    echo '<div class="form-group">
+		                                  <div class="col-sm-10 col-sm-offset-2">
+                           			  <input id="goToUserChange" name="submit"
+                                                  type="submit" value="Modify informations"
+                                                  class="btn btn-primary"></div></div>';
+					}
+					?>
+				    </form>
 				</div>
 			    </div>
 			</div>
@@ -137,8 +137,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 		
 		?>
 	    </div>
-
-	    <?php include 'php/modalUser.php' ?>
 	</div>
     </body>
 </html>
