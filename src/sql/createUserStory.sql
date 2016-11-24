@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS `UserStory` (
   `description` text NOT NULL,
   `effort` int(10) NOT NULL,
   `priority` int(10) NOT NULL,
+  `commit` TEXT,
   PRIMARY KEY  (`us_id`),
 	FOREIGN KEY (project_id) REFERENCES Project(project_id)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;

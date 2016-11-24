@@ -12,13 +12,13 @@
 |          |                                 |Tâche 8, Dev : Matthias Duffour  |
 |Tâche 9   |                                 |                                 |
 |Tâche 10  |                                 |                                 |
-|          |Tâche 11, Dev : Matthias Duffour |                                 |
+|          |                                 |Tâche 11, Dev : Matthias Duffour |
 |Tâche 12  |                                 |                                 |
 |Tâche 13  |                                 |                                 |
 |Tâche 14  |                                 |                                 |
 |Tâche 15  |                                 |                                 |
 |Tâche 16  |                                 |                                 |
-|Tâche 17  |    		             |                                 |
+|          |Tâche 17, Dev : Matthias Duffour |                                 |
 |Tâche 18  |                                 |                                 |
 
        
