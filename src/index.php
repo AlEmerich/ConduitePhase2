@@ -109,7 +109,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 					if(isset($_SESSION['login']))
 					{
 					    echo '<div class="form-group">
-		                                  <div class="col-sm-10 col-sm-offset-2">
+		                                  <div class="col-lg-offset-1
+                                                       col-md-offset-1 col-sm-offset-1 
+                                                       col-xs-offset-1">
                            			  <input id="goToUserChange" name="submit"
                                                   type="submit" value="Modify informations"
                                                   class="btn btn-primary"></div></div>';

@@ -14,6 +14,8 @@ $ctrlProject = new CtrlProject();
 $ctrlParticipates = new CtrlParticipates();
 $ctrlUser = new CtrlUser();
 
+$whatfile = "homeproject";
+
 /**
  * Get user identity
  **/
@@ -44,8 +46,8 @@ $current = $ctrlProject->getProject(htmlspecialchars($project_id))->fetch_assoc(
     <head>
 	<?php include '../provideapi.php'; ?>
 	
-	<title>Inscription</title>
-	<link rel="stylesheet" type="text/css" href="../css/basic.css">
+	<title><?php echo $current['project_name']; ?></title>
+	
 	<meta name="description" content="Outil scrum">
 	<meta name="author" content="Groupe4">
     </head>
@@ -57,22 +59,7 @@ $current = $ctrlProject->getProject(htmlspecialchars($project_id))->fetch_assoc(
 		
 		<?php include 'topmenu.php'; ?>
 
-		<div class="collapse navbar-collapse navbar-ex1-collapse">
-		    <ul class="nav navbar-nav side-nav">
-			<li class="active">
-			    <a href="http://localhost:8000/php/homeProject.php?project_id=<?php global $project_id; echo $project_id; ?>"><i class="fa fa-fw fa-desktop"></i> Home Project</a>
-			</li>
-			<li>
-			    <a href="http://localhost:8000/php/backlog.php?project_id=<?php global $project_id; echo $project_id; ?>"><i class="fa fa-fw fa-table"></i> Backlog</a>
-			</li>
-			<li>
-			    <a href="http://localhost:8000/php/sprint.php?project_id=<?php global $project_id; echo $project_id; ?>"><i class="fa fa-fw fa-dashboard"></i> Sprints</a>
-			</li>
-			<li>
-			    <a href="http://localhost:8000/php/curve.php?project_id=<?php global $project_id; echo $project_id; ?>"><i class="fa fa-fw fa-bar-chart-o"></i> Velocity Curve</a>
-			</li>
-		    </ul>
-		</div>
+		<?php include 'sidebar.php'; ?>
 	    </nav>
 
 	    
@@ -107,7 +94,7 @@ $current = $ctrlProject->getProject(htmlspecialchars($project_id))->fetch_assoc(
 				<?php global $current; echo $current['project_name']; ?>
 			    </h2>
 			    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 pull-right">
-				<form class="form-horizontal" role="form" method="post" action="changeProject.php">
+				<form class="form-horizontal" role="form" method="post" action="changeProject.php?project_id=<?php echo $_GET['project_id']; ?>">
 				    <?php
 				    if(isset($_SESSION['login']))
 				    {
@@ -125,7 +112,10 @@ $current = $ctrlProject->getProject(htmlspecialchars($project_id))->fetch_assoc(
 
 		    <div class="panel-body container-fluid">
 			<div class="row">
-			    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+			    <div class="col-lg-offset-1 col-lg-10 
+					col-md-offset-1 col-md-10 
+					col-sm-offset-1 col-sm-10 
+					col-xs-offset-1 col-xs-10">
 				<b>Description: </b> <?php echo $current['description']; ?>
 			    </div>
 			</div>

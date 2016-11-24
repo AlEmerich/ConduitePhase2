@@ -47,7 +47,7 @@ class CtrlSprint extends SqlControleur
      **/
     function getSprintFromProject($project_id)
     {
-	$sql = "SELECT * FROM Sprint WHERE project_id=".$project_id;
+	$sql = "SELECT * FROM Sprint WHERE project_id=".$project_id.' ORDER BY number_sprint';
 	$res = $this->conn->query($sql);
 	return $res;
     }

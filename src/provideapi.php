@@ -25,3 +25,16 @@
         Importing javascript bootstrap.
       -->
      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+     <!--
+	  Custom
+	-->
+     <link rel="stylesheet" type="text/css" href="http://localhost:8000/css/basic.css">
+     <script type="text/javascript" src="http://localhost:8000/js/menu.js"></script>
+     <link href="../css/plugins/morris.css" rel="stylesheet">
+     <script type="text/javascript" src="http://localhost:8000/js/backlog.js"></script>
+     <link href="../css/plugins/morris.css" rel="stylesheet">
+     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+     <script type="text/javascript" src="http://localhost:8000/js/calendar.js" ></script>

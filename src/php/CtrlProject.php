@@ -25,7 +25,14 @@ class CtrlProject extends SqlControleur
 
     function updateProject($id, $project_name, $link_repository, $product_owner)
     {
-        $sql = "UPDATE User SET project_name='".$project_name."', link_repository='".$link_repository."', product_owner='".$product_owner."' WHERE id=".$id;
+        $sql = "UPDATE Project SET project_name='".$project_name."', link_repository='".$link_repository."', product_owner='".$product_owner."' WHERE project_id=".$id;
+        $res=$this->conn->query($sql);
+        return $res;
+    }
+
+    function updateProjectWithoutPO($id,$project_name,$link_repository,$description)
+    {
+	$sql = "UPDATE Project SET project_name='".$project_name."', link_repository='".$link_repository."', description='".$description."' WHERE project_id=".$id;
         $res=$this->conn->query($sql);
         return $res;
     }

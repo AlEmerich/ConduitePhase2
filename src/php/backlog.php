@@ -10,6 +10,8 @@ $ctrlParticipates = new CtrlParticipates();
 $ctrlProject = new CtrlProject();
 $project_id = "";
 
+$whatfile = "backlog";
+
 if (isset($_GET["project_id"]))
     $project_id = htmlspecialchars($_GET["project_id"]);
 else
@@ -146,11 +148,8 @@ function test_input($data){
 	<?php include '../provideapi.php'; ?>
 	
 	<title>Backlog</title>
-	<link rel="stylesheet" type="text/css" href="../css/basic.css">
-	<link href="../css/plugins/morris.css" rel="stylesheet">
 	<meta name="description" content="Outil scrum">
 	<meta name="author" content="Groupe4">
-	<script type="text/javascript" src="http://localhost:8000/js/backlog.js"></script>
     </head>
     
     
@@ -161,33 +160,8 @@ function test_input($data){
 
 		<?php include 'topmenu.php'; ?>
 		<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-		<div class="collapse navbar-collapse navbar-ex1-collapse">
-		    <ul class="nav navbar-nav side-nav">
-			<li>
-			    <a href=
-			       <?php global $project_id;
-			       echo '"http://localhost:8000/php/homeProject.php?project_id='.$project_id.'"';?>
-			    ><i class="fa fa-fw fa-desktop"></i> Home Project</a>
-			</li>
-			<li class="active">
-			    <a href=
-			       <?php global $project_id;
-			       echo '"http://localhost:8000/php/backlog.php?project_id='.$project_id.'"';?>
-			    ><i class="fa fa-fw fa-table"></i> Backlog</a>
-			</li>
-			<li>
-			    <a href=
-			       <?php global $project_id;
-			       echo '"http://localhost:8000/php/sprint.php?project_id='.$project_id.'"';?>
-			    ><i class="fa fa-fw fa-dashboard"></i> Sprints</a>
-			</li>
-			<li>
-			    <a href=
-			       <?php global $project_id;
-			       echo '"http://localhost:8000/php/curve.php?project_id='.$project_id.'"';?>><i class="fa fa-fw fa-bar-chart-o"></i> Velocity Curve</a>
-			</li>
-		    </ul>
-		</div>
+		
+		<?php include 'sidebar.php'; ?>
 		<!-- /.navbar-collapse -->
 	    </nav>
 	    <div id="page-wrapper" >

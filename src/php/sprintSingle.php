@@ -2,15 +2,21 @@
 session_start();
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlParticipates.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlSprint.php');
+
+$whatfile = "sprint";
 
 $ctrlParticipates = new CtrlParticipates();
+$ctrlSprint = new CtrlSprint();
 
 $project_id = 0;
 $sprint_id = 0;
+$sprint_nb = 0;
 
 if (isset($_GET["project_id"]) && isset($_GET['sprint_id'])){
     $project_id = htmlspecialchars($_GET['project_id']);
     $sprint_id = htmlspecialchars($_GET['sprint_id']);
+    $sprint_nb = $ctrlSprint->getSprintNumberWithID($sprint_id)->fetch_assoc()['number_sprint'];
 }
 else
     header("Location: http://localhost:8000/index.php");
@@ -42,8 +48,6 @@ function test_input($data){
 	<?php include '../provideapi.php'; ?>
 	
 	<title>Home sprint <?php global $sprint_id; echo $sprint_id; ?></title>
-	<link rel="stylesheet" type="text/css" href="../css/basic.css">
-	<link href="../css/plugins/morris.css" rel="stylesheet">
 	<meta name="description" content="Outil scrum">
 	<meta name="author" content="Groupe4">
     </head>
@@ -56,33 +60,7 @@ function test_input($data){
 
 		<?php include 'topmenu.php'; ?>
 		<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-		<div class="collapse navbar-collapse navbar-ex1-collapse">
-		    <ul class="nav navbar-nav side-nav">
-			<li>
-			    <a href=
-			       <?php global $project_id;
-			       echo '"http://localhost:8000/php/homeProject.php?project_id='.$project_id.'"';?>
-			    ><i class="fa fa-fw fa-desktop"></i> Home Project</a>
-			</li>
-			<li>
-			    <a href=
-			       <?php global $project_id;
-			       echo '"http://localhost:8000/php/backlog.php?project_id='.$project_id.'"';?>
-			    ><i class="fa fa-fw fa-table"></i> Backlog</a>
-			</li>
-			<li class="active">
-			    <a href=
-			       <?php global $project_id;
-			       echo '"http://localhost:8000/php/sprint.php?project_id='.$project_id.'"';?>
-			    ><i class="fa fa-fw fa-dashboard"></i> Sprints</a>
-			</li>
-			<li>
-			    <a href=
-			       <?php global $project_id;
-			       echo '"http://localhost:8000/php/curve.php?project_id='.$project_id.'"';?>><i class="fa fa-fw fa-bar-chart-o"></i> Velocity Curve</a>
-			</li>
-		    </ul>
-		</div>
+		<?php include 'sidebar.php'; ?>
 		<!-- /.navbar-collapse -->
 	    </nav>
 	    <div id="page-wrapper" >
@@ -90,7 +68,7 @@ function test_input($data){
 		    <div class="panel-heading">
 			<div class="row" >
 			    <h2 class="text-center">
-				Home sprint <?php global $sprint_id; echo $sprint_id; ?>
+				Home sprint <?php global $sprint_nb; echo $sprint_nb; ?>
 			    </h2>
 			</div>
 		    </div>

@@ -1,10 +1,14 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlSprint.php');
 /* Menu name */
 $user = "Visitor";
+$ctrlS = new CtrlSprint();
+
 if(isset($_SESSION['login']))
 {
     $user = $_SESSION['login'];
 }
+
 ?>
 
 <!-- Brand and toggle get grouped for better mobile display -->

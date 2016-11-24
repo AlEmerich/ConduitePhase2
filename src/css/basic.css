@@ -283,4 +283,81 @@ img
     margin-top: 5px;
 }
 
-					     
+/*** SPRINTS MENU ***/
+
+#lisprint > a
+{
+    padding-left: 0;
+    padding-right: 0;
+    display: inline;
+    height: 45px;
+    width: 170px;
+    background-color: #222;
+}
+
+button#ddl
+{
+    margin: 0;
+}
+
+.side-nav #lisprint a:hover {
+        outline: none;
+        background-color: transparent !important;
+    }
+
+#lisprint > a > button
+{
+    background-color: #222;
+    font-size: 13px;
+    font-weight: 300;
+    text-decoration: none;
+    color: white;
+    margin-left: 0;
+    width: 187px;
+    height: 45px;
+}
+
+.active, #lisprint.active,
+#lisprint.active > a > button#sprintsmenu,
+#lisprint.active > a
+{
+    background-color: #006687;
+    outline: none;
+}
+
+#lisprint > a > button#sprintsmenu:hover
+		 {
+		     background-color: #000;
+		 }
+
+#sprintsmenu
+{  
+    text-align: left;
+}
+
+#ddl
+{
+    background-color: transparent;
+    height: 40px;
+    margin: 0;
+    color: white;
+    outline: none;
+}
+
+#lisprint > ul
+{
+    position: static;
+    float: none;
+    width: auto;
+    margin-top: 0;
+    background-color: transparent;
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    width: 225px;
+}
+
+#ulsprints > li:hover
+		    {
+			background-color: #000;
+		    }
