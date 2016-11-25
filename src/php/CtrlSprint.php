@@ -11,7 +11,6 @@ class CtrlSprint extends SqlControleur
 	global $servername,$username,$password,$dbname;
 	$this->conn = new mysqli($servername,$username,$password,$dbname);
 	echo $this->executequeryfile($this->conn,$_SERVER['DOCUMENT_ROOT'].'/sql/createSprint.sql');
-	
     }
 
     function __destruct()
