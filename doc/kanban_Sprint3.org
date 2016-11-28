@@ -3,7 +3,7 @@
 | TODO     | DOING                           | DONE                            |
 |----------+---------------------------------+---------------------------------|
 |	   |                                 |Tâche 1, Dev : Matthias Duffour  |
-|Tâche 2   |                                 |                                 |
+|          |				     |Tâche 2, Dev : Matthias Duffour  |
 |Tâche 3   |                                 |                                 |
 |Tâche 4   |                                 |                                 |
 |Tâche 5   |                                 |                                 |
