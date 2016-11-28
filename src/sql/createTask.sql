@@ -21,11 +21,9 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 CREATE TABLE IF NOT EXISTS `Task` (
   `task_id` int(10) unsigned NOT NULL auto_increment,
-  `us_id` int(10) unsigned NOT NULL, 
   `description` TEXT NOT NULL,
   `cost` SMALLINT NOT NULL,
-  PRIMARY KEY  (`task_id`),
-	FOREIGN KEY(us_id) REFERENCES UserStory(us_id)
+  PRIMARY KEY  (`task_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
