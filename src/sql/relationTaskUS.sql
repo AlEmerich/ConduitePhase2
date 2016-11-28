@@ -22,7 +22,6 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 CREATE TABLE IF NOT EXISTS `RelationTasksUS` (
   `task_id` int(10) unsigned NOT NULL,
   `us_id` int(10) unsigned NOT NULL,
-  `finished` BOOLEAN NOT NULL,
   KEY `task_id` (`task_id`),
   KEY `us_id` (`us_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
