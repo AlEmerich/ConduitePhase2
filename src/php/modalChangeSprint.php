@@ -22,11 +22,6 @@ while($num++ < $max) :
 			    <input name="inputStart" type="text" class="datepick form-control" value="<?php global $inputStart; echo $inputStart; ?>" />
 			</div>
 
-			<div class="form-group">
-			    <label for="inputStop">Ending date:</label>
-			    <input name="inputStop" type="text" class="datepick form-control" value="<?php global $inputStop; echo $inputStop; ?>" />
-			</div>
-
 			<div style="display:none" class="form-group">
 			    <label for="nbid" ></label>
 			    <input type="text" name="nbid" value="<?php global $num; echo $num; ?>">

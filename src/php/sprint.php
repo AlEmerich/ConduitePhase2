@@ -3,9 +3,12 @@ session_start();
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlSprint.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlParticipates.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlProject.php');
 
 $ctrlSprint = new CtrlSprint();
 $ctrlParticipates = new CtrlParticipates();
+$ctrlProject = new CtrlProject();
+
 $project_id = 0;
 $header = htmlspecialchars($_SERVER["PHP_SELF"]);
 
@@ -30,8 +33,8 @@ if(isset($_SESSION['login']))
     }
 }
 
-$inputState = $inputStart = $inputStop = "";
-$stateErr = $startErr = $stopErr = "";
+$inputStart = $inputStop = "";
+$startErr = $stopErr = "";
 
 $create = true;
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -46,14 +49,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             $inputStart = test_input($_POST["inputStart"]);
 	}
 
-	if (empty($_POST["inputStop"])){
-            $stopErr = "Stopping date is required";
-            $create = false;
-	}
-	else{
-            $inputStop = test_input($_POST["inputStop"]);
-	}
-
 	if (empty($_POST["project_id"])){
             $create=false;
 	}
@@ -62,7 +57,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 	}
 	if($create){
 	    $num = $ctrlSprint->getNumberOfSprint($project_id);
-            $ctrlSprint->createSprint($project_id,$num+1, $inputState, $inputStart, $inputStop);
+	    $duration = $ctrlProject->getSprintDuration($project_id)->fetch_assoc()['sprint_duration'];
+	    $inputStop = $ctrlSprint->getDateStop($inputStart,$duration);
+	    $inputState = getState($inputStart,$inputStop);
+	    
+            $ctrlSprint->createSprint($project_id,$num+1, $inputState, $inputStart);
 	}
     }
     elseif(!empty($_POST['modify']))
@@ -71,15 +70,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 	if(!empty($_POST['inputStart']))
 	{
 	    $inputStart = test_input($_POST['inputStart']);
-	}
-	else
-	{
-	    $modify = false;
-	}
-
-	if(!empty($_POST['inputStop']))
-	{
-	    $inputStop = test_input($_POST['inputStop']);
 	}
 	else
 	{
@@ -99,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 	if($modify)
 	{
 	    $sprint_id = $ctrlSprint->getSprintWithNumberInProject($nb_id,$project_id)->fetch_assoc()['sprint_id'];
-	    $ctrlSprint->updateTime($sprint_id,$inputStart,$inputStop);
+	    $ctrlSprint->updateTime($sprint_id,$inputStart);
 	}
     }
     elseif(!empty($_POST['remove']))
@@ -179,9 +169,7 @@ function getState($date_start,$date_end)
 	    }
 	}
     }
-    
-    
-    
+        
     return $state;
 }
 ?>
@@ -220,6 +208,19 @@ function getState($date_start,$date_end)
 
 		    <div class="panel-body" >
 			<div class="row" >
+			    <span class="col-lg-4 col-md-4col-sm-6 col-xs-8">
+				<b> Sprint duration (days): </b>
+				<span class="col-lg-offset-1 col-md-ofsset-1 col-sm-offset-1 col-xs-offset-1">
+				    <?php
+				    global $ctrlProject;
+				    global $project_id;
+				    $pro = $ctrlProject->getProject($project_id)->fetch_assoc();
+				    echo $pro['sprint_duration'];
+				    ?>
+				</span>
+			    </span>
+			</div>
+			<div class="row" >
 			    <div class="col-lg-12 col-md-12 col-xs-12 table-responsive">
 				<table class= "table">
 				    <caption>List of Sprints related to this project</caption>
@@ -238,6 +239,8 @@ function getState($date_start,$date_end)
 					<?php
 					global $project_id;
 					global $logged;
+					global $ctrlSprint;
+					global $ctrlProject;
 					$list = $ctrlSprint->sprintList($project_id);
 					$line;
 					if($list != FALSE)
@@ -254,9 +257,11 @@ function getState($date_start,$date_end)
 						          </i>
 					              </a></td>';
 						}
+						$duration = $ctrlProject->getSprintDuration($project_id)->fetch_assoc()['sprint_duration'];
+						$date_stop = $ctrlSprint->getDateStop($inputStart,$duration);
 						echo '<td>'.$line['number_sprint'].'</td>';
-						echo '<td>'.getState($line['date_start'],$line['date_stop']).'</td>';
-						echo '<td>'.$line['date_start'].'</td><td>'.$line['date_stop'].'</td>';
+						echo '<td>'.getState($line['date_start'],$date_stop).'</td>';
+						echo '<td>'.$line['date_start'].'</td><td>'.$date_stop.'</td>';
 						if($logged){
 						    echo '<td><a role="button" href="http://localhost:8000/php/sprintSingle.php?sprint_id='.$line['sprint_id'].'&project_id='.$project_id.'"
                                                           class="btn btn-primary col-lg-ofsset-1 col-lg-6 col-md-offset-1 col-md-9 col-xs-offset-1 col-xs-9" id="gotoSprint">Home Sprint</a></td>';
@@ -286,12 +291,6 @@ function getState($date_start,$date_end)
 				<label for="inputStart" >Starting date</label>
 				<span class = "error">* <?php global $startErr; echo $startErr; ?></span>
 				<input name="inputStart" type="text" class="datepick form-control" value="<?php global $inputStart; echo $inputStart; ?>" />
-			    </div>
-
-			    <div class="form-group">
-				<label for="inputStop" >Ending date</label>
-				<span class = "error">* <?php global $stopErr; echo $stopErr; ?></span>
-				<input name="inputStop" type="text" class="datepick form-control" value="<?php global $inputStop; echo $inputStop; ?>" />
 			    </div>
 			    
 			    <input name="project_id" type="text"  style="display:none" value="<?php global $project_id; echo $project_id; ?>"/>

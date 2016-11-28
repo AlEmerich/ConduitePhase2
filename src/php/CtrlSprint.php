@@ -18,9 +18,16 @@ class CtrlSprint extends SqlControleur
 	$this->conn->close();
     }
 
-    function createSprint($project_id,$num_sprint,$state,$date_start,$date_stop)
+    function getDateStop($date_start,$duration)
     {
-	$sql = "INSERT INTO Sprint (project_id, number_sprint, state, date_start, date_stop) VALUES (".$project_id.",".$num_sprint.", '".$state."', '".$date_start."', '".$date_stop."');";
+	$date_stop = new DateTime($date_start);
+	$date_stop->add(new DateInterval('P'.$duration.'D'));
+	return $date_stop->format('Y-m-d');
+    }
+
+    function createSprint($project_id,$num_sprint,$state,$date_start)
+    {
+	$sql = "INSERT INTO Sprint (project_id, number_sprint, date_start) VALUES (".$project_id.",".$num_sprint.",'".$date_start."');";
 	$res = $this->conn->query($sql);
 	return $res;
     }
@@ -94,9 +101,9 @@ class CtrlSprint extends SqlControleur
         return $res;
     }
 
-    function updateTime($sprint_id,$start,$end)
+    function updateTime($sprint_id,$start)
     {
-	$sql = "UPDATE Sprint SET date_start='".$start."', date_stop='".$end."' WHERE sprint_id=".$sprint_id;
+	$sql = "UPDATE Sprint SET date_start='".$start."' WHERE sprint_id=".$sprint_id;
 	$res = $this->conn->query($sql);
 	return $res;
     }

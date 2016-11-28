@@ -18,7 +18,7 @@
 			
 			while($line = $usersIn->fetch_assoc())
 			{
-			    if($line['login'] != $_SESSION['login'])
+			    if($logged && $line['login'] != $_SESSION['login'])
 			    {
 				echo '<div class="list-group-item">';
 				echo '<div class="checkbox">';

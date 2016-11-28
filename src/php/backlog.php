@@ -277,6 +277,7 @@ function test_input($data){
 				    <?php
 				    $antelast = $last = 1;
 				    echo '<option>1</option>';
+				    $fibo = 0;
 				    while($fibo < 100)
 				    {
 					$fibo = $antelast + $last;
