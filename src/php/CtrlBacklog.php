@@ -99,12 +99,20 @@ class CtrlBacklog extends SqlControleur{
 	return $res;
     }
 
-    function updateUSNumber($new,$nb,$project_id)
+    function updateCommit($us_id, $commit)
     {
-	$sql = "UPDATE UserStory SET number_in_project=".$new." WHERE number_in_project=".$nb." AND project_id=".$project_id;
+	$sql = "UPDATE UserStory SET commit=".$commit." WHERE us_id=".$us_id;
 	$res = $this->connBacklog->query($sql);
 	return $res;
     }
+
+    function getCommit( $commit)
+    {
+	$sql = "SELECT * FROM UserStory WHERE commit=".$commit;
+	$res = $this->connBacklog->query($sql);
+	return $res;
+    }
+}
 }
 
 ?>
