@@ -44,4 +44,4 @@ CREATE TABLE IF NOT EXISTS `Kanban` (
 ALTER TABLE `Kanban`
   ADD CONSTRAINT `Kanban_ibfk_1` FOREIGN KEY (`sprint_id`) REFERENCES `Sprint` (`sprint_id`),
   ADD CONSTRAINT `Kanban_ibfk_2` FOREIGN KEY (`task_id`) REFERENCES `Task` (`task_id`),
-  ADD CONSTRAINT `Kanban_ibfk_3` FOREIGN KEY (`dev_id`) REFERENCES `User` (`user_id`);
+  ADD CONSTRAINT `Kanban_ibfk_3` FOREIGN KEY (`dev_id`) REFERENCES `User` (`dev_id`);
