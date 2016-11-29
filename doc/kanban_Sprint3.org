@@ -16,7 +16,7 @@
 |          |                                 | Tâche 12, Dev : Matthias Duffour |
 |          |                                 | Tâche 13, Dev : Guitard Alan     |
 |          |                                 | Tâche 14, Dev : Guitard Alan     |
-|          |Tâche 15, Dev : Matthias Duffour |                                  |
+|          |                                 | Tâche 15, Dev : Matthias Duffour |
 | Tâche 16 |                                 |                                  |
 |          |                                 | Tâche 17, Dev : Matthias Duffour |
 | Tâche 18 |                                 |                                  |
