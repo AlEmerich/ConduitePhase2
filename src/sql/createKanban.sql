@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `Kanban` (
   `state` smallint(6) NOT NULL,
   `dev` int(10) unsigned NOT NULL,
   KEY `sprint_id` (`sprint_id`),
-  KEY `task_id` (`task_id`),
+  KEY `task_id` (`task_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
