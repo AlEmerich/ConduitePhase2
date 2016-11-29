@@ -6,11 +6,11 @@
 |          |       | Tâche 2, Dev : Matthias Duffour  |
 |          |       | Tâche 3, Dev : Guitard Alan      |
 |          |       | Tâche 4, Dev : Guitard Alan      |
-| Tâche 5  |       |                                  |
-| Tâche 6  |       |                                  |
+|          |       | Tâche 5, Dev : Guitard Alan      |
+|          |       | Tâche 6, Dev : Guitard Alan      |
 |          |       | Tâche 7, Dev : Guitard Alan      |
 |          |       | Tâche 8, Dev : Matthias Duffour  |
-| Tâche 9  |       |                                  |
+|          |       | Tâche 9, Dev : Guitard Alan      |
 | Tâche 10 |       |                                  |
 |          |       | Tâche 11, Dev : Matthias Duffour |
 | Tâche 12 |       |                                  |
