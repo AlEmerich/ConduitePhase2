@@ -88,7 +88,7 @@ class CtrlBacklog extends SqlControleur{
     function changePriority($us_id, $new_priority)
     {
         $sql = "UPDATE UserStory SET priority='".$new_priority."' WHERE us_id=".$us_id;
-        $res = $this->connBacklog-> query($sql);
+        $res = $this->connBacklog->query($sql);
         return $res;
     }
 

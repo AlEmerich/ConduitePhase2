@@ -195,6 +195,7 @@ function test_input($data){
 					    <?php
 					    global $product_owner;
 					    global $project_id;
+					    global $ctrlBacklog;
 					    global $logged;
 					    
 					    $userStoryList = $ctrlBacklog->getUserStoryFromProject($project_id);

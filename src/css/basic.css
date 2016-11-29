@@ -361,3 +361,19 @@ button#ddl
 		    {
 			background-color: #000;
 		    }
+
+#tabsbody
+{
+    padding-left: 0;
+    padding-top: 0;
+}
+
+#tabs
+{
+    padding-left: 0;
+}
+
+.tab-pane
+{
+    background-color: white;
+}

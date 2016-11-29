@@ -30,7 +30,7 @@ if(isset($_SESSION['login']))
 {
     $users = $ctrlParticipates->getUserWhichContributes($project_id);
     $line;
-     while($line = $users->fetch_assoc())
+    while($line = $users->fetch_assoc())
     {
         if($line['login'] == $_SESSION['login'])
             $logged = true;
@@ -77,54 +77,27 @@ function test_input($data){
 			    </h2>
 			</div>
 		    </div>
-		    <div class="row" >
-			<div class="panel-body" >
-			    <div class="col-lg-8 col-md-8 col-xs-8 table-responsive">
-				<table class="table" >
-				    <caption>User Story related to the sprint</caption>
-				    <thead>
-					<th>#</th>
-					<th>Description</th>
-				    </thead>
-				    <tbody>
-					<?php
-					global $project_id;
-					global $ctrlRel;
-					global $sprint_id;
-					$us = $ctrlRel->getUSrelated($project_id,$sprint_id);
-					$line;
-					while($line = $us->fetch_assoc())
-					{
-					    echo '<tr>';
-					    echo '<td>'.$line['number_in_project'].'</td>';
-					    echo '<td>'.$line['description'].'</td>';
-					    echo '</tr>';
-					}
-					?>
-				    </tbody>
-				</table>
+		    <div id="tabsbody" class="panel-body" >
+			<div id="tabs" >	
+			    <ul  class="nav nav-pills">
+				<li class="active">
+				    <a href="#UserStoryTab" data-toggle="tab">User Story</a>
+				</li>
+				<li><a href="#Kanban" data-toggle="tab">Kanban</a>
+				</li>
+				<li><a href="#Tasks" data-toggle="tab">Tasks</a>
+				</li>
+			    </ul>
 
-				<div class="row" >
-
-				    <?php global $logged; if ($logged) : ?>		
-					<a role="button" href="#"
-					   class="btn btn-primary 
-						  col-lg-3 col-lg-offset-1
-						  col-sm-3 col-sm-offset-1
-						  col-md-3 col-md-offset-1
-						  col-xs-3 col-xs-offset-1"
-					   id="addUS" data-toggle="modal"
-					   data-target="#modalAddUS">Add US</a>
-					
-					<a role="button" href="#" 
-					   class="btn btn-primary 
-						  col-lg-3 col-lg-offset-1
-						  col-md-3 col-sm-offset-1
-						  col-sm-3 col-md-offset-1
-						  col-xs-3 col-xs-offset-1" 
-					   id="deleteUS" data-toggle="modal"
-					   data-target="#modalRemoveUS" >Remove US</a>
-				    <?php endif ?>
+			    <div class="tab-content clearfix">
+				<div class="tab-pane active" id="UserStoryTab">
+				    <?php include 'UserStoryTab.php'; ?>
+				</div>
+				<div class="tab-pane" id="Kanban">
+				    <?php include 'kanban.php'; ?>
+				</div>
+				<div class="tab-pane" id="Tasks">
+				    <?php include 'tasks.php'; ?>
 				</div>
 			    </div>
 			</div>

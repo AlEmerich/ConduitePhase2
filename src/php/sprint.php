@@ -113,63 +113,27 @@ function test_input($data){
 
 function getState($date_start,$date_end)
 {
-    $today = getdate();
+    $t = getdate();
+    $today = new DateTime($t['year'].'-'.$t['mon'].'-'.$t['mday']);
+    $start = new DateTime($date_start);
+    $end = new DateTime($date_end);
 
-    $ds = explode('-',$date_start);
-    $monthstart = $ds[1];
-    $daystart = $ds[2];
-    $yearstart = $ds[0];
-    $de = explode('-',$date_end);
-    $monthend = $de[1];
-    $dayend = $de[2];
-    $yearend = $de[0];
-
-    $state;
-    
-    if($today['year'] < $yearstart) 
+    $state = "";
+    if($today < $start)
     {
 	$state = "Not started";
     }
     else
     {
-	if($today['mon'] < $monthstart)
+	if($today <= $end)
 	{
-	    $state = "Not started";
+	    $state = "On going";
 	}
 	else
 	{
-	    if($today['mday'] < $daystart)
-	    {
-		$state = "Not started";
-	    }
-	    else
-	    {
-		if($today['year'] > $yearend) 
-		{
-		    $state = "Finished";
-		}
-		else
-		{
-		    if($today['mon'] > $monthend)
-		    {
-			$state = "Finished";
-		    }
-		    else
-		    {
-			if($today['mday'] > $dayend)
-			{
-			    $state = "Finished";
-			}
-			else
-			{
-			    $state = "On going";
-			}
-		    }
-		}
-	    }
+	    $state = "Finished";
 	}
-    }
-        
+    }	
     return $state;
 }
 ?>

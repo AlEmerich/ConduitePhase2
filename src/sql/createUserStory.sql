@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Lun 31 Octobre 2016 à 02:00
+-- Généré le : Lun 28 Novembre 2016 à 17:44
 -- Version du serveur: 5.0.75
 -- Version de PHP: 5.2.6-3ubuntu4.6
 
@@ -21,15 +21,22 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 CREATE TABLE IF NOT EXISTS `UserStory` (
   `us_id` int(10) unsigned NOT NULL auto_increment,
+  `number_in_project` int(11) NOT NULL,
   `project_id` int(10) unsigned NOT NULL,
   `description` text NOT NULL,
   `effort` int(10) NOT NULL,
   `priority` int(10) NOT NULL,
-  `commit` TEXT,
+  `commit` text,
   PRIMARY KEY  (`us_id`),
-	FOREIGN KEY (project_id) REFERENCES Project(project_id)
-) ENGINE=INNODB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  KEY `project_id` (`project_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Contenu de la table `UserStory`
+-- Contraintes pour les tables exportées
 --
+
+--
+-- Contraintes pour la table `UserStory`
+--
+ALTER TABLE `UserStory`
+  ADD CONSTRAINT `UserStory_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `Project` (`project_id`);

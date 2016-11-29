@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Mar 08 Novembre 2016 à 13:53
+-- Généré le : Lun 28 Novembre 2016 à 17:37
 -- Version du serveur: 5.0.75
 -- Version de PHP: 5.2.6-3ubuntu4.6
 
@@ -27,11 +27,6 @@ CREATE TABLE IF NOT EXISTS `Participates` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `Participates`
---
-
-
---
 -- Contraintes pour les tables exportées
 --
 
@@ -39,5 +34,5 @@ CREATE TABLE IF NOT EXISTS `Participates` (
 -- Contraintes pour la table `Participates`
 --
 ALTER TABLE `Participates`
-  ADD CONSTRAINT `Participates_ibfk_4` FOREIGN KEY (`dev_id`) REFERENCES `User` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `Participates_ibfk_3` FOREIGN KEY (`project_id`) REFERENCES `Project` (`project_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `Participates_ibfk_3` FOREIGN KEY (`project_id`) REFERENCES `Project` (`project_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `Participates_ibfk_4` FOREIGN KEY (`dev_id`) REFERENCES `User` (`dev_id`);

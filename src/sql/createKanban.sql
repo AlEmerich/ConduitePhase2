@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Lun 31 Octobre 2016 à 02:00
+-- Généré le : Lun 28 Novembre 2016 à 17:31
 -- Version du serveur: 5.0.75
 -- Version de PHP: 5.2.6-3ubuntu4.6
 
@@ -21,13 +21,25 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 CREATE TABLE IF NOT EXISTS `Kanban` (
   `sprint_id` int(10) unsigned NOT NULL auto_increment,
-  `task_id` int(10) unsigned NOT NULL, 
-  `state` SMALLINT NOT NULL,
-  `dev` TEXT,
-	FOREIGN KEY(sprint_id) REFERENCES Sprint(sprint_id),
-	FOREIGN KEY(task_id) REFERENCES Task(task_id)			
-) ENGINE=INNODB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `task_id` int(10) unsigned NOT NULL,
+  `state` smallint(6) NOT NULL,
+  `dev` text,
+  KEY `sprint_id` (`sprint_id`),
+  KEY `task_id` (`task_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Contenu de la table `Kanban`
 --
+
+
+--
+-- Contraintes pour les tables exportées
+--
+
+--
+-- Contraintes pour la table `Kanban`
+--
+ALTER TABLE `Kanban`
+  ADD CONSTRAINT `Kanban_ibfk_1` FOREIGN KEY (`sprint_id`) REFERENCES `Sprint` (`sprint_id`),
+  ADD CONSTRAINT `Kanban_ibfk_2` FOREIGN KEY (`task_id`) REFERENCES `Task` (`task_id`);

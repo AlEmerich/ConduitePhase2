@@ -10,7 +10,8 @@ class CtrlTask extends SqlControleur
     {
 	global $servername,$username,$password,$dbname;
 	$this->conn = new mysqli($servername,$username,$password,$dbname);
-	echo $this->executequeryfile($this->conn,$_SERVER['DOCUMENT_ROOT'].'/sql/createSprint.sql');
+	echo $this->executequeryfile($this->conn,$_SERVER['DOCUMENT_ROOT'].'/sql/createTask.sql');
+	echo $this->executequeryfile($this->conn,$_SERVER['DOCUMENT_ROOT'].'/sql/relationTaskUS.sql');
     }
 
     function __destruct()
@@ -31,31 +32,29 @@ class CtrlTask extends SqlControleur
 	$sql = "DELETE FROM Task WHERE task_id=".$task_id;
 	$res = $this->conn->query($sql);
 
-/*	// Rework number of sprint.
-	$tmp = $nbtoremove;
-	$max = $this->getNumberOfTask($project_id);
-	while($tmp++ <= $max)
-	{
-	    $this->updateTaskNumber($tmp-1,$tmp,$project_id);
-	}
-	return $res;
-    }*/
-
-    /**
-     * Return all sprint in project.
-     **/
-    function getTaskFromSprint($sprint_id)
-    {
-	$sql = "SELECT * FROM task_id IN (SELECT task_id IN RelationTaskUS WHERE us_id IN (SELECT us_id IN RelationSprintUS WHERE sprint_id=".$sprint_id.')) ORDER BY number_task';
-	$res = $this->conn->query($sql);
-	return $res;
+	/*	// Rework number of sprint.
+	   $tmp = $nbtoremove;
+	   $max = $this->getNumberOfTask($project_id);
+	   while($tmp++ <= $max)
+	   {
+	   $this->updateTaskNumber($tmp-1,$tmp,$project_id);
+	   }
+	   return $res;
+	   }*/
     }
 
     function getTaskNumberWithID($task_id)
     {
-	$sql = "SELECT number_task FROM Task  WHERE task_id=".$task_id;
+	$sql = "SELECT number_task FROM Task WHERE task_id=".$task_id;
 	$res = $this->conn->query($sql);
 	return $res;
+    }
+
+    function updateTask($id,$finished)
+    {
+        $sql = "UPDATE Task SET finished = '".$finished."' WHERE task_id IS '".$id."'";
+        $res = $this->conn->query($sql);
+        return $res;
     }
 
     /**
@@ -71,33 +70,25 @@ class CtrlTask extends SqlControleur
     }
 
     /**
-     * Return the sprint with the number in the project.
+     * Return all task in sprint.
      **/
-    function getTaskWithNumberInProject($nb_id,$us_id)
+    function getTasksFromSprint($project_id,$sprint_id)
     {
-	$sql = "SELECT * FROM Task WHERE number_task=".$nb_id." AND task_id IN (SELECT task_id IN RelationTaskUS WHERE us_id=".$us_id.")";
+	$sql = "SELECT * FROM
+                   ((SELECT task_id FROM
+                      ((SELECT * FROM 
+                         ((SELECT * FROM UserStory 
+                           WHERE project_id=".$project_id.") AS u) 
+                      NATURAL JOIN RelationSprintsUS 
+                      WHERE sprint_id=".$sprint_id.") AS t)
+                   NATURAL JOIN RelationTasksUS) AS w)
+                NATURAL JOIN Task";
 	$res = $this->conn->query($sql);
 	return $res;
     }
 
-    function updateTasknumber($new_number_sprint,$num,$us_id)
+    function updateTaskNumber($num,$new_num,$project_id)
     {
-	$sql = "UPDATE Task SET number_task=".$new_number_sprint." WHERE number_task=".$num." AND task_id IN (SELECT task_id IN RelationTaskUS WHERE us_id=".$project_id.")";
-	$res = $this->conn->query($sql);
-	return $res;
-    }
-
-    function updateTask($id,$finished)
-    {
-        $sql = "UPDATE Task SET finished = '".$finished."' WHERE task_id IS '".$id."'";
-        $res = $this->conn->query($sql);
-        return $res;
-    }
-    
-    function taskList ($sprint_id){
-        $sql = "SELECT * FROM Task WHERE task_id IN (SELECT task_id WHERE us_id IN (SELECT us_id WHERE project_id=".$project_id"))";
-        $res = $this->conn->query($sql);
-        return $res;
     }
 }
 

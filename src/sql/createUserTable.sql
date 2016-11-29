@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Lun 31 Octobre 2016 à 02:00
+-- Généré le : Lun 28 Novembre 2016 à 17:35
 -- Version du serveur: 5.0.75
 -- Version de PHP: 5.2.6-3ubuntu4.6
 
@@ -24,6 +24,6 @@ CREATE TABLE IF NOT EXISTS `User` (
   `login` varchar(50) NOT NULL,
   `mdp` varchar(100) NOT NULL,
   `mail` varchar(50) NOT NULL,
-  PRIMARY KEY(dev_id)
-) ENGINE=INNODB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
+  `picture` text NOT NULL,
+  PRIMARY KEY  (`dev_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;

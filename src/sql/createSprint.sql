@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Lun 31 Octobre 2016 à 02:00
+-- Généré le : Lun 28 Novembre 2016 à 17:34
 -- Version du serveur: 5.0.75
 -- Version de PHP: 5.2.6-3ubuntu4.6
 
@@ -21,14 +21,19 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 CREATE TABLE IF NOT EXISTS `Sprint` (
   `sprint_id` int(10) unsigned NOT NULL auto_increment,
-  `project_id` int(10) unsigned NOT NULL, 
-  `state` TEXT NOT NULL,
-  `date_start` TIME NOT NULL,
-  `date_stop` TIME NOT NULL,
+  `project_id` int(10) unsigned NOT NULL,
+  `number_sprint` int(11) NOT NULL,
+  `date_start` date NOT NULL,
   PRIMARY KEY  (`sprint_id`),
-	FOREIGN KEY(project_id) REFERENCES Project(project_id)
-) ENGINE=INNODB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  KEY `project_id` (`project_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
--- Contenu de la table `Sprint`
+-- Contraintes pour les tables exportées
 --
+
+--
+-- Contraintes pour la table `Sprint`
+--
+ALTER TABLE `Sprint`
+  ADD CONSTRAINT `Sprint_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `Project` (`project_id`);

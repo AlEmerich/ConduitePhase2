@@ -54,7 +54,6 @@ class CtrlRelationSprintUS extends SqlControleur
 	$res = $this->conn->query($sql);
 	return $res;
     }
-
 }
 
 ?>
