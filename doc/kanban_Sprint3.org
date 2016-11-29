@@ -1,7 +1,7 @@
 * KANBAN
 
 | TODO     | DOING                           | DONE                             |
-|----------+-------+----------------------------------|
+|----------+---------------------------------+----------------------------------|
 |          |                                 | Tâche 1, Dev : Matthias Duffour  |
 |          |                                 | Tâche 2, Dev : Matthias Duffour  |
 |          |                                 | Tâche 3, Dev : Guitard Alan      |
@@ -10,10 +10,10 @@
 | Tâche 6  |                                 |                                  |
 |          |                                 | Tâche 7, Dev : Guitard Alan      |
 |          |                                 | Tâche 8, Dev : Matthias Duffour  |
-|          | Tâche 9, Dev : Matthias Duffour |                                  |
+|          |                                 | Tâche 9, Dev : Matthias Duffour  |
 | Tâche 10 |                                 |                                  |
 |          |                                 | Tâche 11, Dev : Matthias Duffour |
-| Tâche 12 |                                 |                                  |
+|          |Tâche 12, Dev : Matthias Duffour |                                  |
 |          |                                 | Tâche 13, Dev : Guitard Alan     |
 |          |                                 | Tâche 14, Dev : Guitard Alan     |
 | Tâche 15 |                                 |                                  |
