@@ -23,10 +23,9 @@ CREATE TABLE IF NOT EXISTS `Kanban` (
   `sprint_id` int(10) unsigned NOT NULL,
   `task_id` int(10) unsigned NOT NULL,
   `state` smallint(6) NOT NULL,
-  `dev_id` int(10) unsigned NOT NULL,
+  `dev` int(10) unsigned NOT NULL,
   KEY `sprint_id` (`sprint_id`),
   KEY `task_id` (`task_id`),
-  KEY `dev_id` (`dev_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
@@ -43,5 +42,4 @@ CREATE TABLE IF NOT EXISTS `Kanban` (
 --
 ALTER TABLE `Kanban`
   ADD CONSTRAINT `Kanban_ibfk_1` FOREIGN KEY (`sprint_id`) REFERENCES `Sprint` (`sprint_id`),
-  ADD CONSTRAINT `Kanban_ibfk_2` FOREIGN KEY (`task_id`) REFERENCES `Task` (`task_id`),
-  ADD CONSTRAINT `Kanban_ibfk_3` FOREIGN KEY (`dev_id`) REFERENCES `User` (`dev_id`);
+  ADD CONSTRAINT `Kanban_ibfk_2` FOREIGN KEY (`task_id`) REFERENCES `Task` (`task_id`);
