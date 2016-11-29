@@ -26,18 +26,18 @@ class CtrlTask extends SqlControleur
 	return $res;
     }
 
-    function deleteTask($project_id,$task_id)
+    function deleteTask($task_id, $sprint_id)
     {
 	$nbtoremove = $this->getTaskNumberWithID($task_id)->fetch_assoc()['number_task'];
 	$sql = "DELETE FROM Task WHERE task_id=".$task_id;
 	$res = $this->conn->query($sql);
 
-	/*	// Rework number of sprint.
+   	// Rework number of tasks.
 	   $tmp = $nbtoremove;
-	   $max = $this->getNumberOfTask($project_id);
+	   $max = $this->getNumberOfTask($sprint_id);
 	   while($tmp++ <= $max)
 	   {
-	   $this->updateTaskNumber($tmp-1,$tmp,$project_id);
+	   $this->updateTaskNumber($tmp-1,$tmp,$sprint_id);
 	   }
 	   return $res;
 	   }*/
@@ -50,8 +50,10 @@ class CtrlTask extends SqlControleur
 	return $res;
     }
 
-    function updateTask($id,$finished)
+    function updateTask($id, $description, $cost, $finished)
     {
+        $sql = "UPDATE Task SET description = '".$description."' WHERE task_id IS '".$id."'";
+        $sql = "UPDATE Task SET cost = '".$cost."' WHERE task_id IS '".$id."'";
         $sql = "UPDATE Task SET finished = '".$finished."' WHERE task_id IS '".$id."'";
         $res = $this->conn->query($sql);
         return $res;
@@ -87,8 +89,11 @@ class CtrlTask extends SqlControleur
 	return $res;
     }
 
-    function updateTaskNumber($num,$new_num,$project_id)
+    function updateTaskNumber($num,$new_num,$sprint_id)
     {
+        $sql = "UPDATE Task SET number_task=".$new_number." WHERE number_sprint=".$num." AND sprint_id=".$sprint_id;
+        $res = $this->conn->query($sql);
+        return $res;
     }
 }
 
