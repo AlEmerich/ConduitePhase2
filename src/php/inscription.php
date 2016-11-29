@@ -123,7 +123,7 @@ function test_input($data) {
 				<h4>Error !</h4>
 				Some fields are non-consistent.
 			    </div>
-			    <input name="action" type="submit"  />
+			    <input name="action" type="submit" value="Confirm" />
 			</form>
 		    </div>
 		</div>

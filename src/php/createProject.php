@@ -95,7 +95,7 @@ function test_input($data){
 			       value="<?php global $inputLinkRepository; echo $inputLinkRepository; ?>" />
 		    </div>
 
-		    <input name="action" type="submit"/>
+		    <input name="action" type="submit" value="Create" />
 		</form>
 	    </div>
 	</div>
