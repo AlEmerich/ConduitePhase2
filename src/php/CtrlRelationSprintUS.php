@@ -57,7 +57,7 @@ class CtrlRelationSprintUS extends SqlControleur
 
     function updateState($us_id, $sprint_id, $newstate)
     {
-        $sql = "UPDATE RelationSprintsUS SET finished=".$newstate." WHERE sprint_id=".$sprint_id." AND us_id=".$us_d;
+        $sql = "UPDATE RelationSprintsUS SET finished=".$newstate." WHERE sprint_id=".$sprint_id." AND us_id=".$us_id;
 	$res = $this->conn->query($sql);
 	return $res;
     }
