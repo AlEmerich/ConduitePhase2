@@ -1,24 +1,24 @@
 * KANBAN
 
-| TODO     | DOING | DONE                             |
-|----------+-------+----------------------------------|
-|          |       | Tâche 1, Dev : Matthias Duffour  |
-|          |       | Tâche 2, Dev : Matthias Duffour  |
-|          |       | Tâche 3, Dev : Guitard Alan      |
-|          |       | Tâche 4, Dev : Guitard Alan      |
-|          |       | Tâche 5, Dev : Guitard Alan      |
-|          |       | Tâche 6, Dev : Guitard Alan      |
-|          |       | Tâche 7, Dev : Guitard Alan      |
-|          |       | Tâche 8, Dev : Matthias Duffour  |
-|          |       | Tâche 9, Dev : Guitard Alan      |
-| Tâche 10 |       |                                  |
-|          |       | Tâche 11, Dev : Matthias Duffour |
-| Tâche 12 |       |                                  |
-|          |       | Tâche 13, Dev : Guitard Alan     |
-|          |       | Tâche 14, Dev : Guitard Alan     |
-| Tâche 15 |       |                                  |
-| Tâche 16 |       |                                  |
-|          |       | Tâche 17, Dev : Matthias Duffour |
-| Tâche 18 |       |                                  |
+| TODO     | DOING | DONE                                                |
+|----------+-------+-----------------------------------------------------|
+|          |       | Tâche 1, Dev : Matthias Duffour                     |
+|          |       | Tâche 2, Dev : Matthias Duffour                     |
+|          |       | Tâche 3, Dev : Guitard Alan                         |
+|          |       | Tâche 4, Dev : Guitard Alan                         |
+|          |       | Tâche 5, Dev : Matthias Duffour / Guitard Alan      |
+|          |       | Tâche 6, Dev : Guitard Alan                         |
+|          |       | Tâche 7, Dev : Guitard Alan                         |
+|          |       | Tâche 8, Dev : Matthias Duffour                     |
+|          |       | Tâche 9, Dev : Matthias Duffour / Guitard Alan      |
+| Tâche 10 |       |                                                     |
+|          |       | Tâche 11, Dev : Matthias Duffour                    |
+|          |       | Tâche 12, Dev : Matthias Duffour                    |
+|          |       | Tâche 13, Dev : Guitard Alan                        |
+|          |       | Tâche 14, Dev : Guitard Alan                        |
+|          |       | Tâche 15, Dev : Matthias Duffour                    |
+| Tâche 16 |       |                                                     |
+|          |       | Tâche 17, Dev : Matthias Duffour                    |
+| Tâche 18 |       |                                                     |
        
 
