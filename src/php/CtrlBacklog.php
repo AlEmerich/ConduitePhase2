@@ -113,6 +113,6 @@ class CtrlBacklog extends SqlControleur{
 	return $res;
     }
 }
-}
+
 
 ?>
