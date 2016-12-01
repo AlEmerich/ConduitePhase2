@@ -294,10 +294,7 @@ Effort : 22
 
 **** All
 
-<<<<<<< HEAD
-
 ***** Tests tâche 18
-=======
+
 ***** Tests tâche 19
->>>>>>> 286da2aa4d7855c4ca033cd18767ea9b6bd54e85
 	Ajouter des tests pour toutes ces fonctionnalités
