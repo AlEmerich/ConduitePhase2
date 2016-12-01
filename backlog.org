@@ -294,5 +294,7 @@ Effort : 22
 
 **** All
 
+***** Tests tâche 18
+
 ***** Tests tâche 19
 	Ajouter des tests pour toutes ces fonctionnalités
