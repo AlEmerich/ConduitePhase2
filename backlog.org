@@ -1,5 +1,5 @@
 * Introduction
-  
+   
   Le backlog est réalisé sur la solution logiciel Waffle.io, qui est un outil de développement de projets fonctionnait en lien avec GitHub.
 
   Lien: https://github.com/AlEmerich/ConduitePhase2
