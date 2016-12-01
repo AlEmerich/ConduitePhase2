@@ -88,8 +88,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 	    
 	    $ctrlRelUS->addTaskToUS($task_id,$us_id);
 
-	    $dev = $ctrlUser->getID($_SESSION['login'])->fetch_assoc()['dev_id'];
-	    $ctrlKanban->createKanban($task_id,0,$dev);
+	    $ctrlKanban->createKanban($task_id,0);
 	}
     }
     elseif(!empty($_POST['modify']))
@@ -106,6 +105,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 	$task_nb = test_input($_POST['nbid']);
 	$task_id = $ctrlTask->getTaskWithNumber($task_nb,$project_id,$sprint_id)->fetch_assoc()['task_id'];
 	$ctrlRelUS->removeTaskToUS($task_id);
+	$ctrlKanban->deleteKanban($task_id);
 	$ctrlTask->deleteTask($project_id,$sprint_id,$task_id);
     }
 }

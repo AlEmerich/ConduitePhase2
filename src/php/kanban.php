@@ -15,6 +15,8 @@
 	    global $ctrlTask;
 	    global $ctrlRelUS;
 	    global $ctrlKanban;
+	    global $ctrlUser;
+	    global $logged;
 
 	    $tasks = $ctrlTask->getTasksFromSprint($project_id,$sprint_id);
 	    $line;
@@ -29,16 +31,28 @@
 		{
 		    if($info['state'] == $i)
 		    {
-			echo '<td class="tdcard">';
-			echo '  <div id="td'.$y.''.$i.'"  class="card event" draggable="true">
+			$drag = 'draggable="true"';
+			$dev = 'None';
+			if($i != 0)
+			{
+			    if($info['dev_id'] !== NULL)
+				$dev = $ctrlUser->getUser($info['dev_id'])->fetch_assoc()['login'];
+
+			    $idstr = $ctrlUser->getID($_SESSION['login'])->fetch_assoc()['dev_id'];
+			    if(!$logged || $info['dev_id'] !== $idstr)
+				$drag = '';
+			}
+			echo '<td id="td_'.$y.'_'.$i.'" class="tdcard">';
+			echo '  <div id="'.$line['task_id'].'_'.$i.'"  class="card event" '.$drag.'>
                                   <div class="card-block">
                                       <h4 class="card-title"><b>Task '.$line['number_task'].'</b></h4>
                                       <p class="card-text">'.$line['description'].'</p>
+                                      <p><b>Dev:</b> <span id="devtask_'.$line['task_id'].'">'.$dev.'</span> </p>
 			        </div>';
 			echo '</div></td>';
 		    }
 		    else
-			echo '<td id="td'.$y.''.$i.'" class="tdcard"></td>';
+			echo '<td id="td_'.$y.'_'.$i.'" class="tdcard"></td>';
 		}
 		echo '</tr>';
 		$y = $y + 1;

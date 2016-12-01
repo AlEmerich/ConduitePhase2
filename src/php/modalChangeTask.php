@@ -20,11 +20,12 @@ while($num++ < $max) :
 		    <div class="modal-body">
 			<div class="form-group">
 			    <label for="inputDescription">Task description</label>
-			    <input name="inputDescription" type="text"
+			    <textarea name="inputDescription" type="text"
 				   class="form-control" value="
                                    <?php 
 				   global $num; global $ctrlTask; global $project_id; global $sprint_id;
-				   echo test_input($ctrlTask->getTaskWithNumber($num,$project_id,$sprint_id)->fetch_assoc()['description']); ?>" />
+				   echo test_input($ctrlTask->getTaskWithNumber($num,$project_id,$sprint_id)->fetch_assoc()['description']); ?>">
+			    </textarea>
 			</div>
 
 			<div class="form-group">

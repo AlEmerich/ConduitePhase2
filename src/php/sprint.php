@@ -190,7 +190,9 @@ function getState($date_start,$date_end)
 				    <caption>List of Sprints related to this project</caption>
 				    <thead>
 					<tr>
-					    <th></th>
+					    <?php global $logged; if($logged) : ?>
+						<th></th>
+					    <?php endif ?>
 					    <th>Sprint Number</th>
 					    <th>State</th>
 					    <th>Starting date</th>
@@ -222,7 +224,7 @@ function getState($date_start,$date_end)
 					              </a></td>';
 						}
 						$duration = $ctrlProject->getSprintDuration($project_id)->fetch_assoc()['sprint_duration'];
-						$date_stop = $ctrlSprint->getDateStop($inputStart,$duration);
+						$date_stop = $ctrlSprint->getDateStop($line['date_start'],$duration);
 						echo '<td>'.$line['number_sprint'].'</td>';
 						echo '<td>'.getState($line['date_start'],$date_stop).'</td>';
 						echo '<td>'.$line['date_start'].'</td><td>'.$date_stop.'</td>';

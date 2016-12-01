@@ -105,9 +105,22 @@ if(isset($_SESSION['login']))
 
 		<?php include 'sidebar.php'; ?>
 	    </nav>
+	    <div id="page-wrapper" >
+		<div class="panel panel-primary">
+		    <div class="panel-heading" >
+			<div class="row" >
+			    <h2 class="text-center">
+				Burndown charts
+			    </h2>
+			</div>
+		    </div>
+		    <div class="panel-body" >
+			<div class="row" >
+			    <div id="velocity_curve"></div>
+			</div>
+		    </div>
+		</div>
+	    </div>
 	</div>
-	<div id="page-wrapper" >
-          <div id="velocity_curve"style="position:absolute; left:100px; width:900px; height:500px"></div>
-      </div>
     </body>
 </html>
