@@ -107,9 +107,7 @@ if(isset($_SESSION['login']))
 	    </nav>
 	</div>
 	<div id="page-wrapper" >
-      <div class="panel panel_primary">
-          <div id="velocity_curve"style="width:900px; height:500px"></div>
+          <div id="velocity_curve"style="position:absolute; left:100px; width:900px; height:500px"></div>
       </div>
-	</div>
     </body>
 </html>
