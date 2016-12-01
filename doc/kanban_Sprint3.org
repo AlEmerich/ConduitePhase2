@@ -18,7 +18,7 @@
 |          |                             | Tâche 14, Dev : Guitard Alan                    |
 |          |                             | Tâche 15, Dev : Guitard Alan                    |
 |          |                             | Tâche 16, Dev : Matthias Duffour                |
-|          | Tâche 17, Dev : Elmer Bayol |                                                 |
+|          |                             | Tâche 17, Dev : Elmer Bayol                     |
 |          |                             | Tâche 18, Dev : Matthias Duffour                |
 | Tâche 19 |                             |                                                 |
        
