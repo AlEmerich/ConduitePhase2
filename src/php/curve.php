@@ -58,13 +58,14 @@ if(isset($_SESSION['login']))
                  $realTotalTime = $realTotalTime + $us['effort'];
              }
              $theoTotalTime = $realTotalTime;
+             echo "['0', ".$theoTotalTime.", ".$realTotalTime." ],";
              $sprintList = $ctrlSprint->getSprintFromProject($project_id);
              $sprintLine;
              $firstLine = true;
-             while($sprintLine = sprintList->fetch_assoc()){
+             while($sprintLine = $sprintList->fetch_assoc()){
                  $usList = $ctrlRelSprintUs->getUSrelated($project_id, $sprintLine['sprint_id']);
                  $usLine;
-                 while($usLine = usList->fetch_assoc()){
+                 while($usLine = $usList->fetch_assoc()){
                      $usFull = $ctrlBacklog->getUserStory($usLine['us_id'])->fetch_assoc();
                      $usTime = $usFull['effort'];
                      if($usLine['finished']!=0){
@@ -75,8 +76,8 @@ if(isset($_SESSION['login']))
                  if(!($firstLine)){
                      echo ",";
                  }
-                 $firtsLine=false;
-                 echo "['".$sprintLine['number_sprint']."'], ".$theoTotalTime.", ".$realTotalTime."]";
+                 $firstLine=false;
+                 echo "['".$sprintLine['number_sprint']."', ".$theoTotalTime.", ".$realTotalTime."]";
              }
 ?>
          ]);
