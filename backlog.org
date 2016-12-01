@@ -1,5 +1,5 @@
 * Introduction
-  
+   
   Le backlog est réalisé sur la solution logiciel Waffle.io, qui est un outil de développement de projets fonctionnait en lien avec GitHub.
 
   Lien: https://github.com/AlEmerich/ConduitePhase2
@@ -256,40 +256,48 @@ Effort : 22
 ***** Ctrl tâche 9
 	Créer un contrôleur permettan d'ajouter et mettre à jour des tâches
 
+***** Ctrl tâche 10
+        Créer un contrôleur pour ajouter une tâche dans le kanban, changer son état 
+	le développeur attribué
+
 **** User Story 14
 
-***** View tâche 10 
+***** View tâche 11 
 	Permettre de voir la matrice de traçabilité dans la page Kanban
 
-***** SQL tâche 11
+***** SQL tâche 12
 	Modifier table UserStory pour avoir un numéro de commit à ajouter quand US terminée
 
-***** Ctrl tâche 12
+***** Ctrl tâche 13
 	Modifier CtrlUserStory pour ajouter un numéro de commit
 
 **** User Story 15
 
-***** View tâche 13
+***** View tâche 14
 	Ajouter une page homeSprint.php
 
 **** User Story 16
 
-***** View tâche 14
+***** View tâche 15
 	Modifier homeProject pour avoir accès aux infos manquantes
 
 **** User Story 17
 
-***** Ctrl tâche 15
+***** Ctrl tâche 16
 	Ajouter un contrôleur permettant de récupérer les données utiles pour la courbe de vélocité
 
-***** View tâche 16
+***** View tâche 17
 	Faire en sorte quela courbe se trace en fonction de ces données
 
-***** SQL tâche 17
-	Modifier la table relationSprintUS pour ajouter un booléen quipermettra de savoir si une US a bien été terminée dans le sprint correspondant
+***** SQL tâche 18
+	Modifier la table relationSprintUS pour ajouter un booléen qui permettra de savoir si une US a bien été terminée dans le sprint correspondant
 
 **** All
 
+<<<<<<< HEAD
 
 ***** Tests tâche 18
+=======
+***** Tests tâche 19
+>>>>>>> 286da2aa4d7855c4ca033cd18767ea9b6bd54e85
 	Ajouter des tests pour toutes ces fonctionnalités

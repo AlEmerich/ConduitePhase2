@@ -10,7 +10,7 @@ class CtrlKanban extends SqlControleur
     {
 	global $servername,$username,$password,$dbname;
 	$this->conn = new mysqli($servername,$username,$password,$dbname);
-	echo $this->executequeryfile($this->conn,$_SERVER['DOCUMENT_ROOT'].'/sql/createSprint.sql');
+	echo $this->executequeryfile($this->conn,$_SERVER['DOCUMENT_ROOT'].'/sql/createKanban.sql');
     }
 
     function __destruct()
@@ -18,16 +18,23 @@ class CtrlKanban extends SqlControleur
 	$this->conn->close();
     }
 
-    function createKanban($sprint_id,$task_sprint,$state,$dev)
+    function createKanban($task_id,$state,$dev)
     {
-	$sql = "INSERT INTO Kanban (sprint_id, task_id, state, dev) VALUES (".$sprint_id.",".$task_id.",".$state.", '".$dev."');";
+	$sql = "INSERT INTO Kanban (task_id, state, dev_id) VALUES (".$task_id.",".$state.", '".$dev."');";
 	$res = $this->conn->query($sql);
 	return $res;
     }
 
-    function updateKanban($sprint_id, $task_id, $state,$dev)
+    function getInfo($task_id)
     {
-	$sql = "UPDATE Kanban SET state =".$state." WHERE sprint_id=".$sprint_id." AND task_id=".$task_id;
+	$sql = "SELECT * FROM Kanban WHERE task_id=".$task_id;
+	$res = $this->conn->query($sql);
+	return $res;
+    }
+    
+    function updateKanban($task_id, $state,$dev)
+    {
+	$sql = "UPDATE Kanban SET state =".$state." WHERE task_id=".$task_id;
 	$res = $this->conn->query($sql);
 	return $res;
     }

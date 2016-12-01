@@ -46,7 +46,7 @@ function setActiveOrNot($li)
 	</li>
 	
 	<li <?php echo setActiveOrNot("curve"); ?>> 
-	    <a href="http://localhost:8000/php/curve.php?project_id=<?php global $project_id; echo $project_id; ?>"><i class="fa fa-fw fa-bar-chart-o"></i> Velocity Curve</a>
+	    <a href="http://localhost:8000/php/curve.php?project_id=<?php global $project_id; echo $project_id; ?>"><i class="fa fa-fw fa-area-chart"></i> Velocity Curve</a>
 	</li>
     </ul>
 </div>

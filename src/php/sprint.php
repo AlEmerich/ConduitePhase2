@@ -226,10 +226,20 @@ function getState($date_start,$date_end)
 						echo '<td>'.$line['number_sprint'].'</td>';
 						echo '<td>'.getState($line['date_start'],$date_stop).'</td>';
 						echo '<td>'.$line['date_start'].'</td><td>'.$date_stop.'</td>';
-						if($logged){
-						    echo '<td><a role="button" href="http://localhost:8000/php/sprintSingle.php?sprint_id='.$line['sprint_id'].'&project_id='.$project_id.'"
-                                                          class="btn btn-primary col-lg-ofsset-1 col-lg-6 col-md-offset-1 col-md-9 col-xs-offset-1 col-xs-9" id="gotoSprint">Home Sprint</a></td>';
-						}
+						
+						echo '<td><a role="button" href="http://localhost:8000/php/sprintSingle.php?sprint_id='.$line['sprint_id'].'&project_id='.$project_id.'&tab=0"
+                                                          class="btn btn-primary"
+                                                          style="padding-top:1px;padding-bottom:1px;padding-left:3px;padding-right:3px"
+                                                          id="gotoSprint"><i class="fa fa-home"></i></a>';
+						echo '<a role="button" href="http://localhost:8000/php/sprintSingle.php?sprint_id='.$line['sprint_id'].'&project_id='.$project_id.'&tab=1"
+                                                          class="btn btn-primary col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1"
+                                                          style="padding-top:1px;padding-bottom:1px;padding-left:3px;padding-right:3px"
+                                                          id="gotoKanban"><i class="fa fa-trello" aria-hidden="true"></i></a>';
+						echo '<a role="button" href="http://localhost:8000/php/sprintSingle.php?sprint_id='.$line['sprint_id'].'&project_id='.$project_id.'&tab=2"
+                                                          class="btn btn-primary col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1"
+                                                          style="padding-top:1px;padding-bottom:1px;padding-left:3px;padding-right:3px"
+                                                          id="gotoTasks"><i class="fa fa-tasks" aria-hidden="true"></i></a></td>';
+						
 						echo '</tr>';
 					    }
 					}

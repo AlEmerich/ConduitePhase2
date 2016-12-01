@@ -7,13 +7,17 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlRelationSprintUS.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlBacklog.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlTask.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlRelationUSTask.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlKanban.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlUser.php');
 
+$ctrlKanban = new CtrlKanban();
 $ctrlParticipates = new CtrlParticipates();
 $ctrlSprint = new CtrlSprint();
 $ctrlRel = new CtrlRelationSprintUS();
 $ctrlBacklog = new CtrlBacklog();
 $ctrlTask = new CtrlTask();
 $ctrlRelUS = new CtrlRelationUSTask();
+$ctrlUser = new CtrlUser();
 
 $whatfile = "sprint";
 $whattab = 0;
@@ -83,6 +87,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 	    $task_id = $ctrlTask->getTaskWithNumber($num+1,$project_id,$sprint_id)->fetch_assoc()['task_id'];
 	    
 	    $ctrlRelUS->addTaskToUS($task_id,$us_id);
+
+	    $dev = $ctrlUser->getID($_SESSION['login'])->fetch_assoc()['dev_id'];
+	    $ctrlKanban->createKanban($task_id,0,$dev);
 	}
     }
     elseif(!empty($_POST['modify']))
@@ -144,12 +151,14 @@ function test_input($data){
 		    <div id="tabsbody" class="panel-body" >
 			<div id="tabs" >	
 			    <ul  class="nav nav-pills">
-				<li class="active">
+				<li <?php global $whattab; if($whattab == 0) echo 'class="active"'; ?>>
 				    <a href="#UserStoryTab" data-toggle="tab">User Story</a>
 				</li>
-				<li><a href="#Kanban" data-toggle="tab">Kanban</a>
+				<li <?php global $whattab; if($whattab == 1) echo 'class="active"'; ?>>
+				    <a href="#Kanban" data-toggle="tab">Kanban</a>
 				</li>
-				<li><a href="#Tasks" data-toggle="tab">Tasks</a>
+				<li <?php global $whattab; if($whattab == 2) echo 'class="active"'; ?>>
+				    <a href="#Tasks" data-toggle="tab">Tasks</a>
 				</li>
 			    </ul>
 
