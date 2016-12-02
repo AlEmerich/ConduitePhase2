@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8000/" />
+<title>sprintTests</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">sprintTests</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/php/backlog.php?project_id=19</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=sprintsmenu</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=dp1480689863530</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=createSprint</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=i.fa.fa-pencil-square-o</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=dp1480689869746</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=3</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=modify</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=createSprint</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[@id='changeSprint'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=#modalChangeSprint2 &gt; div.modal-dialog &gt; div.modal-content &gt; form.list-group &gt; div.modal-footer &gt; input[name=&quot;remove&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=gotoSprint</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=addUS</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#modalAddUS &gt; div.modal-dialog &gt; div.modal-content &gt; form.list-group &gt; div.modal-footer &gt; a.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Kanban</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Tasks</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=User Story</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=addUS</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=24</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=#modalAddUS &gt; div.modal-dialog &gt; div.modal-content &gt; form.list-group &gt; div.modal-footer &gt; input[name=&quot;USSubmit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Tasks</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=inputDescription</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=inputDescription</td>
+	<td>task1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=inputCost</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=inputUS</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=option[value=&quot;1&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=createTask</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Kanban</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Tasks</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=changeTasks</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=div.modal-body &gt; div.form-group &gt; input[name=&quot;inputCost&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=div.modal-body &gt; div.form-group &gt; input[name=&quot;inputCost&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>css=div.modal-body &gt; div.form-group &gt; input[name=&quot;inputCost&quot;]</td>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=modify</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=i.fa.fa-pencil-square-o</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=div.modal-body &gt; div.modal-footer &gt; a.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=changeTasks</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=remove</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=User Story</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=deleteUS</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=24</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=USSubmit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=sprintsmenu</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=td</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=i.fa.fa-pencil-square-o</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=remove</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Velocity Curve</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
