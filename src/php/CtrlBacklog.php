@@ -1,16 +1,14 @@
 <?php
-
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/SqlControleur.php');
-include 'config.php';
 
 class CtrlBacklog extends SqlControleur{
     var $connBacklog;
 
     function __construct()
     {
-	global $servername,$username,$password,$dbname;
-        $this->connBacklog = new mysqli($servername, $username, $password, $dbname);
-        
+	$ctp = func_num_args();
+	$args = func_get_args();
+	$this->connBacklog = $this->connect($ctp,$args);
         echo $this->executeQueryFile($this->connBacklog,$_SERVER['DOCUMENT_ROOT'].'/sql/createUserStory.sql');
     }
 

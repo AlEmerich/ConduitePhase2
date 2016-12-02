@@ -33,12 +33,23 @@ if(isset($_SESSION['login']))
     }
 }
 
-$inputStart = $inputStop = "";
-$startErr = $stopErr = "";
+$inputStart = $inputStop = $inputDuration = "";
+$startErr = $stopErr = $durationErr = "";
 
 $create = true;
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
+    if(!empty($_POST['durationSubmit']))
+    {
+	$inputDuration = $_POST['inputDuration'];
+	if(is_numeric($inputDuration))
+	{
+	    $ctrlProject->changeSprintDuration($project_id,$inputDuration);
+	}
+	else
+	    $durationErr = "is not a numeric value";
+    }
+    
     if(!empty($_POST['createSprint']))
     {
 	if (empty($_POST["inputStart"])){
@@ -172,16 +183,30 @@ function getState($date_start,$date_end)
 
 		    <div class="panel-body" >
 			<div class="row" >
-			    <span class="col-lg-4 col-md-4col-sm-6 col-xs-8">
-				<b> Sprint duration (days): </b>
-				<span class="col-lg-offset-1 col-md-ofsset-1 col-sm-offset-1 col-xs-offset-1">
+			    <span class="col-lg-6 col-md-4col-sm-6 col-xs-8">
 				    <?php
 				    global $ctrlProject;
 				    global $project_id;
+				    global $header;
+				    global $durationErr;
 				    $pro = $ctrlProject->getProject($project_id)->fetch_assoc();
-				    echo $pro['sprint_duration'];
+				    global $logged;
+				    if(!$logged)
+					echo '<b> Sprint duration (days): </b>'.$pro['sprint_duration'];
+				    else
+					echo '<form class="well form-inline"
+				    method="post"
+				    action="'.$header.'">
+
+				    <div class="form-group">
+                                    <label for="inputDuration" ><b>Sprint duration (days):</b> </label>
+				    <input name="inputDuration" type="text" class="form-control" value="'.$pro['sprint_duration'].'" />
+				    </div>
+				    <span class = "error"> '.$durationErr.'</span>
+				    <input name="project_id" type="text"  style="display:none" value="<?php global $project_id; echo $project_id; ?>"/>
+				    <input name="durationSubmit" type="submit" value="Change" >
+				    </form>';
 				    ?>
-				</span>
 			    </span>
 			</div>
 			<div class="row" >

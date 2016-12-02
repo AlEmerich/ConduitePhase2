@@ -7,7 +7,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlUser.php');
 
 /* Used in accueilLogIn and accueilLogOut as a global variable. */
 $controleur = new CtrlParticipates();
-$ctrlUser = new CtrlUser();
+$ctrlUser = new CtrlUser($controleur->conn);
 
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {

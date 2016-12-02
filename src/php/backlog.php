@@ -5,9 +5,10 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlBacklog.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlParticipates.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlProject.php');
 
-$ctrlBacklog = new CtrlBacklog();
-$ctrlParticipates = new CtrlParticipates();
 $ctrlProject = new CtrlProject();
+$ctrlBacklog = new CtrlBacklog($ctrlProject->conn);
+$ctrlParticipates = new CtrlParticipates($ctrlProject->conn);
+
 $project_id = "";
 
 $whatfile = "backlog";

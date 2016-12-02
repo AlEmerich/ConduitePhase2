@@ -1,6 +1,5 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/SqlControleur.php');
-include 'config.php';
 
 class CtrlProject extends SqlControleur
 {
@@ -8,8 +7,9 @@ class CtrlProject extends SqlControleur
 
     function __construct()
     {
-	global $servername,$username,$password,$dbname;
-        $this->conn = new mysqli($servername, $username,$password, $dbname);
+	$ctp = func_num_args();
+	$args = func_get_args();
+	$this->conn = $this->connect($ctp,$args);
         echo $this->executeQueryFile($this->conn,$_SERVER['DOCUMENT_ROOT'].'/sql/createProjectTable.sql');
     }
 
@@ -93,7 +93,7 @@ class CtrlProject extends SqlControleur
         return $res;
     }
 
-    function changeSprintDuration($projcet_id,$value)
+    function changeSprintDuration($project_id,$value)
     {
 	$sql = "UPDATE Project SET sprint_duration='".$value."' WHERE project_id='".$project_id;
 	$res = $this->conn->query($sql);
