@@ -83,13 +83,13 @@ if(!empty($_POST) && !empty($_SESSION) && !empty($_POST['mailSubmit']))
     /*********************************************************/
     else if($mode == 'Remove them')
     {
+	
 	foreach($_POST as $key => $value)
 	{
 	    if($value == 'YES')
 	    {
 		$ctrlU = new CtrlUser();
 		$ctrlProject = new CtrlProject();
-		$ctrlParticipates = new CtrlParticipates();
 		
 		$mail = $ctrlU->getMail($key)->fetch_assoc()['mail']; // Déclaration de l'adresse de destination.
 		//$mail = "guitard-alan@laposte.net";
@@ -105,22 +105,22 @@ if(!empty($_POST) && !empty($_SESSION) && !empty($_POST['mailSubmit']))
 		$message_txt = "Hello, You have been removed as a contributor on the project ".$ctrlProject->getProject($_GET['project_id'])->fetch_assoc()['project_name']." in ScrumTool.\n We hope we will see you again !";
 		$message_html = "<html><head></head><body><b>Hello</b>, You have been removed as a contributor on the project ".$ctrlProject->getProject($_GET['project_id'])->fetch_assoc()['project_name']." in ScrumTool.<br> We hope we will see you again !</body></html>";
 		//==========
-
+		
 		//=====Création de la boundary
 		$boundary = "-----=".md5(rand());
 		//==========
-
+		
 		//=====Définition du sujet.
 		$sujet = "Removed from ".$ctrlProject->getProject($_GET['project_id'])->fetch_assoc()['project_name'];
 		//=========
-
+		
 		//=====Création du header de l'e-mail.
 		$header = "From: \"ScrumTool\"<weaponsb@mail.fr>".$passage_ligne;
 		$header.= "Reply-to: \"ScrumTool\" <weaponsb@mail.fr>".$passage_ligne;
 		$header.= "MIME-Version: 1.0".$passage_ligne;
 		$header.= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
 		//==========
-
+		
 		//=====Création du message.
 		$message = $passage_ligne."-".$key."-".$boundary.$passage_ligne;
 		//=====Ajout du message au format texte.
@@ -137,7 +137,7 @@ if(!empty($_POST) && !empty($_SESSION) && !empty($_POST['mailSubmit']))
 		$message.= $passage_ligne."--".$boundary."--".$passage_ligne;
 		$message.= $passage_ligne."--".$boundary."--".$passage_ligne;
 		//==========
-
+		
 		//=====Envoi de l'e-mail.
 		//mail($mail,$sujet,$message,$header);
 		//==========
@@ -146,6 +146,8 @@ if(!empty($_POST) && !empty($_SESSION) && !empty($_POST['mailSubmit']))
 		$dialog ='remove';
 	    }
 	}
+	
+	
     }
     /*********************************************************/
     /**************** CHANGE PRODUCT OWNER *******************/
@@ -213,7 +215,18 @@ if(!empty($_POST) && !empty($_SESSION) && !empty($_POST['mailSubmit']))
 	    $dialog = 'changepo';
 	}
     }
-    
+
+    /*********************************************************/
+    /**************** CHANGE PRODUCT OWNER *******************/
+    /*********************************************************/
+    else if($mode == 'Remove project')
+    {
+	$ctrlProject = new CtrlProject();
+	$ctrlProject->deleteProject($_GET['project_id']);
+	header('Location: http://localhost:8000/php/index.php');
+	$dialog = '';
+    }
 }
+
 header('Location: http://localhost:8000/php/homeProject.php?project_id='.$_GET['project_id'].'&dialog='.$dialog);
 ?>

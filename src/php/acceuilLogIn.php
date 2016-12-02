@@ -85,7 +85,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlUser.php');
 		{
 		    echo '<div class="panel panel-default">';
 		    echo '<div class="panel-heading">';
-		    echo '<a href="http://localhost:8000/php/homeProject.php?project_id='.$line['project_id'].'">';
+		    echo '<a href="http://localhost:8000/php/homeProject.php?project_id='.$resassoc['project_id'].'">';
 		    
 		    echo '<h4>'.$resassoc['project_name'].'</h4></a></div>';
 		    echo '<div class="panel-body"><p> '.$resassoc['description'].'</br>';

@@ -4,7 +4,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlProject.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlParticipates.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlUser.php');
 
-if(!isset($_GET['project_id']))
+if(!isset($_GET['project_id']) || $_GET['project_id'] == '')
 {
     header("Location: http://localhost:8000/index.php");
 }
