@@ -1,6 +1,5 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/SqlControleur.php');
-include 'config.php';
 
 class CtrlUser extends SqlControleur
 {
@@ -8,8 +7,9 @@ class CtrlUser extends SqlControleur
 
     function __construct()
     {
-	global $servername,$username,$password,$dbname;
-        $this->conn = new mysqli($servername, $username, $password, $dbname);
+	$ctp = func_num_args();
+	$args = func_get_args();
+	$this->conn = $this->connect($ctp,$args);
         echo $this->executeQueryFile($this->conn,$_SERVER['DOCUMENT_ROOT'].'/sql/createUserTable.sql');
     }
 

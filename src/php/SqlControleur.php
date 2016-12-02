@@ -1,7 +1,21 @@
 <?php
+include 'config.php';
 class SqlControleur
 {
-
+    function connect($ctp,$args)
+    {
+	if($ctp == 1)
+	{
+	    return $args[0];
+	}
+	else
+	{
+	    global $servername,$username,$password,$dbname;
+	    $conn = new mysqli($servername,$username,$password,$dbname);
+	    return $conn;
+	}
+    }
+    
     function executeQueryFile($conn,$filesql) {
         $query = file_get_contents($filesql);
 	$message = "";

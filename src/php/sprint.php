@@ -6,8 +6,8 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlParticipates.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlProject.php');
 
 $ctrlSprint = new CtrlSprint();
-$ctrlParticipates = new CtrlParticipates();
-$ctrlProject = new CtrlProject();
+$ctrlParticipates = new CtrlParticipates($ctrlSprint->conn);
+$ctrlProject = new CtrlProject($ctrlSprint->conn);
 
 $project_id = 0;
 $header = htmlspecialchars($_SERVER["PHP_SELF"]);
