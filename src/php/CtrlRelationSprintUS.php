@@ -61,6 +61,13 @@ class CtrlRelationSprintUS extends SqlControleur
 	$res = $this->conn->query($sql);
 	return $res;
     }
+
+    function getSprintFromTask($task_id)
+    {
+        $sql = "SELECT sprint_id FROM RelationSprintUS WHERE us_id=(SELECT us_id FROM RelationTasksUS WHERE task_id=".$task_id.")";
+        $res = $this->conn->query($sql);
+        return $res;
+    }
 }
 
 ?>

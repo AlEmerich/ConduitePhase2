@@ -50,5 +50,14 @@ class CtrlRelationUSTask extends SqlControleur
 	$res = $this->conn->query($sql);
 	return $res;
     }
+
+    function getTasksRelated($us_id)
+    {
+        $sql = "SELECT task_id FROM RelationTasksUS WHERE us_id=".$us_id;
+        $res = $this->conn->query($sql);
+        return $res;
+    }
+
+    
 }
 ?>

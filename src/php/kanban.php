@@ -43,7 +43,7 @@
 				$drag = '';
 			}
 			echo '<td id="td_'.$y.'_'.$i.'" class="tdcard">';
-			echo '  <div id="'.$line['task_id'].'_'.$i.'"  class="card event" '.$drag.'>
+			echo '  <div id="'.$line['task_id'].'_'.$i.'_'.$sprint_id.'"  class="card event" '.$drag.'>
                                   <div class="card-block">
                                       <h4 class="card-title"><b>Task '.$line['number_task'].'</b></h4>
                                       <p class="card-text">'.$line['description'].'</p>
