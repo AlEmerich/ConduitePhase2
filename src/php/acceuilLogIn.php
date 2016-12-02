@@ -66,20 +66,31 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlUser.php');
                       </div>
                   </div></div>';
 	    echo '<div class="panel-body" id="toToggleNotIn">';
-	    if($projects = $ctrlP->listNotIn($res['dev_id']))
+
+	    $in = $ctrlP->listIn($res['dev_id']);
+	    $notin = $ctrlP->listNotIn($res['dev_id']) ;
+	    while($resassoc = $notin->fetch_assoc())
 	    {
+		$toAdd = true;
 		$line;
-		while($line = $projects->fetch_assoc())
+
+		while($toAdd && $line = $in->fetch_assoc())
 		{
-		    
+		    if($resassoc['project_id'] == $line['project_id'])
+			$toAdd = false;
+		}
+
+		$in->data_seek(0);
+		if($toAdd)
+		{
 		    echo '<div class="panel panel-default">';
 		    echo '<div class="panel-heading">';
 		    echo '<a href="http://localhost:8000/php/homeProject.php?project_id='.$line['project_id'].'">';
 		    
-		    echo '<h4>'.$line['project_name'].'</h4></a></div>';
-		    echo '<div class="panel-body"><p> '.$line['description'].'</br>';
-		    echo '<b>Link repository:</b> '.$line['link_repository'].'</br>';
-		    $po = $ctrlU->getUser($line['product_owner'])->fetch_assoc();
+		    echo '<h4>'.$resassoc['project_name'].'</h4></a></div>';
+		    echo '<div class="panel-body"><p> '.$resassoc['description'].'</br>';
+		    echo '<b>Link repository:</b> '.$resassoc['link_repository'].'</br>';
+		    $po = $ctrlU->getUser($resassoc['product_owner'])->fetch_assoc();
 		    echo '<b>Product owner:</b> '.$po['login'].'</p>';
 		    echo '</div></div>';
 		}

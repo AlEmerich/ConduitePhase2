@@ -35,7 +35,7 @@ class CtrlParticipates extends SqlControleur
 
     function listNotIn($user_id)
     {
-	$sql = "SELECT * FROM ((SELECT * FROM Participates NATURAL JOIN Project) AS t ) WHERE dev_id <>".$user_id;
+	$sql = "SELECT * FROM ((SELECT * FROM Participates NATURAL JOIN Project) AS t ) WHERE dev_id<>".$user_id;
 	$res = $this->conn->query($sql);
 	return $res;
     }
