@@ -54,6 +54,7 @@ if(isset($_SESSION['login']))
              $realTotalTime = 0;
              $fullBacklog = $ctrlBacklog->getUserStoryFromProject($project_id);
              $us;
+             $us_array=array();
              while ($us = $fullBacklog->fetch_assoc()){
                  $realTotalTime = $realTotalTime + $us['effort'];
              }
@@ -71,7 +72,11 @@ if(isset($_SESSION['login']))
                      if($usLine['finished']!=0){
                          $realTotalTime = $realTotalTime - $usTime;
                      }
-                     $theoTotalTime = $theoTotalTime - $usTime;
+                     if(in_array($usLine['us_id'], $us_array) == false)
+                         {
+                             $theoTotalTime = $theoTotalTime - $usTime;
+                             array_push($us_array, $usLine['us_id']);
+                         }
                  }
                  if(!($firstLine)){
                      echo ",";
