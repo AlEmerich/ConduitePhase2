@@ -93,7 +93,7 @@ class CtrlProject extends SqlControleur
         return $res;
     }
 
-    function changeSprintDuration($projcet_id,$value)
+    function changeSprintDuration($project_id,$value)
     {
 	$sql = "UPDATE Project SET sprint_duration='".$value."' WHERE project_id='".$project_id;
 	$res = $this->conn->query($sql);
