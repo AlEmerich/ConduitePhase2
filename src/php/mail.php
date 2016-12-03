@@ -141,8 +141,10 @@ if(!empty($_POST) && !empty($_SESSION) && !empty($_POST['mailSubmit']))
 		//=====Envoi de l'e-mail.
 		//mail($mail,$sujet,$message,$header);
 		//==========
-		$idtoremove = $ctrlU->getID($key)->fetch_assoc()['dev_id'];
-		$res = $ctrlParticipates->quitProject($_GET['project_id'],$idtoremove);
+		$ids = $ctrlU->getID($key)->fetch_assoc();
+        $idtoremove = $ids['dev_id'];
+        $p_id = $ctrlParticipates->getID($_GET['project_id'], $idtoremove);
+		$res  = $ctrlParticipates->quitProject($p_id['p_id']);
 		$dialog ='remove';
 	    }
 	}

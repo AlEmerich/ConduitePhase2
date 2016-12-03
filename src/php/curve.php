@@ -7,9 +7,9 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlSprint.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlRelationSprintUS.php');
 
 $ctrlSprint = new CtrlSprint();
-$ctrlRelSprintUs = new CtrlRelationSprintUS($ctrlSprint->conn);
-$ctrlBacklog = new CtrlBacklog($ctrlSprint->conn);
-$ctrlParticipates = new CtrlParticipates($ctrlSprint->conn);
+$ctrlRelSprintUs = new CtrlRelationSprintUS();
+$ctrlBacklog = new CtrlBacklog();
+$ctrlParticipates = new CtrlParticipates();
 $project_id = "";
 
 $whatfile = "curve";

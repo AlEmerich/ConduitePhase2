@@ -36,7 +36,6 @@ class CtrlProject extends SqlControleur
         $res=$this->conn->query($sql);
         return $res;
     }
-
     function createProject($name, $link, $owner)
     {
         $sql = "INSERT INTO Project (project_name, link_repository, product_owner) VALUES ('".$name."', '".$link."', ".$owner.");";
@@ -67,14 +66,14 @@ class CtrlProject extends SqlControleur
 
     function getProductOwner($project_id)
     {
-	$sql = "SELECT login, mail FROM ((SELECT * FROM Project WHERE project_id=".$project_id.") AS t) INNER JOIN User On product_owner=dev_id";
+	$sql = "SELECT * FROM ((SELECT * FROM Project WHERE project_id=".$project_id.") AS t) INNER JOIN User On product_owner=dev_id";
 	$res = $this->conn->query($sql);
 	return $res;
     }
 
     function getIDProductOwner($project_id)
     {
-	$sql = "SELECT * FROM User WHERE dev_id IN (SELECT product_owner FROM Project WHERE project_id=".$project_id.")";
+	$sql = "SELECT product_owner FROM Project WHERE project_id=".$project_id;
 	$res = $this->conn->query($sql);
 	return $res;
     }
@@ -95,7 +94,7 @@ class CtrlProject extends SqlControleur
 
     function changeSprintDuration($project_id,$value)
     {
-	$sql = "UPDATE Project SET sprint_duration='".$value."' WHERE project_id='".$project_id;
+	$sql = "UPDATE Project SET sprint_duration='".$value."' WHERE project_id=".$project_id;
 	$res = $this->conn->query($sql);
 	return $res;
     }

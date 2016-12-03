@@ -23,10 +23,9 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Delete User</td>
+	<td>link=Sign out</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

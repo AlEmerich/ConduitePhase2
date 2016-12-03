@@ -12,7 +12,7 @@
 |          |                             | Tâche 8, Dev : Matthias Duffour                 |
 |          |                             | Tâche 9, Dev : Matthias Duffour / Guitard Alan  |
 |          |                             | Tâche 10, Dev : Guitard Alan                             |
-| Tâche 11 |                             |                                                 |
+|          |                             | Tâche 11, Dev : Guitard Alan                                        |
 |          |                             | Tâche 12, Dev : Matthias Duffour               |
 |          |                             | Tâche 13, Dev : Matthias Duffour                |
 |          |                             | Tâche 14, Dev : Guitard Alan                    |
@@ -20,6 +20,6 @@
 |          |                             | Tâche 16, Dev : Matthias Duffour                |
 |          |                             | Tâche 17, Dev : Elmer Bayol                     |
 |          |                             | Tâche 18, Dev : Matthias Duffour                |
-| Tâche 19 |                             |                                                 |
+|          |                             | Tâche 19, Dev : Matthias Duffour                                                |
        
 

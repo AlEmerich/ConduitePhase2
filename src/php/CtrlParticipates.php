@@ -59,10 +59,17 @@ class CtrlParticipates extends SqlControleur
 	$res = $this->conn->query($sql);
 	return $res;
     }
-    
-    function quitProject($project_id,$user_id)
+
+    function getID($project_id, $user_id)
     {
-	$sql = "DELETE FROM Participates WHERE project_id='".$project_id."'AND dev_id='".$user_id."'";
+        $sql = "SELECT p_id FROM Participates WHERE project_id=".$project_id." AND dev_id=".$user_id;
+    $res = $this->conn->query($sql);
+	return $res;
+    }
+    
+    function quitProject($pr_d)
+    {
+	$sql = "DELETE FROM Participates WHERE p_id=".$p_id;
 	$res = $this->conn->query($sql);
 	return $res;
     }

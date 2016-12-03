@@ -10,6 +10,8 @@
 <tr><td><b>Test Suite</b></td></tr>
 <tr><td><a href="signInTest">signInTest</a></td></tr>
 <tr><td><a href="connectionTest">connectionTest</a></td></tr>
+<tr><td><a href="creatingProject">creatingProject</a></td></tr>
+<tr><td><a href="testBacklog">testBacklog</a></td></tr>
 <tr><td><a href="deletionTest">deletionTest</a></td></tr>
 </tbody></table>
 </body>

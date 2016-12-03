@@ -96,6 +96,13 @@ class CtrlTask extends SqlControleur
 	$res = $this->conn->query($sql);
 	return $res;
     }
+
+    function getSprintFromTask($task_id)
+    {
+       	$sql = "SELECT sprint_id FROM Task WHERE task_id=".$task_id;
+	$res = $this->conn->query($sql);
+	return $res;
+    }
 }
 
 ?>

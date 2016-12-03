@@ -115,5 +115,12 @@ class CtrlUser extends SqlControleur
         $res = $this->conn->query($sql);
         return $res;
     }
+
+    function getLogIn($id)
+    {
+        $sql = "SELECT login FROM User WHERE dev_id=".$id;
+         $res = $this->conn->query($sql);
+        return $res;
+    }
 }
 ?>
