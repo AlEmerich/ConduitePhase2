@@ -6,8 +6,8 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlParticipates.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlProject.php');
 
 $ctrlProject = new CtrlProject();
-$ctrlBacklog = new CtrlBacklog($ctrlProject->conn);
-$ctrlParticipates = new CtrlParticipates($ctrlProject->conn);
+$ctrlBacklog = new CtrlBacklog();
+$ctrlParticipates = new CtrlParticipates();
 
 $project_id = "";
 
@@ -36,7 +36,7 @@ if(isset($_SESSION['login']))
 	    $product_owner = true; 
 }
 
-$inputDescription = $inputEffort = $inputPriority = "";
+$inputDescription = $inputCommit = $inputEffort = $inputPriority = "";
 $descriptionErr = $effortErr = $priorityErr = "";
 
 $create = true;
@@ -116,9 +116,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 	{
 	    $modify = false;
 	}
+	if(!empty($_POST['inputCommit']))
+	{
+	    $inputCommit = test_input($_POST['inputCommit']);
+	}
+
 	if($modify)
 	{
 	    $us_id = $ctrlBacklog->getUserStoryWithNumberInProject($nb_id,$project_id)->fetch_assoc()['us_id'];
+	    $ctrlBacklog->updateCommit($us_id,$inputCommit);
 	    $ctrlBacklog->updateUserStoryEffortDesc($us_id,$inputDescription,$inputEffort);
 	}
     }
@@ -184,12 +190,13 @@ function test_input($data){
 					<thead>
 					    <tr>
 						<?php global $logged; if($logged) : ?>
-						    <th></th>
+						    <th style="width:5%"></th>
 						<?php endif ?>
-						<th>US number</th>
+						<th style="width:5%">US#</th>
 						<th>Description</th>
-						<th>Effort</th>
-						<th>Priority</th>
+						<th style="width:5%">Effort</th>
+						<th style="width:5%">Priority</th>
+						<th style="width:30%">Tracability</th>
 					    </tr>
 					</thead>
 					<tbody>
@@ -233,6 +240,7 @@ function test_input($data){
 						{
 						    echo '<td>'.$line['priority'].'</td>';
 						}
+						echo '<td>'.$line['commit'].'</td>';
 						echo '</tr>';
 					    }
 					    ?>
@@ -304,6 +312,7 @@ function test_input($data){
 			</form>
 		    <?php endif ?>
 		</div>
+		
 		<?php include 'modalChangeUs.php' ?>
 	    </div>
 	</div>

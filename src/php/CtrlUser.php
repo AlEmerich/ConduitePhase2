@@ -7,15 +7,13 @@ class CtrlUser extends SqlControleur
 
     function __construct()
     {
-	$ctp = func_num_args();
-	$args = func_get_args();
-	$this->conn = $this->connect($ctp,$args);
+	$this->conn = $this->connect();
         echo $this->executeQueryFile($this->conn,$_SERVER['DOCUMENT_ROOT'].'/sql/createUserTable.sql');
     }
 
     function __destruct()
     {
-        $this->conn->close();
+        ConnectSingleton::close();
     }
 
     function checkConnection()

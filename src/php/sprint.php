@@ -44,7 +44,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 	$inputDuration = $_POST['inputDuration'];
 	if(is_numeric($inputDuration))
 	{
-	    $ctrlProject->changeSprintDuration($project_id,$inputDuration);
+	    if($inputDuration > 0)
+		$ctrlProject->changeSprintDuration($project_id,$inputDuration);
+	    else
+		$durationErr = "is not positive";
 	}
 	else
 	    $durationErr = "is not a numeric value";
@@ -216,9 +219,9 @@ function getState($date_start,$date_end)
 				    <thead>
 					<tr>
 					    <?php global $logged; if($logged) : ?>
-						<th></th>
+						<th style="width:5%" ></th>
 					    <?php endif ?>
-					    <th>Sprint Number</th>
+					    <th style="width:5%" >Sprint#</th>
 					    <th>State</th>
 					    <th>Starting date</th>
 					    <th>Stopping date</th>

@@ -7,16 +7,14 @@ class CtrlTask extends SqlControleur
 
     function __construct()
     {
-	$ctp = func_num_args();
-	$args = func_get_args();
-	$this->conn = $this->connect($ctp,$args);
+	$this->conn = $this->connect();
 	echo $this->executequeryfile($this->conn,$_SERVER['DOCUMENT_ROOT'].'/sql/createTask.sql');
 	echo $this->executequeryfile($this->conn,$_SERVER['DOCUMENT_ROOT'].'/sql/relationTaskUS.sql');
     }
 
     function __destruct()
     {
-	$this->conn->close();
+	ConnectSingleton::close();
     }
 
     function createTask($project_id,$sprint_id,$description,$num_task,$cost)

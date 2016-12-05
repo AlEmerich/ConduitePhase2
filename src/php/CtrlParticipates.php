@@ -7,15 +7,13 @@ class CtrlParticipates extends SqlControleur
 
     function __construct()
     {
-	$ctp = func_num_args();
-	$args = func_get_args();
-	$this->conn = $this->connect($ctp,$args);
+	$this->conn = $this->connect();
 	echo $this->executequeryfile($this->conn,$_SERVER['DOCUMENT_ROOT'].'/sql/isParticipating.sql');
     }
 
     function __destruct()
     {
-	$this->conn->close();
+	ConnectSingleton::close();
     }
 
     function addToProject($project_id,$user_id)

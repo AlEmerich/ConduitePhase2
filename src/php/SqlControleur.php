@@ -1,25 +1,18 @@
 <?php
-include 'config.php';
+require_once($_SERVER['DOCUMENT_ROOT'].'/php/ConnectSingleton.php');
+
 class SqlControleur
 {
-    function connect($ctp,$args)
+    function connect()
     {
-	if($ctp == 1)
-	{
-	    return $args[0];
-	}
-	else
-	{
-	    global $servername,$username,$password,$dbname;
-	    $conn = new mysqli($servername,$username,$password,$dbname);
-	    return $conn;
-	}
+	return ConnectSingleton::getInstance();
     }
     
     function executeQueryFile($conn,$filesql) {
         $query = file_get_contents($filesql);
 	$message = "";
-        
+
+	$conn = ConnectSingleton::getInstance();
 	/* Vérification de la connexion */
 	if ($conn->connect_errno) {
 	    $message = 'Échec de la connexion : '.$conn->connect_error.'\n';

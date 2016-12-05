@@ -11,13 +11,13 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlKanban.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlUser.php');
 
 $ctrlKanban = new CtrlKanban();
-$ctrlParticipates = new CtrlParticipates($ctrlKanban->conn);
-$ctrlSprint = new CtrlSprint($ctrlKanban->conn);
-$ctrlRel = new CtrlRelationSprintUS($ctrlKanban->conn);
-$ctrlBacklog = new CtrlBacklog($ctrlKanban->conn);
-$ctrlTask = new CtrlTask($ctrlKanban->conn);
-$ctrlRelUS = new CtrlRelationUSTask($ctrlKanban->conn);
-$ctrlUser = new CtrlUser($ctrlKanban->conn);
+$ctrlParticipates = new CtrlParticipates();
+$ctrlSprint = new CtrlSprint();
+$ctrlRel = new CtrlRelationSprintUS();
+$ctrlBacklog = new CtrlBacklog();
+$ctrlTask = new CtrlTask();
+$ctrlRelUS = new CtrlRelationUSTask();
+$ctrlUser = new CtrlUser();
 
 $whatfile = "sprint";
 $whattab = 0;

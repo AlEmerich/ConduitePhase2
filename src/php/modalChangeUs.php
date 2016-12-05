@@ -7,6 +7,15 @@ $num = 0;
 while($num++ < $max) :
 ?>
     <!-- MODAL MODIFY USER STORY -->
+    <?php
+    global $num;
+    $us = $ctrlBacklog->getUserStoryWithNumberInProject($num,$project_id)->fetch_assoc();
+    global $inputDescription, $inputCommit, $inputEffort, $inputPriority;
+    $inputDescription = $us['description'];
+    $inputCommit = $us['commit'];
+    $inputEffort = $us['effort'];
+    $inputPriority = $us['priority'];
+    ?>
     <div class="modal fade" id="modalUS<?php global $num; echo $num; ?>" tabindex="-1" role="dialog" aria-labelledby="modalUSLabel">
 	<div class="modal-dialog" role="document">
 	    <div class="modal-content">
@@ -27,13 +36,14 @@ while($num++ < $max) :
 			    <label for="inputEffort">Select Effort:</label>
 			    <select name="inputEffort" class="form-control" >
 				<?php
+				global $inputEffort;
 				$antelast = $last = 1;
-				echo '<option>1</option>';
+				echo '<option '.($inputEffort == 1 ? 'selected="true"' : '').'>1</option>';
 				$fibo =0;
 				while($fibo < 100)
 				{
 				    $fibo = $antelast + $last;
-				    echo '<option>'.$fibo.'</option>';
+				    echo '<option '.($inputEffort == $fibo ? 'selected="true"' : '').'>'.$fibo.'</option>';
 				    $antelast = $last;
 				    $last = $fibo;
 				}
@@ -44,6 +54,12 @@ while($num++ < $max) :
 			<div style="display:none" class="form-group">
 			    <label for="nbid" ></label>
 			    <input type="text" name="nbid" value="<?php global $num; echo $num; ?>">
+			</div>
+
+			<div class="form-group">
+			    <label for="inputCommit">Checksum commit</label>
+			    <input name="inputCommit" type="text"
+				   class="form-control" value="<?php global $inputCommit; echo $inputCommit; ?>" />
 			</div>
 		    </div>
 

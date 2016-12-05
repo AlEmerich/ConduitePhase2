@@ -11,8 +11,8 @@ if(!isset($_GET['project_id']) || $_GET['project_id'] == '')
 
 $project_id = htmlspecialchars($_GET['project_id']);
 $ctrlProject = new CtrlProject();
-$ctrlParticipates = new CtrlParticipates($ctrlProject->conn);
-$ctrlUser = new CtrlUser($ctrlProject->conn);
+$ctrlParticipates = new CtrlParticipates();
+$ctrlUser = new CtrlUser();
 
 $whatfile = "homeproject";
 
