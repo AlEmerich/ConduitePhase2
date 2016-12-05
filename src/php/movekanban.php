@@ -35,7 +35,7 @@ if(isset($_POST['action']) && isset($_POST['which']))
     while($task_line = $tasks->fetch_assoc())
         {
             $info = $ctrlKanban->getInfo($task_line['task_id'])->fetch_assoc();
-            if (($info['state'] != 2) && ($ctrlTask->getSprintFromTask($task_line['task_id']) == id[2]))
+            if (($info['state'] != 2) && ($ctrlTask->getSprintFromTask($task_line['task_id'])->fetch_assoc()['sprint_id'] == $id[2]))
                 {
                     $us_done = 0;
                 }
