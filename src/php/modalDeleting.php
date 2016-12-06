@@ -38,8 +38,8 @@
 				global $project_id;
 				global $ctrlProject;
 				$usersIn = $ctrlParticipates->getUserWhichContributes($project_id);
-				$po_total = $ctrlProject->getIDProductOwner($project_id);
-$po = $ctrlUser->getLogIn($po_total);
+				$po_total = $ctrlProject->getIDProductOwner($project_id)->fetch_assoc()['product_owner'];
+$po = $ctrlUser->getLogIn($po_total)->fetch_assoc()['login'];
 $line;
 				
 				while($line = $usersIn->fetch_assoc())

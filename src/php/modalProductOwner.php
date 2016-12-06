@@ -15,8 +15,8 @@
 			global $ctrlProject;
 			global $project_id;
 			$usersIn = $ctrlParticipates->getUserWhichContributes($project_id);
-			$po = $ctrlProject->getProductIDOwner($project_id);
-			$product_o = $ctrlUser->getLogIn($po);
+			$po = $ctrlProject->getProductOwner($project_id)->fetch_assoc()['product_owner'];
+			$product_o = $ctrlUser->getLogIn($po)->fetch_assoc();
 			$line;
 			
 			while($line = $usersIn->fetch_assoc())

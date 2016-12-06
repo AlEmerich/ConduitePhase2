@@ -71,7 +71,7 @@ if(!empty($_POST) && !empty($_SESSION) && !empty($_POST['mailSubmit']))
 		//=====Envoi de l'e-mail.
 		//mail($mail,$sujet,$message,$header);
 		//==========
-
+		
 		$ctrlParticipates->addToProject($_GET['project_id'],$ctrlU->getID($key)->fetch_assoc()['dev_id']);
 		$dialog = 'invite';
 	    }
@@ -90,6 +90,7 @@ if(!empty($_POST) && !empty($_SESSION) && !empty($_POST['mailSubmit']))
 	    {
 		$ctrlU = new CtrlUser();
 		$ctrlProject = new CtrlProject();
+		$ctrlParticipates = new CtrlParticipates();
 		
 		$mail = $ctrlU->getMail($key)->fetch_assoc()['mail']; // Déclaration de l'adresse de destination.
 		//$mail = "guitard-alan@laposte.net";
@@ -142,8 +143,8 @@ if(!empty($_POST) && !empty($_SESSION) && !empty($_POST['mailSubmit']))
 		//mail($mail,$sujet,$message,$header);
 		//==========
 		$ids = $ctrlU->getID($key)->fetch_assoc();
-        $idtoremove = $ids['dev_id'];
-        $p_id = $ctrlParticipates->getID($_GET['project_id'], $idtoremove);
+		$idtoremove = $ids['dev_id'];
+		$p_id = $ctrlParticipates->getID($_GET['project_id'], $idtoremove)->fetch_assoc();
 		$res  = $ctrlParticipates->quitProject($p_id['p_id']);
 		$dialog ='remove';
 	    }

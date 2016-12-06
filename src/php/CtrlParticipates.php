@@ -67,7 +67,7 @@ class CtrlParticipates extends SqlControleur
     
     function quitProject($pr_d)
     {
-	$sql = "DELETE FROM Participates WHERE p_id=".$p_id;
+	$sql = "DELETE FROM Participates WHERE p_id=".$pr_d;
 	$res = $this->conn->query($sql);
 	return $res;
     }
