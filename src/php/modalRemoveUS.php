@@ -6,7 +6,7 @@
 		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		<h4 class="modal-title" id="modalRemoveUS">Choose the User Story to remove</h4>
 	    </div>
-	    <form action="<?php echo $GLOBAL['SITE_ROOT']; ?>/php/addRemoveUSFromSprint.php?sprint_id=<?php global $sprint_id; echo $sprint_id; ?>&project_id=<?php global $project_id; echo $project_id; ?>&tab=0" class="list-group" method="post">
+	    <form action="<?php echo $GLOBALS['SITE_ROOT']; ?>/php/addRemoveUSFromSprint.php?sprint_id=<?php global $sprint_id; echo $sprint_id; ?>&project_id=<?php global $project_id; echo $project_id; ?>&tab=0" class="list-group" method="post">
 		<div class="modal-body">
 		    <div class="list-group" >
 			<?php

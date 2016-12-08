@@ -12,7 +12,7 @@
 		    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		    <h4 class="modal-title" id="modalRemove">CAREFULL</h4>
 		</div>
-		<form action="<?php echo $GLOBAL['SITE_ROOT']; ?>/php/mail.php?project_id=<?php global $project_id; echo $project_id; ?>" class="list-group" method="post">
+		<form action="<?php echo $GLOBALS['SITE_ROOT']; ?>/php/mail.php?project_id=<?php global $project_id; echo $project_id; ?>" class="list-group" method="post">
 		    <div class="modal-body">
 			You are the last contributor on this project. Removing yourself as a contributor will delete all the project and its components. Are you
 			sure you want to delete it ?
@@ -29,7 +29,7 @@
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			<h4 class="modal-title" id="modalRemove">Choose the contributor to remove</h4>
 		    </div>
-		    <form action="<?php echo $GLOBAL['SITE_ROOT']; ?>/php/mail.php?project_id=<?php global $project_id; echo $project_id; ?>" class="list-group" method="post">
+		    <form action="<?php echo $GLOBALS['SITE_ROOT']; ?>/php/mail.php?project_id=<?php global $project_id; echo $project_id; ?>" class="list-group" method="post">
 			<div class="modal-body">
 			    <div class="list-group" >
 				<?php

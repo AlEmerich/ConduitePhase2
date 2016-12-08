@@ -42,7 +42,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlUser.php');
 		    
 		    echo '<div class="panel panel-default">';
 		    echo '<div class="panel-heading">';
-		    echo '<a href="'.$GLOBAL['SITE_ROOT'].'/php/homeProject.php?project_id='.$line['project_id'].'">';	    
+		    echo '<a href="'.$GLOBALS['SITE_ROOT'].'/php/homeProject.php?project_id='.$line['project_id'].'">';	    
 		    echo '<h4>'.$line['project_name'].'</h4></a></div>';
 		    echo '<div class="panel-body"><p> '.$line['description'].'</br>';
 		    echo '<b>Link repository:</b> '.$line['link_repository'].'</br>';

@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	$_SESSION['mdp'] = $pwd;
 	$_SESSION['mail'] = $mail;
 	$_SESSION['picture'] = $controleur->getPicture($login)->fetch_assoc()['picture'];
-	header( 'Location: '.$GLOBAL['SITE_ROOT']'/index.php');
+	header( 'Location: '.$GLOBALS['SITE_ROOT']'/index.php');
     }
 }
 

@@ -6,5 +6,5 @@ $res=$ctrlUser->getID($_SESSION['login'])->fetch_assoc();
 $ctrlUser->deleteUser($res['dev_id']);
 $_SESSION = array();
 session_destroy();
-header('Location: '.$GLOBAL['SITE_ROOT'].'/index.php');
+header('Location: '.$GLOBALS['SITE_ROOT'].'/index.php');
 ?>

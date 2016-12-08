@@ -16,16 +16,16 @@
 	<div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
 		<li class="active">
-                    <a href="<?php echo $GLOBAL['SITE_ROOT']; ?>/php/homeProject.php"><i class="fa fa-fw fa-desktop"></i> Home Project</a>
+                    <a href="<?php echo $GLOBALS['SITE_ROOT']; ?>/php/homeProject.php"><i class="fa fa-fw fa-desktop"></i> Home Project</a>
 		</li>
 		<li>
-                    <a href="<?php echo $GLOBAL['SITE_ROOT']; ?>/php/backlog.php"><i class="fa fa-fw fa-table"></i> Backlog</a>
+                    <a href="<?php echo $GLOBALS['SITE_ROOT']; ?>/php/backlog.php"><i class="fa fa-fw fa-table"></i> Backlog</a>
 		</li>
 		<li>
-                    <a href="<?php echo $GLOBAL['SITE_ROOT']; ?>/php/sprint.php"><i class="fa fa-fw fa-dashboard"></i> Sprints</a>
+                    <a href="<?php echo $GLOBALS['SITE_ROOT']; ?>/php/sprint.php"><i class="fa fa-fw fa-dashboard"></i> Sprints</a>
 		</li>
 		<li>
-                    <a href="<?php echo $GLOBAL['SITE_ROOT']; ?>/php/curve.php"><i class="fa fa-fw fa-bar-chart-o"></i> Velocity Curve</a>
+                    <a href="<?php echo $GLOBALS['SITE_ROOT']; ?>/php/curve.php"><i class="fa fa-fw fa-bar-chart-o"></i> Velocity Curve</a>
 		</li>
             </ul>
 	</div>

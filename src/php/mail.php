@@ -231,5 +231,5 @@ if(!empty($_POST) && !empty($_SESSION) && !empty($_POST['mailSubmit']))
     }
 }
 
-header('Location: '.$GLOBAL['SITE_ROOT'].'/php/homeProject.php?project_id='.$_GET['project_id'].'&dialog='.$dialog);
+header('Location: '.$GLOBALS['SITE_ROOT'].'/php/homeProject.php?project_id='.$_GET['project_id'].'&dialog='.$dialog);
 ?>

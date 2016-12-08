@@ -3,7 +3,7 @@ session_start();
 
 if(!isset($_SESSION['login']))
 {
-    header("Location: ".$GLOBAL['SITE_ROOT']."/index.php");
+    header("Location: ".$GLOBALS['SITE_ROOT']."/index.php");
 }
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlParticipates.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlProject.php');
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $controleur->createProject($inputProjectName, $inputLinkRepository, $resUser['dev_id']);
 	$resProject = $controleur->getId($inputProjectName)->fetch_assoc();
 	$ctrlParticipates->addToProject($resProject['project_id'],$resUser['dev_id']);
-	header('Location: '.$GLOBAL['SITE_ROOT'].'/index.php');
+	header('Location: '.$GLOBALS['SITE_ROOT'].'/index.php');
     }
 }
 

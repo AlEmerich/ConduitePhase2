@@ -7,7 +7,7 @@ function getdropdownsprint($project_id)
     $sprint;
     while($sprint = $sprints->fetch_assoc())
     {
-	$htmlstring = $htmlstring.'<li ><a href="'.$GLOBAL['SITE_ROOT'].'"/php/sprintSingle.php?project_id='.$project_id.'&sprint_id='.$sprint['sprint_id'].'">Sprint '.$sprint['number_sprint'].'</a></li>';
+	$htmlstring = $htmlstring.'<li ><a href="'.$GLOBALS['SITE_ROOT'].'"/php/sprintSingle.php?project_id='.$project_id.'&sprint_id='.$sprint['sprint_id'].'">Sprint '.$sprint['number_sprint'].'</a></li>';
     }
     $htmlstring = $htmlstring.'</ul>';
     return $htmlstring;
@@ -26,15 +26,15 @@ function setActiveOrNot($li)
 <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav">
 	<li <?php echo setActiveOrNot("homeproject"); ?> >
-	    <a href="<?php echo $GLOBAL['SITE_ROOT'];?>/php/homeProject.php?project_id=<?php global $project_id; echo $project_id; ?>"><i class="fa fa-fw fa-desktop"></i> Home Project</a>
+	    <a href="<?php echo $GLOBALS['SITE_ROOT'];?>/php/homeProject.php?project_id=<?php global $project_id; echo $project_id; ?>"><i class="fa fa-fw fa-desktop"></i> Home Project</a>
 	</li>
 	
 	<li <?php echo setActiveOrNot("backlog"); ?>>
-	    <a href="<?php echo $GLOBAL['SITE_ROOT'];?>/php/backlog.php?project_id=<?php global $project_id; echo $project_id; ?>"><i class="fa fa-fw fa-table"></i> Backlog</a>
+	    <a href="<?php echo $GLOBALS['SITE_ROOT'];?>/php/backlog.php?project_id=<?php global $project_id; echo $project_id; ?>"><i class="fa fa-fw fa-table"></i> Backlog</a>
 	</li>
 	
 	<li id="lisprint" <?php echo setActiveOrNot("sprint"); ?>>
-	    <a href="<?php echo $GLOBAL['SITE_ROOT'];?>/php/sprint.php?project_id=<?php global $project_id; echo $project_id; ?>" role="button">
+	    <a href="<?php echo $GLOBALS['SITE_ROOT'];?>/php/sprint.php?project_id=<?php global $project_id; echo $project_id; ?>" role="button">
 		<button id="sprintsmenu" type="button" class="btn"><i class="fa fa-fw fa-dashboard"></i> Sprints
 		</button>
 	    </a>
@@ -46,7 +46,7 @@ function setActiveOrNot($li)
 	</li>
 	
 	<li <?php echo setActiveOrNot("curve"); ?>> 
-	    <a href="<?php echo $GLOBAL['SITE_ROOT'];?>/php/curve.php?project_id=<?php global $project_id; echo $project_id; ?>"><i class="fa fa-fw fa-area-chart"></i> Velocity Curve</a>
+	    <a href="<?php echo $GLOBALS['SITE_ROOT'];?>/php/curve.php?project_id=<?php global $project_id; echo $project_id; ?>"><i class="fa fa-fw fa-area-chart"></i> Velocity Curve</a>
 	</li>
     </ul>
 </div>

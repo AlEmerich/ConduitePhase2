@@ -9,7 +9,7 @@ if(isset($_GET['project_id']))
     $project_info = $controleur->getProject($_GET['project_id'])->fetch_assoc();
 }
 else
-    header("Location: ".$GLOBAL['SITE_ROOT']."/index.php");
+    header("Location: ".$GLOBALS['SITE_ROOT']."/index.php");
 
 $descErr = $linkErr = $nameErr = "";
 $desc = $project_info['description'];
@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['actionProject']))
     if($update)
     {
 	$controleur->updateProjectWithoutPO($project_info['project_id'],$name,$link,$desc);
-	header("Location: ".$GLOBAL['SITE_ROOT']."/php/homeProject.php?project_id=".$project_info['project_id']);
+	header("Location: ".$GLOBALS['SITE_ROOT']."/php/homeProject.php?project_id=".$project_info['project_id']);
     }
 }
 

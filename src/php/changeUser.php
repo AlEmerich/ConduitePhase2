@@ -6,7 +6,7 @@ $controleur = new CtrlUser();
 if(isset($_SESSION['login']))
     $us_id = $controleur->getID($_SESSION['login']);
 else
-    header("Location: ".$GLOBAL['SITE_ROOT']."/index.php");
+    header("Location: ".$GLOBALS['SITE_ROOT']."/index.php");
 $user;
 
 $mail = $_SESSION['mail'];
@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['actionUser']))
 	$_SESSION['mdp'] = $pwd;
 	$_SESSION['mail'] = $mail;
 	$_SESSION['picture'] = $url;
-	header( 'Location: '.$GLOBAL['SITE_ROOT'].'/index.php');
+	header( 'Location: '.$GLOBALS['SITE_ROOT'].'/index.php');
     }
 }
 

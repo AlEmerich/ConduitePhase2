@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-phpinfo();
+
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlParticipates.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlUser.php');
 

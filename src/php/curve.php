@@ -17,7 +17,7 @@ $whatfile = "curve";
 if (isset($_GET["project_id"]))
     $project_id = htmlspecialchars($_GET["project_id"]);
 else
-    header("Location: ".$GLOBAL['SITE_ROOT']."/index.php");
+    header("Location: ".$GLOBALS['SITE_ROOT']."/index.php");
 
 $logged = false;
 if(isset($_SESSION['login']))

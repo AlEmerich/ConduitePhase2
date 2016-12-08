@@ -13,5 +13,5 @@ if (isset($_GET["project_id"]) && $_SERVER["REQUEST_METHOD"] == "POST" && !empty
 	$ctrlBl->changePriority($key,$value);
     }
 }
-header('Location: '.$GLOBAL['SITE_ROOT'].'/php/backlog.php?project_id='.$project_id);
+header('Location: '.$GLOBALS['SITE_ROOT'].'/php/backlog.php?project_id='.$project_id);
 ?>

@@ -19,7 +19,7 @@ if (isset($_GET["project_id"])){
     $header = $header."?project_id=".$project_id;
 }
 else
-    header("Location: ".$GLOBAL['SITE_ROOT']."/index.php");
+    header("Location: ".$GLOBALS['SITE_ROOT']."/index.php");
 
 $logged = false;
 if(isset($_SESSION['login']))
@@ -257,15 +257,15 @@ function getState($date_start,$date_end)
 						echo '<td>'.getState($line['date_start'],$date_stop).'</td>';
 						echo '<td>'.$line['date_start'].'</td><td>'.$date_stop.'</td>';
 						
-						echo '<td><a role="button" href="'.$GLOBAL['SITE_ROOT'].'/php/sprintSingle.php?sprint_id='.$line['sprint_id'].'&project_id='.$project_id.'&tab=0"
+						echo '<td><a role="button" href="'.$GLOBALS['SITE_ROOT'].'/php/sprintSingle.php?sprint_id='.$line['sprint_id'].'&project_id='.$project_id.'&tab=0"
                                                           class="btn btn-primary"
                                                           style="padding-top:1px;padding-bottom:1px;padding-left:3px;padding-right:3px"
                                                           id="gotoSprint"><i class="fa fa-home"></i></a>';
-						echo '<a role="button" href="'.$GLOBAL['SITE_ROOT'].'/php/sprintSingle.php?sprint_id='.$line['sprint_id'].'&project_id='.$project_id.'&tab=1"
+						echo '<a role="button" href="'.$GLOBALS['SITE_ROOT'].'/php/sprintSingle.php?sprint_id='.$line['sprint_id'].'&project_id='.$project_id.'&tab=1"
                                                           class="btn btn-primary col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1"
                                                           style="padding-top:1px;padding-bottom:1px;padding-left:3px;padding-right:3px"
                                                           id="gotoKanban"><i class="fa fa-trello" aria-hidden="true"></i></a>';
-						echo '<a role="button" href="'.$GLOBAL['SITE_ROOT'].'/php/sprintSingle.php?sprint_id='.$line['sprint_id'].'&project_id='.$project_id.'&tab=2"
+						echo '<a role="button" href="'.$GLOBALS['SITE_ROOT'].'/php/sprintSingle.php?sprint_id='.$line['sprint_id'].'&project_id='.$project_id.'&tab=2"
                                                           class="btn btn-primary col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1"
                                                           style="padding-top:1px;padding-bottom:1px;padding-left:3px;padding-right:3px"
                                                           id="gotoTasks"><i class="fa fa-tasks" aria-hidden="true"></i></a></td>';
