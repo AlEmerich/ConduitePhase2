@@ -28,5 +28,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 }
 $project_id = $_GET['project_id'];
 
-header('Location: http://localhost:8000/php/sprintSingle.php?sprint_id='.$sprint_id.'&project_id='.$project_id);
+header('Location: '.$GLOBAL['SITE_ROOT'].'/php/sprintSingle.php?sprint_id='.$sprint_id.'&project_id='.$project_id);
 ?>

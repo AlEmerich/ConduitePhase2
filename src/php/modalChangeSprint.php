@@ -14,7 +14,7 @@ while($num++ < $max) :
 		    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		    <h4 class="modal-title" id="modalSprintTitle">Sprint #<?php global $num; echo $num; ?></h4>
 		</div>
-		<form action="http://localhost:8000/php/sprint.php?project_id=<?php global $project_id; echo $project_id; ?>"
+		<form action="<?php echo $GLOBAL['SITE_ROOT']; ?>/php/sprint.php?project_id=<?php global $project_id; echo $project_id; ?>"
 		      class="list-group" method="post">
 		    <div class="modal-body">
 			<div class="form-group">

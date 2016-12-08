@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	$_SESSION['mdp'] = $user['mdp'];
 	$_SESSION['mail'] = $user['mail'];
 	$_SESSION['picture'] = $user['picture'];
-	header( 'Location: http://localhost:8000/index.php');
+	header( 'Location: '.$GLOBAL['SITE_ROOT'].'/index.php');
     }
 }
 

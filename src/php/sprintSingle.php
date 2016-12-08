@@ -36,7 +36,7 @@ if (isset($_GET['project_id']) && isset($_GET['sprint_id'])){
     $sprint_nb = $ctrlSprint->getSprintNumberWithID($sprint_id)->fetch_assoc()['number_sprint'];
 }
 else
-    header("Location: http://localhost:8000/index.php");
+    header("Location: ".$GLOBAL['SITE_ROOT']."/index.php");
 
 $logged = false;
 if(isset($_SESSION['login']))

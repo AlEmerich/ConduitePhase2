@@ -183,7 +183,7 @@ function test_input($data){
 
 		    <div class="panel-body" >
 			<div class="row" >
-			    <form action="http://localhost:8000/php/changeprio.php?project_id=<?php global $project_id; echo $project_id; ?>" method="post" >
+			    <form action="<?php echo $GLOBAL['SITE_ROOT']; ?>/php/changeprio.php?project_id=<?php global $project_id; echo $project_id; ?>" method="post" >
 				<div class="col-lg-12 col-md-12 col-xs-12 table-responsive">
 				    <table class= "table">
 					<caption>List of UserStories related to this project</caption>

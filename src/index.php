@@ -39,7 +39,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
 	<title>ScrumTool</title>
 	<link rel="stylesheet" type="text/css" href="css/basic.css">
-	<script type="text/javascript" src="http://localhost:8000/js/inscription.js"></script>
+	<script type="text/javascript"
+		src="<?php echo $GLOBAL['SITE_ROOT']; ?>/js/inscription.js">
+	 
+	</script>
 	<meta name="description" content="Outil scrum">
 	<meta name="author" content="Groupe4">
     </head>

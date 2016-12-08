@@ -6,9 +6,9 @@
      <!--
         Importing Jquery API.
       -->
-<?php echo '<script src="http://localhost:8000/js/jquery.min.js"></script>'; ?>
+<?php echo '<script src="'.$GLOBAL['SITE_ROOT'].'/js/jquery.min.js"></script>'; ?>
 
-<link rel="stylesheet" type="text/css" href="http://localhost:8000/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="<?php echo $GLOBAL['SITE_ROOT']; ?>/font-awesome/css/font-awesome.min.css">
 <!--
    Importing minified bootstrap css.
 -->
@@ -29,13 +29,13 @@
      <!--
 	  Custom
 	-->
-     <link rel="stylesheet" type="text/css" href="http://localhost:8000/css/basic.css">
-     <script type="text/javascript" src="http://localhost:8000/js/menu.js"></script>
+     <link rel="stylesheet" type="text/css" href="<?php echo $GLOBAL['SITE_ROOT']; ?>/css/basic.css">
+     <script type="text/javascript" src="<?php echo $GLOBAL['SITE_ROOT']; ?>/js/menu.js"></script>
      <link href="../css/plugins/morris.css" rel="stylesheet">
-     <script type="text/javascript" src="http://localhost:8000/js/backlog.js"></script>
+     <script type="text/javascript" src="<?php echo $GLOBAL['SITE_ROOT']; ?>/js/backlog.js"></script>
      <link href="../css/plugins/morris.css" rel="stylesheet">
      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-     <script type="text/javascript" src="http://localhost:8000/js/calendar.js" ></script>
-     <script type="text/javascript" src="http://localhost:8000/js/drag_and_drop.js" ></script>
+     <script type="text/javascript" src="<?php echo $GLOBAL['SITE_ROOT']; ?>/js/calendar.js" ></script>
+     <script type="text/javascript" src="<?php echo $GLOBAL['SITE_ROOT']; ?>/js/drag_and_drop.js" ></script>
