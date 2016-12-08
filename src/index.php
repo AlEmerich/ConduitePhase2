@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-
+phpinfo();
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlParticipates.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/php/CtrlUser.php');
 
@@ -35,12 +35,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     
     <head>
 	<!-- Include BootStrap and JQuery -->
-	<?php include 'provideapi.php'; ?>
+	<?php include 'provideapi.php' ?>
 
 	<title>ScrumTool</title>
 	<link rel="stylesheet" type="text/css" href="css/basic.css">
 	<script type="text/javascript"
-		src="<?php echo $GLOBAL['SITE_ROOT']; ?>/js/inscription.js">
+		src="http://localhost:8000/js/inscription.js">
 	 
 	</script>
 	<meta name="description" content="Outil scrum">
